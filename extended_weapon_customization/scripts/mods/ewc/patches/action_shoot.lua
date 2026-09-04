@@ -664,8 +664,29 @@ local shoot_hook = function(func, self, position, rotation, power_level, charge_
         local rewind_ms = self:_rewind_ms(is_local_unit, player, position, direction, max_distance)
         local collision_tests = hit_scan_template.collision_tests
 
-        power_level = hit_scan_template.power_level or power_level or DEFAULT_POWER_LEVEL
+        -- @Backup158: The issue (below) is ranged damage getting doubled when the player is server-authoritative (Psykhanium, SoloPlay)
+        --  Based on my findings below, decoupling the logic that actually doubles the damage is convoluted
+        --  As a workaround, I halved the power_level, so when it's doubled in solo, it adds back up to 1
+        --  During live games, this has no effect
+        power_level = (hit_scan_template.power_level or power_level or DEFAULT_POWER_LEVEL) / 2
 
+        -- @Backup158: Debug to find out where power level is coming from. I only tested in the Psykhanium, but it looks like it was always the raw power level
+        -- if hit_scan_template.power_level then
+        --     mod:echo("Got power level from template: "..tostring(hit_scan_template.power_level).."\nHalving damage because kiss your sister.")
+        -- elseif power_level then
+        --     mod:echo("Got power level from raw power level: "..tostring(power_level).."\nHalving damage because kiss your sister.")
+        -- else
+        --     mod:echo("Got power level from default: "..tostring(DEFAULT_POWER_LEVEL).."\nHalving damage because kiss your sister.")
+        -- end
+
+        -- @Backup158: The doubled damage takes place somewhere in this if-else
+        --  Not just the (if collision_tests true) section. It's something in common with both
+        --  It doesn't double if the whole if-else is gone, but still doubles if we never enter the collision_test == true
+        --  It also doesn't disable if just the else is gone
+        -- The problem is calling hit_scan_process_hits (HitScan.process_hits)
+        --  In this function, it executes RangedAction.execute_attack (which calls Attack.execute), trusting the server for verification
+        --  However, Attack.execute applies the damage, based off power_level
+        -- After shoot_hook acts, the actual function it's hooking will also call HitScan.process_hits
         if collision_tests then
             table_clear(ALL_HITS)
 
