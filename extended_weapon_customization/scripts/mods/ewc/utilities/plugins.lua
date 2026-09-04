@@ -34,6 +34,23 @@ local temp_inner_query_params = {}
 -- ##### └  └─┘┘└┘└─┘ ┴ ┴└─┘┘└┘└─┘ ####################################################################################
 
 mod.handle_attachment_query = function(self, query)
+    -- @Backup158: More robust error handling for checking fix requiremrents
+    --      Fixes use this function for every requirement
+    --      If you do not pass a string as a requirement, it causes a backend error you can't get past
+    --      The log also doesn't clearly mention it's some failed fix requirement, which made finding this a pain
+    --      I've added these debug messages to make it easier to catch these mistakes
+    -- Naturally you should just make sure you're writing fixes correctly, but safety is good lol
+    if not query then
+        mod:error("Given nil as a query! Exiting early.")
+        return ""
+    elseif type(query) == "table" then
+        mod:error("Trying to query a table")
+        table.dump(query, "Query uwu", 15)
+        return ""
+    elseif not (type(query) == "string") then
+        mod:error("Query is not a string. "..tostring(query).."( "..type(query)..")")
+        return ""
+    end
     -- Check query
     if string_sub(query, 1, 6) == "query:" then
 
