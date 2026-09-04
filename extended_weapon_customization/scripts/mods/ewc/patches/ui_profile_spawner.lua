@@ -1,0 +1,172 @@
+local mod = get_mod("extended_weapon_customization")
+
+-- ##### ┬─┐┌─┐┌─┐ ┬ ┬┬┬─┐┌─┐ #########################################################################################
+-- ##### ├┬┘├┤ │─┼┐│ ││├┬┘├┤  #########################################################################################
+-- ##### ┴└─└─┘└─┘└└─┘┴┴└─└─┘ #########################################################################################
+
+local PlayerCharacterConstants = mod:original_require("scripts/settings/player_character/player_character_constants")
+local ItemSlotSettings = mod:original_require("scripts/settings/item/item_slot_settings")
+local master_items = mod:original_require("scripts/backend/master_items")
+
+-- ##### ┌─┐┌─┐┬─┐┌─┐┌─┐┬─┐┌┬┐┌─┐┌┐┌┌─┐┌─┐ ############################################################################
+-- ##### ├─┘├┤ ├┬┘├┤ │ │├┬┘│││├─┤││││  ├┤  ############################################################################
+-- ##### ┴  └─┘┴└─└  └─┘┴└─┴ ┴┴ ┴┘└┘└─┘└─┘ ############################################################################
+-- #region Performance
+    local pairs = pairs
+    local CLASS = CLASS
+    local tostring = tostring
+    local managers = Managers
+--#endregion
+
+-- ##### ┌┬┐┌─┐┌┬┐┌─┐ #################################################################################################
+-- #####  ││├─┤ │ ├─┤ #################################################################################################
+-- ##### ─┴┘┴ ┴ ┴ ┴ ┴ #################################################################################################
+
+local pt = mod:pt()
+local SLOT_PRIMARY = "slot_primary"
+local SLOT_SECONDARY = "slot_secondary"
+local PROCESS_SLOTS = {SLOT_PRIMARY, SLOT_SECONDARY}
+
+-- ##### ┌─┐┬  ┌─┐┌─┐┌─┐  ┌─┐─┐ ┬┌┬┐┌─┐┌┐┌┌─┐┬┌─┐┌┐┌ ##################################################################
+-- ##### │  │  ├─┤└─┐└─┐  ├┤ ┌┴┬┘ │ ├┤ │││└─┐││ ││││ ##################################################################
+-- ##### └─┘┴─┘┴ ┴└─┘└─┘  └─┘┴ └─ ┴ └─┘┘└┘└─┘┴└─┘┘└┘ ##################################################################
+
+mod:hook_require("scripts/managers/ui/ui_profile_spawner", function(instance)
+
+    instance.change_equipment = function(self, profile)
+        self:change_item(profile, SLOT_SECONDARY)
+        self:change_item(profile, SLOT_PRIMARY)
+        -- self:_sync_profile_changes()
+    end
+
+    instance.change_item = function(self, profile, slot_name)
+        if profile and profile.loadout and profile.visual_loadout then
+            local loadout_item = profile.loadout and profile.loadout[slot_name]
+            local visual_item = profile.visual_loadout and profile.visual_loadout[slot_name]
+            if (not loadout_item or not loadout_item.__master_item) and visual_item then
+                profile.loadout[slot_name] = visual_item
+            end
+        end
+    end
+
+    -- instance.change_item = function(self, slot_name)
+    --     local data = self._loading_profile_data or self._character_spawn_data
+    --     if data then
+    --         local loadout_item = data.profile.loadout and data.profile.loadout[slot_name]
+    --         local visual_item = data.profile.visual_loadout and data.profile.visual_loadout[slot_name]
+    --         if (not loadout_item or not loadout_item.__master_item) and visual_item then
+    --             data.profile.loadout[slot_name] = visual_item
+    --         end
+    --     end
+    -- end
+
+end)
+
+-- ##### ┌─┐┬ ┬┌┐┌┌─┐┌┬┐┬┌─┐┌┐┌  ┬ ┬┌─┐┌─┐┬┌─┌─┐ ######################################################################
+-- ##### ├┤ │ │││││   │ ││ ││││  ├─┤│ ││ │├┴┐└─┐ ######################################################################
+-- ##### └  └─┘┘└┘└─┘ ┴ ┴└─┘┘└┘  ┴ ┴└─┘└─┘┴ ┴└─┘ ######################################################################
+
+mod:hook(CLASS.UIProfileSpawner, "ignore_slot", function(func, self, slot_id, ...)
+	-- Skip primary and secondary slots
+	if slot_id ~= SLOT_PRIMARY and slot_id ~= SLOT_SECONDARY then
+		-- Original function
+		func(self, slot_id, ...)
+	end
+end)
+
+-- mod:hook(CLASS.UIProfileSpawner, "_update_ingore_slots", function(func, self, ...)
+-- 	local slot_configuration = PlayerCharacterConstants.slot_configuration
+-- 	local gear_slots = {}
+-- 	local ignored_slots = self._ignored_slots
+
+-- 	for slot_id, config in pairs(slot_configuration) do
+
+--         if slot_id ~= SLOT_PRIMARY and slot_id ~= SLOT_SECONDARY then
+            
+--             local settings = ItemSlotSettings[slot_id]
+
+--             if not ignored_slots[slot_id] and not settings.ignore_character_spawning then
+--                 gear_slots[slot_id] = config
+--             end
+
+--         end
+
+-- 	end
+
+-- 	if self._visible then
+-- 		self:_update_items_visibility()
+-- 	end
+-- end)
+
+mod:hook(CLASS.UIProfileSpawner, "spawn_profile", function(func, self, profile, position, rotation, scale, state_machine_or_nil, animation_event_or_nil, face_state_machine_key_or_nil, face_animation_event_or_nil, force_highest_mip_or_nil, disable_hair_state_machine_or_nil, optional_unit_3p, optional_ignore_state_machine, companion_data, ...)
+    -- Unset ignore slots
+    -- So that the real equipped items are loaded
+    if not self._placement_name then
+        self._ignored_slots[SLOT_SECONDARY] = nil
+        self._ignored_slots[SLOT_PRIMARY] = nil
+    end
+
+    -- Real equipment
+    self:change_equipment(profile)
+    
+    -- Original function
+    func(self, profile, position, rotation, scale, state_machine_or_nil, animation_event_or_nil, face_state_machine_key_or_nil, face_animation_event_or_nil, force_highest_mip_or_nil, disable_hair_state_machine_or_nil, optional_unit_3p, optional_ignore_state_machine, companion_data, ...)
+
+end)
+
+mod:hook(CLASS.UIProfileSpawner, "_spawn_character_profile", function(func, self, profile, profile_loader, position, rotation, scale, state_machine, animation_event, face_state_machine_key, face_animation_event, force_highest_mip, disable_hair_state_machine, optional_unit_3p, optional_ignore_state_machine, companion_data, ...)
+    
+    -- -- Unset ignore slots
+    -- -- So that the real equipped items are loaded
+    -- if not self._placement_name then
+    --     self._ignored_slots[SLOT_SECONDARY] = nil
+    --     self._ignored_slots[SLOT_PRIMARY] = nil
+    -- end
+
+    -- Real equipment
+    self:change_equipment(profile)
+
+    mod.skip_link_children = true
+
+    -- Original function
+    func(self, profile, profile_loader, position, rotation, scale, state_machine, animation_event, face_state_machine_key, face_animation_event, force_highest_mip, disable_hair_state_machine, optional_unit_3p, optional_ignore_state_machine, companion_data, ...)
+
+    mod.skip_link_children = false
+
+end)
+
+mod:hook(CLASS.UIProfileSpawner, "wield_slot", function(func, self, slot_id, ...)
+
+    local world = self._world
+	local character_spawn_data = self._character_spawn_data
+    if character_spawn_data then
+
+        local wielded_slot = character_spawn_data.wielded_slot
+	    local slot_id = wielded_slot and wielded_slot.name
+	    local slot = slot_id and character_spawn_data.slots[slot_id]
+        local equipped_items = character_spawn_data.equipped_items
+        local slot_item = equipped_items and equipped_items[slot_id]
+
+        if slot and slot.unit_3p and slot.attachments_by_unit_3p and slot.attachments_by_unit_3p[slot.unit_3p] then
+            mod:execute_attachment_callbacks_in_item(slot_item, world, slot.attachments_by_unit_3p[slot.unit_3p], "ui_item_deinit")
+        end
+
+    end
+
+    -- Original function
+    func(self, slot_id, ...)
+
+    local character_spawn_data = self._character_spawn_data
+    if character_spawn_data then
+
+	    local slot = slot_id and character_spawn_data.slots[slot_id]
+        local equipped_items = character_spawn_data.equipped_items
+        local slot_item = equipped_items and equipped_items[slot_id]
+
+        if slot and slot.unit_3p and slot.attachments_by_unit_3p and slot.attachments_by_unit_3p[slot.unit_3p] then
+            mod:execute_attachment_callbacks_in_item(slot_item, world, slot.attachments_by_unit_3p[slot.unit_3p], "ui_item_init")
+        end
+
+    end
+
+end)
