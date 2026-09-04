@@ -671,6 +671,7 @@ local shoot_hook = function(func, self, position, rotation, power_level, charge_
         power_level = (hit_scan_template.power_level or power_level or DEFAULT_POWER_LEVEL) / 2
 
         -- @Backup158: Debug to find out where power level is coming from. I only tested in the Psykhanium, but it looks like it was always the raw power level
+        --      I honestly don't know what to do with that information
         -- if hit_scan_template.power_level then
         --     mod:echo("Got power level from template: "..tostring(hit_scan_template.power_level).."\nHalving damage because kiss your sister.")
         -- elseif power_level then
@@ -687,6 +688,12 @@ local shoot_hook = function(func, self, position, rotation, power_level, charge_
         --  In this function, it executes RangedAction.execute_attack (which calls Attack.execute), trusting the server for verification
         --  However, Attack.execute applies the damage, based off power_level
         -- After shoot_hook acts, the actual function it's hooking will also call HitScan.process_hits
+        -- --------
+        -- The simple answer would've been to avoid calling that twice. However, it's required to find the minion_hit value
+        -- minion_hit gets passed as a key to mod.enemy_unit_damage_type_override, which is used for verification in patches/minion_gibbing.lua
+        -- without this, the ranged weapons wouldn't be able to affect gibbing through damage_type
+        -- That could mean copying the HitScan.process_hits without RangedAction.execute_attack, but values further down in there rely it on it, it seems
+        -- That's a lot of snakes to untangle
         if collision_tests then
             table_clear(ALL_HITS)
 
