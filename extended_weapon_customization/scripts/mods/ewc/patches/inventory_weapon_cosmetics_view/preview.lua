@@ -292,9 +292,12 @@ mod.inventory_weapon_cosmetics_view_preview_element = function(self, element)
 
 		if real_item.display_name and real_item.display_name ~= "" and real_item.display_name ~= "n/a" then
 			local test_localize = localize(real_item.display_name)
+			mod:echo("Display name: "..real_item.display_name.."; Localized as: "..tostring(test_localize)) -- aaaa
 
+			-- the fuck does this even mean?? -- aaaa
 			if string_sub(test_localize, 1, 1) ~= "<" and string_sub(test_localize, -1) ~= ">" then
-				attachment_display_name = test_localize
+				attachment_display_name = test_localize or "oooo" -- @baackup158: weird edit here
+				mod:echo("Attachment Display name: "..attachment_display_name) -- aaaa
 			end
 		end
 	else
