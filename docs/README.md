@@ -8,6 +8,9 @@ Based on the pinned scrollbar version (2026-07-12).
 ## Changes
 - Bandaid fix for doubled range damage in Psykhanium (**patches/action_shoot.lua**)
 - More robust input validation for fix requirements (**utilities/plugins.lua**)
+- Defaulted randomization mod options to off due to the issues related to it (**ewc_data.lua**)
+    - Namely, crashing upon hovering seemingly random parts
+    - This change can be reverted if the root causes are solved
 ## To-do
 - Muzzle flash only on the left dual-wield weapons
 - Missing display name after the notification changes from the hotfix
