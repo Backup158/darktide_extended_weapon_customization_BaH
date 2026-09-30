@@ -666,9 +666,12 @@ local shoot_hook = function(func, self, position, rotation, power_level, charge_
 
         -- @Backup158: The issue (below) is ranged damage getting doubled when the player is server-authoritative (Psykhanium, SoloPlay)
         --  Based on my findings below, decoupling the logic that actually doubles the damage is convoluted
-        --  As a workaround, I halved the power_level, so when it's doubled in solo, it adds back up to 1
-        --  During live games, this has no effect
-        power_level = (hit_scan_template.power_level or power_level or DEFAULT_POWER_LEVEL) / 2
+        --      As a workaround, I halved the power_level, so when it's doubled in solo, it adds back up to 1
+        --      During live games, this has no effect
+        --      However, I'll only make the change when is_server in case that power level messes with ragdolls or something
+        if is_server then
+            power_level = (hit_scan_template.power_level or power_level or DEFAULT_POWER_LEVEL) / 2
+        end
 
         -- @Backup158: Debug to find out where power level is coming from. I only tested in the Psykhanium, but it looks like it was always the raw power level
         --      I honestly don't know what to do with that information
