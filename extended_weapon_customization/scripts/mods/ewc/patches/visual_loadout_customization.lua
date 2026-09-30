@@ -922,7 +922,7 @@ mod:hook_require("scripts/extension_systems/visual_loadout/utilities/visual_load
 
             if tonumber(attach_node) ~= nil then
                 attach_node_index = tonumber(attach_node)
-            elseif attach_node then
+            elseif attach_node and unit and attach_node then
                 attach_node_index = unit_has_node(unit, attach_node) and unit_node(unit, attach_node) or 1
             else
                 attach_node_index = 1
