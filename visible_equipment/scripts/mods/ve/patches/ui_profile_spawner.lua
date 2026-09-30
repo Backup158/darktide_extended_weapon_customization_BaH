@@ -1,0 +1,350 @@
+local mod = get_mod("visible_equipment")
+
+-- ##### ┬─┐┌─┐┌─┐ ┬ ┬┬┬─┐┌─┐ #########################################################################################
+-- ##### ├┬┘├┤ │─┼┐│ ││├┬┘├┤  #########################################################################################
+-- ##### ┴└─└─┘└─┘└└─┘┴┴└─└─┘ #########################################################################################
+
+local ScriptCamera = mod:original_require("scripts/foundation/utilities/script_camera")
+local ScriptWorld = mod:original_require("scripts/foundation/utilities/script_world")
+
+-- ##### ┌─┐┌─┐┬─┐┌─┐┌─┐┬─┐┌┬┐┌─┐┌┐┌┌─┐┌─┐ ############################################################################
+-- ##### ├─┘├┤ ├┬┘├┤ │ │├┬┘│││├─┤││││  ├┤  ############################################################################
+-- ##### ┴  └─┘┴└─└  └─┘┴└─┴ ┴┴ ┴┘└┘└─┘└─┘ ############################################################################
+-- #region Performance
+    local unit = Unit
+    local CLASS = CLASS
+    local actor = Actor
+    local world = World
+    local string = string
+    local vector3 = Vector3
+    local managers = Managers
+    local tostring = tostring
+    local actor_unit = actor.unit
+    local string_gsub = string.gsub
+    local string_find = string.find
+    local physics_world = PhysicsWorld
+    local world_unlink_unit = world.unlink_unit
+    local unit_local_rotation = unit.local_rotation
+    local unit_world_position = unit.world_position
+    local physics_world_raycast = physics_world.raycast
+    local unit_set_local_position = unit.set_local_position
+    local unit_set_local_rotation = unit.set_local_rotation
+--#endregion
+
+-- ##### ┌┬┐┌─┐┌┬┐┌─┐ #################################################################################################
+-- #####  ││├─┤ │ ├─┤ #################################################################################################
+-- ##### ─┴┘┴ ┴ ┴ ┴ ┴ #################################################################################################
+
+local pt = mod:pt()
+local SLOT_PRIMARY = "slot_primary"
+local SLOT_SECONDARY = "slot_secondary"
+local PROCESS_SLOTS = {SLOT_PRIMARY, SLOT_SECONDARY}
+
+-- ##### ┌─┐┬  ┌─┐┌─┐┌─┐  ┌─┐─┐ ┬┌┬┐┌─┐┌┐┌┌─┐┬┌─┐┌┐┌ ##################################################################
+-- ##### │  │  ├─┤└─┐└─┐  ├┤ ┌┴┬┘ │ ├┤ │││└─┐││ ││││ ##################################################################
+-- ##### └─┘┴─┘┴ ┴└─┘└─┘  └─┘┴ └─ ┴ └─┘┘└┘└─┘┴└─┘┘└┘ ##################################################################
+
+mod:hook_require("scripts/managers/ui/ui_profile_spawner", function(instance)
+
+    instance.change_equipment = function(self)
+        self:change_item(SLOT_SECONDARY)
+        self:change_item(SLOT_PRIMARY)
+        self:_sync_profile_changes()
+    end
+
+    instance.change_item = function(self, slot_name)
+        local data = self._loading_profile_data or self._character_spawn_data
+        local loadout_item = data and data.profile.loadout and data.profile.loadout[slot_name]
+        local visual_item = data and data.profile.visual_loadout and data.profile.visual_loadout[slot_name]
+        if (not loadout_item or not loadout_item.__master_item) and visual_item then
+            data.profile.loadout[slot_name] = visual_item
+            -- if data.equipped_items then data.equipped_items[slot_name] = visual_item end
+            -- if data.loading_items then data.loading_items[slot_name] = visual_item and visual_item.name end
+        end
+    end
+
+	instance.custom_raycast = function(self, from, to, physics_world, collision_filter)
+		local character_spawn_data = self._character_spawn_data or self._loading_profile_data
+		local unit_3p = character_spawn_data and character_spawn_data.unit_3p
+
+		if not unit_3p then return end
+
+		local result, other = physics_world_raycast(physics_world, from, to, 100, "all", "collision_filter", collision_filter)
+
+		if not result then return end
+
+		local INDEX_ACTOR = 4
+		local num_hits = #result
+		for i = 1, num_hits do
+			local hit = result[i]
+			local hit_actor = hit[INDEX_ACTOR]
+			local hit_unit = actor_unit(hit_actor)
+			if hit_unit == unit_3p then
+				return hit_unit, hit_actor
+			end
+		end
+	end
+
+    instance.valid_instance = function(self, profile, spawned)
+        if not profile then
+            profile = self._character_spawn_data and self._character_spawn_data.profile
+        end
+        return profile and (profile.loadout[SLOT_PRIMARY] or profile.loadout[SLOT_SECONDARY])
+    end
+
+    instance.set_placement_name = function(self, placement_name)
+        self._placement_name = placement_name
+    end
+
+    instance.set_slot_name = function(self, slot_name)
+        self._slot_name = slot_name
+    end
+
+    instance.update_rotation = function(self, profile, slot_name)
+        -- Info
+        local breed_name = mod:breed(profile)
+        local placement_camera = mod.settings.placement_camera
+        local item = profile and profile.loadout[slot_name]
+        local gear_id = item and item.gear_id
+        -- Get placement
+        local placement = self._placement_name or gear_id and mod:gear_placement(gear_id)
+        -- Get offset
+        local breed_camera = breed_name and placement_camera[breed_name]
+        local offset = breed_camera and breed_camera[placement]
+        local item_type = item and item.item_type
+        offset = (offset and item_type and offset[item_type]) or offset
+        -- Check offset
+        if offset and offset.rotation then
+            -- Set rotation
+            self._rotation_angle = offset.rotation + 2.25
+        end
+    end
+
+    instance.unit_manipulation_busy = function(self)
+        local character_spawn_data = self._character_spawn_data
+        local equipment_component = character_spawn_data and character_spawn_data.equipment_component
+        if equipment_component then
+            return equipment_component:unit_manipulation_busy()
+        end
+    end
+
+    instance._setup_forward_gui = function (self)
+        local ui_manager = managers.ui
+        local timer_name = "ui"
+        local world_layer = 110
+        local world_name = self._unique_id .. "_ui_forward_world"
+        local view_name = self.view_name
+
+        self._forward_world = ui_manager:create_world(world_name, world_layer, timer_name, view_name)
+
+        local viewport_name = self._unique_id .. "_ui_forward_world_viewport"
+        local viewport_type = "default_with_alpha"
+        local viewport_layer = 1
+
+        self._forward_viewport = ui_manager:create_viewport(self._forward_world, viewport_name, viewport_type, viewport_layer)
+        self._forward_viewport_name = viewport_name
+
+        local renderer_name = self._unique_id .. "_forward_renderer"
+
+        self._ui_forward_renderer = ui_manager:create_renderer(renderer_name, self._forward_world)
+    end
+
+    instance._destroy_forward_gui = function (self)
+        if self._ui_forward_renderer then
+            self._ui_forward_renderer = nil
+
+            managers.ui:destroy_renderer(self._unique_id .. "_forward_renderer")
+
+            local world = self._forward_world
+            local viewport_name = self._forward_viewport_name
+
+            ScriptWorld.destroy_viewport(world, viewport_name)
+            managers.ui:destroy_world(world)
+
+            self._forward_viewport_name = nil
+            self._forward_world = nil
+        end
+    end
+
+    instance.spawned_profile = function(self)
+        return self._character_spawn_data and self._character_spawn_data.profile
+    end
+
+end)
+
+-- ##### ┌─┐┬ ┬┌┐┌┌─┐┌┬┐┬┌─┐┌┐┌  ┬ ┬┌─┐┌─┐┬┌─┌─┐ ######################################################################
+-- ##### ├┤ │ │││││   │ ││ ││││  ├─┤│ ││ │├┴┐└─┐ ######################################################################
+-- ##### └  └─┘┘└┘└─┘ ┴ ┴└─┘┘└┘  ┴ ┴└─┘└─┘┴ ┴└─┘ ######################################################################
+
+mod:hook(CLASS.UIProfileSpawner, "init", function(func, self, reference_name, world, camera, unit_spawner, force_highest_lod_step, optional_mission_template, ...)
+    -- Original function
+    func(self, reference_name, world, camera, unit_spawner, force_highest_lod_step, optional_mission_template, ...)
+    -- Enable rotation input
+    self._rotation_input_disabled = false
+    -- Create forward gui
+    if self._reference_name == "InventoryCosmeticsView" then
+        local class_name = self.__class_name
+        self._unique_id = class_name .. "_" .. string_gsub(tostring(self), "table: ", "")
+        self:_setup_forward_gui()
+    end
+end)
+
+mod:hook(CLASS.UIProfileSpawner, "destroy", function(func, self, ...)
+    -- Destroy forward gui
+    self:_destroy_forward_gui()
+    -- Original function
+    func(self, ...)
+end)
+
+mod:hook(CLASS.UIProfileSpawner, "update", function(func, self, dt, t, input_service, ...)
+    -- Enable rotation input
+    self._rotation_input_disabled = self:unit_manipulation_busy()
+    -- Original function
+    func(self, dt, t, input_service, ...)
+    -- Check spawn data
+    if self:valid_instance() then
+        -- Update equipment component
+        self._character_spawn_data.equipment_component:update(dt, t)
+    end
+end)
+
+mod:hook(CLASS.UIProfileSpawner, "cb_on_unit_3p_streaming_complete", function(func, self, unit_3p, timeout, ...)
+    local character_spawn_data = self._character_spawn_data
+
+    -- Original function
+    func(self, unit_3p, timeout, ...)
+
+    -- Check spawn data
+    if self:valid_instance() then
+        -- Update equipment component
+        character_spawn_data.equipment_component:extensions_ready()
+    end
+
+    -- Update placement
+    if self._placement_name and self._slot_name then
+        local profile = character_spawn_data.profile
+        local item = profile and profile.loadout[self._slot_name]
+        local gear_id = item and item.gear_id
+        mod:gear_placement(gear_id, self._placement_name)
+    end
+
+    -- Add unit manipulation
+    if self:valid_instance() and self._ui_forward_renderer then
+        if character_spawn_data.equipment_component then
+            character_spawn_data.equipment_component:set_debug_data(self._camera, self._ui_forward_renderer.gui, self._forward_world)
+        end
+    end
+
+end)
+
+mod:hook(CLASS.UIProfileSpawner, "spawn_profile", function(func, self, profile, position, rotation, scale, state_machine_or_nil, animation_event_or_nil, face_state_machine_key_or_nil, face_animation_event_or_nil, force_highest_mip_or_nil, disable_hair_state_machine_or_nil, optional_unit_3p, optional_ignore_state_machine, companion_data, ...)
+    -- Unset ignore slots
+    -- So that the real equipped items are loaded
+    if self._placement_name and self._slot_name then
+        self._ignored_slots[SLOT_SECONDARY] = self._placement_name and self._slot_name ~= SLOT_SECONDARY or nil
+        self._ignored_slots[SLOT_PRIMARY] = self._placement_name and self._slot_name ~= SLOT_PRIMARY or nil
+    else
+        self._ignored_slots[SLOT_SECONDARY] = nil
+        self._ignored_slots[SLOT_PRIMARY] = nil
+    end
+
+    -- Original function
+    func(self, profile, position, rotation, scale, state_machine_or_nil, animation_event_or_nil, face_state_machine_key_or_nil, face_animation_event_or_nil, force_highest_mip_or_nil, disable_hair_state_machine_or_nil, optional_unit_3p, optional_ignore_state_machine, companion_data, ...)
+
+    -- Real equipment
+    self:change_equipment()
+
+end)
+
+mod:hook(CLASS.UIProfileSpawner, "_spawn_character_profile", function(func, self, profile, profile_loader, position, rotation, scale, state_machine, animation_event, face_state_machine_key, face_animation_event, force_highest_mip, disable_hair_state_machine, optional_unit_3p, optional_ignore_state_machine, companion_data, ...)
+
+    -- Catch profile
+    if self:valid_instance(profile) then
+        pt.catch_unit = profile
+    end
+
+    if self._placement_name and self._slot_name then
+
+        local data = self._loading_profile_data or self._character_spawn_data
+        local profile = data and data.profile
+
+        force_highest_mip = false
+        self._force_highest_lod_step = false
+        if self._loading_profile_data then
+            self._loading_profile_data.force_highest_mip = false
+        end
+
+        local item = profile and profile.loadout[self._slot_name]
+        local placement_camera = mod.settings.placement_camera
+        local gear_id = mod:gear_id(item)
+        local breed_name = mod:breed(profile)
+        local breed_camera = breed_name and placement_camera[breed_name]
+        local offset = (breed_camera and breed_camera[self._placement_name])
+        local item_type = item and item.item_type
+        offset = offset and item_type and offset[item_type] or offset
+
+        if offset and offset.rotation then
+            self._rotation_angle = offset.rotation
+        end
+
+        mod:gear_placement(gear_id, self._placement_name)
+    end
+
+    -- Original function
+    func(self, profile, profile_loader, position, rotation, scale, state_machine, animation_event, face_state_machine_key, face_animation_event, force_highest_mip, disable_hair_state_machine, optional_unit_3p, optional_ignore_state_machine, companion_data, ...)
+
+    -- Real equipment
+    self:change_equipment()
+
+end)
+
+mod:hook(CLASS.UIProfileSpawner, "_despawn_players_gear", function(func, self, ...)
+    -- Destroy equipment component
+	if self._character_spawn_data then
+		local equipment_component = self._character_spawn_data.equipment_component
+        if equipment_component then
+            equipment_component:destroy()
+        end
+    end
+    -- Original function
+    func(self, ...)
+end)
+
+mod:hook(CLASS.UIProfileSpawner, "ignore_slot", function(func, self, slot_id, ...)
+	-- Skip primary and secondary slots
+	if slot_id ~= SLOT_PRIMARY and slot_id ~= SLOT_SECONDARY then
+		-- Original function
+		func(self, slot_id, ...)
+	end
+end)
+
+mod:hook(CLASS.UIProfileSpawner, "_spawn_companion", function(func, self, unit_3p, breed_name, position, rotation, attach_to_character, ...)
+
+    local query_result = mod:compatibility_query("skip_companion_spawn_modification")
+
+    if not query_result then
+
+        -- Original function
+        local companion_unit_3p = func(self, unit_3p, breed_name, position, rotation, attach_to_character, ...)
+        -- Unlink companion
+        world_unlink_unit(self._world, companion_unit_3p)
+        unit_set_local_position(companion_unit_3p, 1, unit_world_position(unit_3p, 1) + vector3(-.55, .65, 0))
+        unit_set_local_rotation(companion_unit_3p, 1, unit_local_rotation(unit_3p, 1))
+        -- Return companion
+        return companion_unit_3p
+
+    else
+            
+        -- Original function
+        return func(self, unit_3p, breed_name, position, rotation, attach_to_character, ...)
+
+    end
+
+end)
+
+mod:hook(CLASS.UIProfileSpawner, "_get_raycast_hit", function(func, self, from, to, physics_world, collision_filter, ...)
+    if not self:unit_manipulation_busy() then
+        -- Return custom raycast
+        return self:custom_raycast(from, to, physics_world, collision_filter)
+    end
+end)
