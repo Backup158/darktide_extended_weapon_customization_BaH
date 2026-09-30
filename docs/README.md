@@ -22,6 +22,10 @@ Based on Nexus version.
 - Fix crash on opening cosmetics (**patches/ui_manager.lua**)
     - The create mannequin function from `Items` was moved to `ProfileUtils`
     - The parameters now take the unit and profile instead of unit and all the individual parts of the profile
+## Visual Loadout Customization Community Patch
+Based on Nexus Version
+
+- N/A
 
 # To-do
 ## Extended Weapon Customization
@@ -42,3 +46,5 @@ Based on Nexus version.
     - `ogryn_powermaul_slabshield_p1_m2`
     - `powermaul_2h_p1_m2`
     - `shotgun_p2_m3`
+## Visual Loadout Customization Community Patch
+- Crash on finding worlddata and unit nodes whenever there are players loaded
