@@ -21,7 +21,7 @@ Based on the pinned scrollbar version (2026-07-12).
     - Using this as a string as an argument for `PhysicsWorld.raycast` is fine; this is a Stingray function (?) and there's code using that same string
     - No action needed for **patches/action_shoot.lua** because `ActionShoot._rewind_ms` was not renamed
 
-## Extended Weapon Customization
+## Extended Weapon Customization - Base Additions
 Based on the Nexus version (1.04 - 2026-07-10)
 
 - Fix crash on turning on laser (**attachments/laser_pointer.lua**)
