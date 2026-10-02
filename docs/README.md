@@ -7,7 +7,13 @@ Grasmann, these are the changes we'd like merged. `showdiff` however you'd like 
 Based on the pinned scrollbar version (2026-07-12).
 
 - Bandaid fix for doubled range damage in Psykhanium (**patches/action_shoot.lua**)
+    - In the shooting hook, it gets hit results by calling `hit_scan_process_hits`, which calls a chain of attack functions that wind up with one that actually processing damage. In normal matches, this is fine due to server validation. In solo instances, this causes ranged shooting to apply twice.
+    - Just changing `is_server` to false the parameters is not enough
+    - Hit results is used to find out which enemies should be gibbed with weapon types elsewhere, so I kept this whole system intact
+    - The change is to take the damage done, then halve its value if `is_server` is true. That way, it gets doubled and becomes the original damage.
 - More robust input validation for fix requirements (**utilities/plugins.lua**)
+    - As-is, having malformed `requirements` for fixes would cause a backend error on launch, without indication of what went wrong
+    - This checks for basic errors and logs hints for plugin authors
 - Defaulted randomization mod options to off due to the issues related to it (**ewc_data.lua**)
     - Namely, crashing upon hovering seemingly random parts
     - This change can be reverted if the root causes are solved
