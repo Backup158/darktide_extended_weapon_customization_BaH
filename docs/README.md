@@ -1,6 +1,6 @@
-Fork of [Extended Weapon Customization](https://github.com/grasmann/darktide-mods). Repo is just to keep track of my changes, and is not meant as a replacement for EWC and the work put into it.
+Fork of [Extended Weapon Customization](https://github.com/grasmann/darktide-mods). Repo is just to keep track of my/our changes, and is not meant as a replacement for EWC and the work put into it. (Fork has been expanded to include other related mods in the EWC sphere).
 
-Grasmann doesn't check GitHub so I stopped worrying about keeping my forks clean and up to date, and handling multiple forks for a mono-repo is annoying.
+Grasmann, these are the changes we'd like merged. `showdiff` however you'd like to; each general change is described below point-by-point. Changes are accredited to the contributor. If didn't put one, it was probably me.
 
 # Changes
 ## Extended Weapon Customization
