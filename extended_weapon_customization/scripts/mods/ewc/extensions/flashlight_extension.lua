@@ -472,7 +472,7 @@
     --             local aim_direction = vector3_normalize(quaternion_forward(aim_rotation))
 
     --             local _, laser_aim_position, _, _, hit_actor = physics_world_raycast(self.physics_world, aim_position, aim_direction, 1000, "closest", "types", "both",
-    --                 "collision_filter", "filter_player_character_shooting_projectile", "rewind_ms", LagCompensation.rewind_ms(false, true, self.player))
+    --                 "collision_filter", "filter_player_character_shooting_projectile", "rewind_ms", LagCompensation.rewind_miliseconds(false, true, self.player))
 
     --             -- Resulting aim position
     --             return laser_aim_position or flashlight_position
@@ -1038,7 +1038,7 @@ FlashlightExtension.aim_position = function(self)
             local aim_direction = vector3_normalize(quaternion_forward(aim_rotation))
 
             local _, laser_aim_position, _, _, hit_actor = physics_world_raycast(self.physics_world, aim_position, aim_direction, 1000, "closest", "types", "both",
-                "collision_filter", "filter_player_character_shooting_projectile", "rewind_ms", LagCompensation.rewind_ms(false, true, self.player))
+                "collision_filter", "filter_player_character_shooting_projectile", "rewind_ms", LagCompensation.rewind_miliseconds(false, true, self.player))
 
             -- Resulting aim position
             return laser_aim_position or flashlight_position
