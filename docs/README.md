@@ -26,6 +26,15 @@ Based on the pinned scrollbar version (2026-07-12).
     - `rewind_ms` had name changed (`LagCompensation.rewind_miliseconds`)... yes that is what they wrote
     - Using this as a string as an argument for `PhysicsWorld.raycast` is fine; this is a Stingray function (?) and there's code using that same string
     - No action needed for **patches/action_shoot.lua** because `ActionShoot._rewind_ms` was not renamed
+- Add support for new weapons and marks from Depths of the Damned (1.13.0) -- Thanks to Geoff from Accounting!
+    - `shotgun_p3_m1`
+    - `ogryn_hammer_2h_p1_m1`
+    - `ogryn_thumper_p1_m3`
+    - `ogryn_powermaul_slabshield_p1_m2`
+    - `powermaul_2h_p1_m2`
+    - `shotgun_p2_m3`
+    - table_clones added to **utilities/attachments.lua**
+    - New weapon files created for `shotgun_p3_m1` (Huntsman Shotgun) and `ogryn_hammer_2h_p1_m1` (Cruncher)
 
 ## Extended Weapon Customization - Base Additions
 Based on the Nexus version (1.04 - 2026-07-10)
@@ -50,13 +59,7 @@ Based on Nexus Version
 ## Extended Weapon Customization
 - Muzzle flash only on the left dual-wield weapons
 - Missing display name after the notification changes from the hotfix before 1.13.0
-- Add support for new weapons and marks from Depths of the Damned (1.13.0)
-    - `shotgun_p3_m1`
-    - `ogryn_hammer_2h_p1_m1`
-    - `ogryn_thumper_p1_m3`
-    - `ogryn_powermaul_slabshield_p1_m2`
-    - `powermaul_2h_p1_m2`
-    - `shotgun_p2_m3`
+
 ## Extended Weapon Customization - Base Additions
 - Add support for new weapons and marks from Depths of the Damned (1.13.0)
     - `shotgun_p3_m1`
