@@ -51,7 +51,7 @@ Based on Nexus Version
     - `ogryn_powermaul_slabshield_p1_m2`
     - `powermaul_2h_p1_m2`
     - `shotgun_p2_m3`
-## Visible Equipment
+## Extended Weapon Customization - Base Additions
 - Add support for new weapons and marks from Depths of the Damned (1.13.0)
     - `shotgun_p3_m1`
     - `ogryn_hammer_2h_p1_m1`
@@ -61,3 +61,11 @@ Based on Nexus Version
     - `shotgun_p2_m3`
 ## Visual Loadout Customization Community Patch
 - Crash on finding worlddata and unit nodes whenever there are players loaded
+## Visible Equipment
+- Add support for new weapons and marks from Depths of the Damned (1.13.0)
+    - `shotgun_p3_m1`
+    - `ogryn_hammer_2h_p1_m1`
+    - `ogryn_thumper_p1_m3`
+    - `ogryn_powermaul_slabshield_p1_m2`
+    - `powermaul_2h_p1_m2`
+    - `shotgun_p2_m3`
