@@ -43,14 +43,21 @@ local master_items = mod:original_require("scripts/backend/master_items")
     local master_items_get_item = master_items.get_item
 --#endregion
 -- #region Performance VLCCP
+-- @Backup158: UNCOMMENT ALL THE ONES I COMMENTED OUT I JUST DIDNT LIKE SEEING DUPLICATES
     local log = Log
     local type = type
+    -- local unit = Unit
+    -- local table = table
+    -- local pairs = pairs
+    -- local world = World
     local color = Color
     local rawget = rawget
     local ipairs = ipairs
+    -- local string = string
     local vector3 = Vector3
     local vector2 = Vector2
     local Log_info = log.info
+    -- local tonumber = tonumber
     local lod_group = LODGroup
     local table_set = table.set
     local unit_node = unit.node
@@ -1134,7 +1141,14 @@ mod:hook_require("scripts/extension_systems/visual_loadout/utilities/visual_load
         return override_lookup
     end)
 
-    -- Removed VLCCP mod check since it's integrated now
+    -- Removed VLCCP mod check since it's integrated now. If restoring it, place the _find_unit_node_recursive hook into this if statement
+    --[[
+    mod:check_visual_loadout_customization_community_patch()
+
+    if not mod.vlcp_missing then
+
+    end
+    ]]
     -- Reset parent and node method to earlier game version
     mod:hook(VisualLoadoutCustomization, "_find_unit_node_recursive", function(func, unit, attach_node, item_data, attach_settings, extract_data, ...)
 
