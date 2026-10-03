@@ -15,9 +15,11 @@ Based on the pinned scrollbar version (2026-07-12).
     - DotD move units around, so EWC attachments were getting picked up by this method, where it would default to trying to spawn a unit with UserData, causing a crash
     - Notably affected by the presence of a player using a Chainsword equipped with `content/weapons/player/melee/2h_chain_sword/attachments/chain_01/chain_57_01`
 - [DotD] Integrated VLCCP into **patches/visual_loadout_customization.lua** -- Thanks Stimm Shady (Arrowstorm606)!
+    - Based on Nexus Version (24 June 2026 - For update 1.12.0).
     - Streamlines workflow
     - Removed need for extra download
     - Does not cause issues if the original VLCCP is in the load order too
+    - The code is sectioned into regions so this can be easily reverted
 - [DotD] Additional safety checks in the hook to `_find_unit_node_recursive` (**patches/visual_loadout_customization.lua**)
     - This is a sign that the VLCCP needs to be updated, and it just kicks the problem up the chain
     - But I think messed up attachment positioning is still a good indicator of issues
@@ -56,21 +58,15 @@ Based on the Nexus version (1.04 - 2026-07-10)
     - Using this as a string as an argument for `PhysicsWorld.raycast` is fine; the source code has code passing that same string as an argument
 
 ## Visible Equipment
-Based on Nexus version.
+Based on Nexus version (10 July 2026).
 
 - [DotD] Fix crash on opening cosmetics (**patches/ui_manager.lua**)
     - The create mannequin function from `Items` was moved to `ProfileUtils`
     - The parameters now take the unit and profile instead of unit and all the individual parts of the profile
 
-## Visual Loadout Customization Community Patch
-Based on Nexus Version
-
-- [DotD] Integrated into EWC -- Thanks Stimm Shady (Arrowstorm606)!
-    - No issues from users having the old versions installed
-
 # To-do
 ## Extended Weapon Customization
-- Muzzle flash only on the left dual-wield weapons
+- Muzzle flash only on the left dual-wield weapons from Hive Scum release
 - Missing display name after the notification changes from the hotfix before 1.13.0
 
 ## Extended Weapon Customization - Base Additions
