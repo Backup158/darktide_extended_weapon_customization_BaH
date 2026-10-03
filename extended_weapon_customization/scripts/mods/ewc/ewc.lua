@@ -66,6 +66,7 @@ end
 
 local pt = mod:pt()
 
+--[[
 mod.check_visual_loadout_customization_community_patch = function(self)
     local vlcp = get_mod("visual_loadout_customization_community_patch")
     self.vlcp_missing = not vlcp
@@ -75,6 +76,7 @@ mod.check_visual_loadout_customization_community_patch = function(self)
             Color.ui_red_light(255, true)))
     end
 end
+]]
 
 mod.master_item_community_patch = function(self)
     local micp = get_mod("master_item_community_patch")
