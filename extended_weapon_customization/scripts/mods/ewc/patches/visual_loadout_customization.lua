@@ -416,7 +416,7 @@ mod:hook_require("scripts/extension_systems/visual_loadout/utilities/visual_load
         end
 
         -- ##### Changed from local function ##############################################################################
-        -- ##### Added parameters: item
+        -- ##### Added parameters: extract_data
         VisualLoadoutCustomization._spawn_attachment = function (item_data, attach_settings, parent_unit, optional_mission_template, optional_as_leaf_override_attach_node, optional_as_leaf_map_mode, extract_data)
             if not item_data then
                 return nil
@@ -448,22 +448,24 @@ mod:hook_require("scripts/extension_systems/visual_loadout/utilities/visual_load
             local attach_node = optional_as_leaf_override_attach_node or breed_attach_node or item_data.attach_node
             local attach_node_index
 
-            if tonumber(attach_node) ~= nil then
-                attach_node_index = tonumber(attach_node)
-            elseif attach_settings.is_minion then
-                if attach_settings.from_script_component then
-                    attach_node_index = unit_has_node(parent_unit, item_data.wielded_attach_node or attach_node) and unit_node(parent_unit, item_data.wielded_attach_node or attach_node) or 1
+            if parent_unit then
+                if tonumber(attach_node) ~= nil then
+                    attach_node_index = tonumber(attach_node)
+                elseif attach_settings.is_minion then
+                    if attach_settings.from_script_component then
+                        attach_node_index = unit_has_node(parent_unit, item_data.wielded_attach_node or attach_node) and unit_node(parent_unit, item_data.wielded_attach_node or attach_node) or 1
+                    else
+                        attach_node_index = unit_has_node(parent_unit, item_data.unwielded_attach_node or attach_node) and unit_node(parent_unit, item_data.unwielded_attach_node or attach_node) or 1
+                    end
+                elseif attach_node then
+                    parent_unit, attach_node_index = VisualLoadoutCustomization._find_unit_node_recursive(parent_unit, attach_node, item_data, attach_settings, extract_data)
                 else
-                    attach_node_index = unit_has_node(parent_unit, item_data.unwielded_attach_node or attach_node) and unit_node(parent_unit, item_data.unwielded_attach_node or attach_node) or 1
+                    attach_node_index = 1
                 end
-            elseif attach_node then
-                parent_unit, attach_node_index = VisualLoadoutCustomization._find_unit_node_recursive(parent_unit, attach_node, item_data, attach_settings, extract_data)
-            else
-                attach_node_index = 1
             end
 
             local spawned_unit
-            local pose = Unit.world_pose(parent_unit, attach_node_index)
+            local pose = parent_unit and Unit.world_pose(parent_unit, attach_node_index) or nil
 
             if attach_settings.from_script_component then
                 spawned_unit = World.spawn_unit_ex(attach_settings.world, base_unit, nil, pose)
@@ -500,7 +502,7 @@ mod:hook_require("scripts/extension_systems/visual_loadout/utilities/visual_load
             local backpack_offset = item_data.backpack_offset
 
             if backpack_offset then
-                local backpack_offset_node_index = unit_has_node(parent_unit, "j_backpackoffset") and unit_node(parent_unit, "j_backpackoffset")
+                local backpack_offset_node_index = parent_unit and unit_has_node(parent_unit, "j_backpackoffset") and unit_node(parent_unit, "j_backpackoffset") or nil
 
                 if backpack_offset_node_index then
                     local offset_translation = Vector3(0, backpack_offset, 0)
@@ -515,21 +517,21 @@ mod:hook_require("scripts/extension_systems/visual_loadout/utilities/visual_load
                 Unit.set_unit_objects_visibility(spawned_unit, false, true, VisibilityContexts.RAYTRACING_CONTEXT)
             end
 
-            local map_mode
+            if parent_unit then
+                local map_mode
 
-            if optional_as_leaf_map_mode then
-                map_mode = optional_as_leaf_map_mode
-            elseif World[item_data.link_map_mode] then
-                map_mode = World[item_data.link_map_mode]
-            elseif item_type == "COMPANION_GEAR_FULL" then
-                map_mode = World.LINK_MODE_NONE
-            elseif attach_settings.skip_link_children and not item_data.force_link_children then
-                map_mode = World.LINK_MODE_NONE
-            else
-                map_mode = World.LINK_MODE_NODE_NAME
+                if optional_as_leaf_map_mode then
+                    map_mode = optional_as_leaf_map_mode
+                elseif World[item_data.link_map_mode] then
+                    map_mode = World[item_data.link_map_mode]
+                elseif attach_settings.skip_link_children and not item_data.force_link_children then
+                    map_mode = World.LINK_MODE_NONE
+                else
+                    map_mode = World.LINK_MODE_NODE_NAME
+                end
+
+                World.link_unit(attach_settings.world, spawned_unit, 1, parent_unit, attach_node_index, map_mode)
             end
-
-            World.link_unit(attach_settings.world, spawned_unit, 1, parent_unit, attach_node_index, map_mode)
 
             if attach_settings.lod_group and Unit.has_lod_object(spawned_unit, "lod") and not attach_settings.is_first_person then
                 local attached_lod_object = Unit.lod_object(spawned_unit, "lod")
