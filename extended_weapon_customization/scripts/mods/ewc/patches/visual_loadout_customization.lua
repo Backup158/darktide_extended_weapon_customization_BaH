@@ -770,6 +770,10 @@ mod:hook_require("scripts/extension_systems/visual_loadout/utilities/visual_load
         -- Used by the functions
         VisualLoadoutCustomization._empty_overrides_table = table.set_readonly({})
 
+        -- ##### Changed from local table ##############################################################################
+        -- Used by the functions
+        VisualLoadoutCustomization._empty_external_overrides = table.set_readonly({})
+
         -- ##### Changed from local function ##############################################################################
         VisualLoadoutCustomization._apply_material_override_item = function (unit, material_override_item, in_editor, external_overrides_or_nil)
             if external_overrides_or_nil == nil then
