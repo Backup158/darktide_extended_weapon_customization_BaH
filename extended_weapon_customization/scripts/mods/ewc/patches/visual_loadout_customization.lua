@@ -463,7 +463,7 @@ mod:hook_require("scripts/extension_systems/visual_loadout/utilities/visual_load
             end
 
             local spawned_unit
-            local pose = Unit.world_pose(parent_unit, attach_node_index)
+            local pose = parent_unit and Unit.world_pose(parent_unit, attach_node_index) or nil
 
             if attach_settings.from_script_component then
                 spawned_unit = World.spawn_unit_ex(attach_settings.world, base_unit, nil, pose)
