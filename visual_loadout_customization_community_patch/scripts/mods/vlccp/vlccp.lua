@@ -98,7 +98,7 @@ local IGNORE_SLOT_ITEM_ASSIGNING = table.set({
 
 mod:hook_require("scripts/extension_systems/visual_loadout/utilities/visual_loadout_customization", function(VisualLoadoutCustomization)
 
-    VisualLoadoutCustomization.apply_material_override_item = function (unit, parent_unit, apply_to_parent, material_override_item, in_editor, item_definitions, item_manager, external_overrides)
+    VisualLoadoutCustomization.apply_material_override_item = function (unit, parent_unit, apply_to_parent, material_override_item, in_editor, item_definitions, item_manager)
         local material_override_item_data = VisualLoadoutCustomization._validate_item_name(material_override_item)
 
         if type(material_override_item_data) == "string" then
@@ -115,9 +115,9 @@ mod:hook_require("scripts/extension_systems/visual_loadout/utilities/visual_load
 
         if material_override_item_data then
             if apply_to_parent then
-                VisualLoadoutCustomization._apply_material_override_item(parent_unit, material_override_item_data, in_editor, external_overrides)
+                VisualLoadoutCustomization._apply_material_override_item(parent_unit, material_override_item_data, in_editor)
             else
-                VisualLoadoutCustomization._apply_material_override_item(unit, material_override_item_data, in_editor, external_overrides)
+                VisualLoadoutCustomization._apply_material_override_item(unit, material_override_item_data, in_editor)
             end
         end
     end
@@ -353,7 +353,6 @@ mod:hook_require("scripts/extension_systems/visual_loadout/utilities/visual_load
         end
 
         local spawned_unit
-        -- crash from nil parent units
         local pose = Unit.world_pose(parent_unit, attach_node_index)
 
         if attach_settings.from_script_component then
@@ -478,7 +477,7 @@ mod:hook_require("scripts/extension_systems/visual_loadout/utilities/visual_load
     end
 
     -- ##### Changed from local function ##############################################################################
-    VisualLoadoutCustomization._attach_hierarchy = function (attachment_slot_data, override_lookup, attach_settings, parent_unit, attachment_name, extract_data, optional_map_attachment_name_to_unit, optional_extract_attachment_units_bind_poses, optional_extract_item_names, optional_mission_template, optional_equipment)
+    VisualLoadoutCustomization._attach_hierarchy = function (attachment_slot_data, override_lookup, attach_settings, parent_unit, attachment_name, extract_data, optional_map_attachment_name_to_unit, optional_extract_attachment_units_bind_poses, optional_extract_item_names, optional_mission_template, optional_equipment, optional_forced_attach_node)
         local item_name = attachment_slot_data.item
         local item = VisualLoadoutCustomization._validate_item_name(item_name)
         local override_item = override_lookup[attachment_slot_data]
@@ -490,7 +489,7 @@ mod:hook_require("scripts/extension_systems/visual_loadout/utilities/visual_load
             return
         end
 
-        local override_attach_node = attachment_slot_data.leaf_attach_node_override ~= "" and attachment_slot_data.leaf_attach_node_override or nil
+        local override_attach_node = optional_forced_attach_node or (attachment_slot_data.leaf_attach_node_override ~= "" and attachment_slot_data.leaf_attach_node_override or nil)
         local override_map_mode = World[attachment_slot_data.link_map_mode_override]
         local attachment_unit, bind_pose = VisualLoadoutCustomization._spawn_attachment(item, attach_settings, parent_unit, optional_mission_template, override_attach_node, override_map_mode, extract_data)
 
@@ -508,12 +507,14 @@ mod:hook_require("scripts/extension_systems/visual_loadout/utilities/visual_load
 
             local attachments = item and item.attachments
 
-            VisualLoadoutCustomization._attach_hierarchy_children(attachments, override_lookup, attach_settings, attachment_unit, extract_data, optional_map_attachment_name_to_unit, optional_extract_attachment_units_bind_poses, optional_extract_item_names, optional_mission_template)
+            -- Kitbash parts must attach to node 1 instead of chaining through each other.
+            local kitbash_attach_node = item.is_kitbash and 1 or nil
+            VisualLoadoutCustomization._attach_hierarchy_children(attachments, override_lookup, attach_settings, attachment_unit, extract_data, optional_map_attachment_name_to_unit, optional_extract_attachment_units_bind_poses, optional_extract_item_names, optional_mission_template, kitbash_attach_node)
             VisualLoadoutExtractData.pop(extract_data, attachment_unit)
 
             local children = attachment_slot_data.children
 
-            VisualLoadoutCustomization._attach_hierarchy_children(children, override_lookup, attach_settings, attachment_unit, extract_data, optional_map_attachment_name_to_unit, optional_extract_attachment_units_bind_poses, optional_extract_item_names, optional_mission_template)
+            VisualLoadoutCustomization._attach_hierarchy_children(children, override_lookup, attach_settings, attachment_unit, extract_data, optional_map_attachment_name_to_unit, optional_extract_attachment_units_bind_poses, optional_extract_item_names, optional_mission_template, kitbash_attach_node)
 
             local material_override_items = {}
             local item_material_override_items = item.material_override_items
@@ -563,7 +564,7 @@ mod:hook_require("scripts/extension_systems/visual_loadout/utilities/visual_load
     end
 
     -- ##### Changed from local function ##############################################################################
-    VisualLoadoutCustomization._attach_hierarchy_children = function (children, override_lookup, attach_settings, parent_unit, extract_data, optional_map_attachment_name_to_unit, optional_extract_attachment_units_bind_poses, optional_extract_item_names, optional_mission_template)
+    VisualLoadoutCustomization._attach_hierarchy_children = function (children, override_lookup, attach_settings, parent_unit, extract_data, optional_map_attachment_name_to_unit, optional_extract_attachment_units_bind_poses, optional_extract_item_names, optional_mission_template, optional_forced_attach_node)
         if children then
             _scratchpad.depth = _scratchpad.depth + 1
 
@@ -575,7 +576,7 @@ mod:hook_require("scripts/extension_systems/visual_loadout/utilities/visual_load
                 local attachment_name = sorted_children[ii]
                 local child_attachment_slot_data = children[attachment_name]
 
-            VisualLoadoutCustomization._attach_hierarchy(child_attachment_slot_data, override_lookup, attach_settings, parent_unit, attachment_name, extract_data, optional_map_attachment_name_to_unit, optional_extract_attachment_units_bind_poses, optional_extract_item_names, optional_mission_template)
+                VisualLoadoutCustomization._attach_hierarchy(child_attachment_slot_data, override_lookup, attach_settings, parent_unit, attachment_name, extract_data, optional_map_attachment_name_to_unit, optional_extract_attachment_units_bind_poses, optional_extract_item_names, optional_mission_template, nil, optional_forced_attach_node)
             end
 
             _scratchpad.depth = _scratchpad.depth - 1
@@ -644,50 +645,38 @@ mod:hook_require("scripts/extension_systems/visual_loadout/utilities/visual_load
     end
 
     -- ##### Changed from local function ##############################################################################
-    VisualLoadoutCustomization._apply_material_override_item = function (unit, material_override_item, in_editor, external_overrides_or_nil)
-        if external_overrides_or_nil == nil then
-            external_overrides_or_nil = _empty_external_overrides
-        end
-
+    VisualLoadoutCustomization._apply_material_override_item = function (unit, material_override_item, in_editor)
         if material_override_item.scalar_material_overrides ~= nil then
-            local external_overrides = external_overrides_or_nil.scalar_material_overrides or _default_external_overrides.scalar_material_overrides
-
             for _, property_override_data in pairs(material_override_item.scalar_material_overrides) do
                 local property_name = property_override_data.property_name
-                local value = external_overrides[property_name] or property_override_data.value
+                local value = property_override_data.value
 
                 Unit_set_scalar_for_materials(unit, property_name, value, true)
             end
         end
 
         if material_override_item.vector2_material_overrides ~= nil then
-            local external_overrides = external_overrides_or_nil.vector2_material_overrides or _default_external_overrides.vector2_material_overrides
-
             for _, property_override_data in pairs(material_override_item.vector2_material_overrides) do
                 local property_name = property_override_data.property_name
-                local value = external_overrides[property_name] or property_override_data.value
+                local value = property_override_data.value
 
                 Unit_set_vector2_for_materials(unit, property_name, Vector2(value[1], value[2]), true)
             end
         end
 
         if material_override_item.vector3_material_overrides ~= nil then
-            local external_overrides = external_overrides_or_nil.vector3_material_overrides or _default_external_overrides.vector3_material_overrides
-
             for _, property_override_data in pairs(material_override_item.vector3_material_overrides) do
                 local property_name = property_override_data.property_name
-                local value = external_overrides[property_name] or property_override_data.value
+                local value = property_override_data.value
 
                 Unit_set_vector3_for_materials(unit, property_name, Vector3(value[1], value[2], value[3]), true)
             end
         end
 
         if material_override_item.vector4_material_overrides ~= nil then
-            local external_overrides = external_overrides_or_nil.vector4_material_overrides or _default_external_overrides.vector4_material_overrides
-
             for _, property_override_data in pairs(material_override_item.vector4_material_overrides) do
                 local property_name = property_override_data.property_name
-                local value = external_overrides[property_name] or property_override_data.value
+                local value = property_override_data.value
 
                 Unit_set_vector4_for_materials(unit, property_name, Color(value[2], value[3], value[4], value[1]), true)
             end
@@ -699,25 +688,10 @@ mod:hook_require("scripts/extension_systems/visual_loadout/utilities/visual_load
                 local material_slot = texture_override_data.material_slot
                 local resource = texture_override_data.texture
 
-                if resource ~= nil and resource ~= "" and texture_slot ~= nil and texture_slot ~= "" then
-                    if material_slot == nil or material_slot == "" then
-                        Unit_set_texture_for_materials(unit, texture_slot, resource, true)
-                    else
-                        Unit_set_texture_for_material(unit, material_slot, texture_slot, resource)
-                    end
-                end
-            end
-        end
-
-        if material_override_item.material_overrides ~= nil then
-            local external_overrides = external_overrides_or_nil.material_overrides or _default_external_overrides.material_overrides
-
-            for _, material_override_data in pairs(material_override_item.material_overrides) do
-                local material_slot = material_override_data.material_slot
-                local material_resource = external_overrides[material_slot] or material_override_data.material
-
-                if material_resource ~= nil and material_resource ~= "" and material_slot ~= nil and material_slot ~= "" then
-                    Unit_set_material(unit, material_slot, material_resource)
+                if material_slot == nil then
+                    Unit_set_texture_for_materials(unit, texture_slot, resource, true)
+                else
+                    Unit_set_texture_for_material(unit, material_slot, texture_slot, resource)
                 end
             end
         end
@@ -741,7 +715,7 @@ mod:hook_require("scripts/extension_systems/visual_loadout/utilities/visual_load
                             for jj = 1, unit_array_size do
                                 local attachment_unit = Unit.get_data(unit, "attached_units_lookup", ii, jj)
 
-                                if material_slot == nil or material_slot == "" then
+                                if material_slot == nil then
                                     Unit_set_texture_for_materials(attachment_unit, texture_slot, texture_resource, true)
                                 else
                                     Unit_set_texture_for_material(attachment_unit, material_slot, texture_slot, texture_resource)
@@ -753,7 +727,7 @@ mod:hook_require("scripts/extension_systems/visual_loadout/utilities/visual_load
                     local attachment_item_name = Unit.get_data(unit, "attachment_item_name")
 
                     if attachment_item_name == item_key then
-                        if material_slot == nil or material_slot == "" then
+                        if material_slot == nil then
                             Unit_set_texture_for_materials(unit, texture_slot, texture_resource, true)
                         else
                             Unit_set_texture_for_material(unit, material_slot, texture_slot, texture_resource)
