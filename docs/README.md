@@ -20,6 +20,7 @@ Based on the pinned scrollbar version (2026-07-12).
     - Removed need for extra download
     - Does not cause issues if the original VLCCP is in the load order too
     - The code is sectioned into regions so this can be easily reverted
+    - Comments out the VLCCP check in **ewc.lua**
 - [DotD] Additional safety checks in the hook to `_find_unit_node_recursive` (**patches/visual_loadout_customization.lua**)
     - This is a sign that the VLCCP needs to be updated, and it just kicks the problem up the chain
     - But I think messed up attachment positioning is still a good indicator of issues
