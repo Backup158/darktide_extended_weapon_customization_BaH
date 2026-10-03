@@ -392,20 +392,17 @@ mod:hook_require("scripts/extension_systems/visual_loadout/utilities/visual_load
         -- ##### Changed from local function ##############################################################################
         -- ##### Added parameters: item, item_data, attach_settings
         VisualLoadoutCustomization._find_unit_node_recursive = function (unit, attach_node, item_data, attach_settings, extract_data)
-            local parent_unit = unit
-            local attach_node_index = 1
+            local attach_node_index
 
-            if unit_has_node(unit, attach_node) then
-                attach_node_index = unit_node(unit, attach_node)
+            if tonumber(attach_node) ~= nil then
+                attach_node_index = tonumber(attach_node)
+            elseif attach_node and unit and attach_node then
+                attach_node_index = unit_has_node(unit, attach_node) and unit_node(unit, attach_node) or 1
             else
-                local child_units = Unit.get_child_units(unit)
-
-                for _, child_unit in pairs(child_units) do
-                    parent_unit, attach_node_index = VisualLoadoutCustomization._find_unit_node_recursive(child_unit, attach_node, item_data, attach_settings, extract_data)
-                end
+                attach_node_index = 1
             end
 
-            return parent_unit, attach_node_index
+            return unit, attach_node_index
         end
 
         -- ##### Changed from local function ##############################################################################
@@ -1197,49 +1194,6 @@ mod:hook_require("scripts/extension_systems/visual_loadout/utilities/visual_load
 
         -- Return
         return override_lookup
-    end)
-
-    -- Removed VLCCP mod check since it's integrated now. If restoring it, place the _find_unit_node_recursive hook into this if statement
-    --[[
-    mod:check_visual_loadout_customization_community_patch()
-
-    if not mod.vlcp_missing then
-
-    end
-    ]]
-    -- Reset parent and node method to earlier game version
-    mod:hook(VisualLoadoutCustomization, "_find_unit_node_recursive", function(func, unit, attach_node, item_data, attach_settings, extract_data, ...)
-
-        -- local parent_unit = nil
-        -- local attach_node_index = nil
-
-        -- local child_units = unit_get_child_units(unit)
-
-        -- for _, child_unit in pairs(child_units) do
-        --     parent_unit, attach_node_index = VisualLoadoutCustomization._find_unit_node_recursive(child_unit, attach_node)
-        -- end
-
-        -- if unit_has_node(unit, attach_node) then
-        --     parent_unit = unit
-        --     attach_node_index = unit_node(unit, attach_node)
-        -- end
-
-        -- return parent_unit, attach_node_index
-
-        local attach_node_index
-
-        if tonumber(attach_node) ~= nil then
-            attach_node_index = tonumber(attach_node)
-        elseif attach_node and unit and attach_node then
-            attach_node_index = unit_has_node(unit, attach_node) and unit_node(unit, attach_node) or 1
-        else
-            attach_node_index = 1
-        end
-
-        return unit, attach_node_index
-
-        -- return func(unit, attach_node, item_data, attach_settings, extract_data, ...)
-
     end)
 
 end)
