@@ -621,14 +621,12 @@ mod:hook_require("scripts/extension_systems/visual_loadout/utilities/visual_load
 
                 local attachments = item and item.attachments
 
-                -- Kitbash parts must attach to node 1 instead of chaining through each other.
-                local kitbash_attach_node = item.is_kitbash and 1 or nil
-                VisualLoadoutCustomization._attach_hierarchy_children(attachments, override_lookup, attach_settings, attachment_unit, extract_data, optional_map_attachment_name_to_unit, optional_extract_attachment_units_bind_poses, optional_extract_item_names, optional_mission_template, kitbash_attach_node)
+                VisualLoadoutCustomization._attach_hierarchy_children(attachments, override_lookup, attach_settings, attachment_unit, extract_data, optional_map_attachment_name_to_unit, optional_extract_attachment_units_bind_poses, optional_extract_item_names, optional_mission_template)
                 VisualLoadoutExtractData.pop(extract_data, attachment_unit)
 
                 local children = attachment_slot_data.children
 
-                VisualLoadoutCustomization._attach_hierarchy_children(children, override_lookup, attach_settings, attachment_unit, extract_data, optional_map_attachment_name_to_unit, optional_extract_attachment_units_bind_poses, optional_extract_item_names, optional_mission_template, kitbash_attach_node)
+                VisualLoadoutCustomization._attach_hierarchy_children(children, override_lookup, attach_settings, attachment_unit, extract_data, optional_map_attachment_name_to_unit, optional_extract_attachment_units_bind_poses, optional_extract_item_names, optional_mission_template)
 
                 local material_override_items = {}
                 local item_material_override_items = item.material_override_items
