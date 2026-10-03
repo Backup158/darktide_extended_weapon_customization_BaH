@@ -73,9 +73,11 @@ Based on Nexus Version
     - `ogryn_powermaul_slabshield_p1_m2`
     - `powermaul_2h_p1_m2`
     - `shotgun_p2_m3`
+
 ## Visual Loadout Customization Community Patch
 - [DotD] Crash on finding worlddata and unit nodes whenever there are players loaded
 - Old bug from Skitarii update that prevented materials from being applied to body parts (namely, oxidation on Skitarii limbs)
+
 ## Visible Equipment
 - [DotD] Add support for new weapons and marks
     - `shotgun_p3_m1`
