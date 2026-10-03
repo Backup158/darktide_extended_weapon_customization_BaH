@@ -96,6 +96,8 @@ local master_items = mod:original_require("scripts/backend/master_items")
     local unit_has_animation_state_machine = unit.has_animation_state_machine
     local unit_set_unit_objects_visibility = unit.set_unit_objects_visibility
     local unit_set_animation_state_machine = unit.set_animation_state_machine
+    -- New VLCCP locals from 1.13.0
+    local Unit_set_material = Unit.set_material
 -- #endregion
 
 -- ##### ┌┬┐┌─┐┌┬┐┌─┐ #################################################################################################
@@ -208,7 +210,7 @@ end
 mod:hook_require("scripts/extension_systems/visual_loadout/utilities/visual_loadout_customization", function(VisualLoadoutCustomization)
 
     -- #region vlccp
-        VisualLoadoutCustomization.apply_material_override_item = function (unit, parent_unit, apply_to_parent, material_override_item, in_editor, item_definitions, item_manager)
+        VisualLoadoutCustomization.apply_material_override_item = function (unit, parent_unit, apply_to_parent, material_override_item, in_editor, item_definitions, item_manager, external_overrides)
             local material_override_item_data = VisualLoadoutCustomization._validate_item_name(material_override_item)
 
             if type(material_override_item_data) == "string" then
@@ -225,9 +227,9 @@ mod:hook_require("scripts/extension_systems/visual_loadout/utilities/visual_load
 
             if material_override_item_data then
                 if apply_to_parent then
-                    VisualLoadoutCustomization._apply_material_override_item(parent_unit, material_override_item_data, in_editor)
+                    VisualLoadoutCustomization._apply_material_override_item(parent_unit, material_override_item_data, in_editor, external_overrides)
                 else
-                    VisualLoadoutCustomization._apply_material_override_item(unit, material_override_item_data, in_editor)
+                    VisualLoadoutCustomization._apply_material_override_item(unit, material_override_item_data, in_editor, external_overrides)
                 end
             end
         end
@@ -756,39 +758,61 @@ mod:hook_require("scripts/extension_systems/visual_loadout/utilities/visual_load
             end
         end
 
+        -- ##### Changed from local table ##############################################################################
+        -- Used by the functions
+        VisualLoadoutCustomization._default_external_overrides = {
+            scalar_material_overrides = {},
+            vector2_material_overrides = {},
+            vector3_material_overrides = {},
+            vector4_material_overrides = {},
+            material_overrides = {},
+        }
+
         -- ##### Changed from local function ##############################################################################
-        VisualLoadoutCustomization._apply_material_override_item = function (unit, material_override_item, in_editor)
+        VisualLoadoutCustomization._apply_material_override_item = function (unit, material_override_item, in_editor, external_overrides_or_nil)
+            if external_overrides_or_nil == nil then
+                external_overrides_or_nil = VisualLoadoutCustomization._empty_external_overrides
+            end
+
             if material_override_item.scalar_material_overrides ~= nil then
+                local external_overrides = external_overrides_or_nil.scalar_material_overrides or VisualLoadoutCustomization._default_external_overrides.scalar_material_overrides
+
                 for _, property_override_data in pairs(material_override_item.scalar_material_overrides) do
                     local property_name = property_override_data.property_name
-                    local value = property_override_data.value
+                    local value = external_overrides[property_name] or property_override_data.value
 
                     Unit_set_scalar_for_materials(unit, property_name, value, true)
                 end
             end
 
             if material_override_item.vector2_material_overrides ~= nil then
+                local external_overrides = external_overrides_or_nil.vector2_material_overrides or VisualLoadoutCustomization._default_external_overrides.vector2_material_overrides
+
                 for _, property_override_data in pairs(material_override_item.vector2_material_overrides) do
                     local property_name = property_override_data.property_name
-                    local value = property_override_data.value
+                    local value = external_overrides[property_name] or property_override_data.value
 
                     Unit_set_vector2_for_materials(unit, property_name, Vector2(value[1], value[2]), true)
                 end
             end
 
             if material_override_item.vector3_material_overrides ~= nil then
+                local external_overrides = external_overrides_or_nil.vector3_material_overrides or VisualLoadoutCustomization._default_external_overrides.vector3_material_overrides
+
                 for _, property_override_data in pairs(material_override_item.vector3_material_overrides) do
                     local property_name = property_override_data.property_name
-                    local value = property_override_data.value
+                    local value = external_overrides[property_name] or property_override_data.value
 
                     Unit_set_vector3_for_materials(unit, property_name, Vector3(value[1], value[2], value[3]), true)
                 end
             end
 
             if material_override_item.vector4_material_overrides ~= nil then
+                local external_overrides = external_overrides_or_nil.vector4_material_overrides or VisualLoadoutCustomization._default_external_overrides.vector4_material_overrides
+
                 for _, property_override_data in pairs(material_override_item.vector4_material_overrides) do
                     local property_name = property_override_data.property_name
-                    local value = property_override_data.value
+                    local value = external_overrides[property_name] or property_override_data.value
 
                     Unit_set_vector4_for_materials(unit, property_name, Color(value[2], value[3], value[4], value[1]), true)
                 end
@@ -800,10 +824,36 @@ mod:hook_require("scripts/extension_systems/visual_loadout/utilities/visual_load
                     local material_slot = texture_override_data.material_slot
                     local resource = texture_override_data.texture
 
-                    if material_slot == nil then
-                        Unit_set_texture_for_materials(unit, texture_slot, resource, true)
-                    else
-                        Unit_set_texture_for_material(unit, material_slot, texture_slot, resource)
+                    -- @Backup158: This "if resource" part was previously just this. Leaving this for reference in case this change was bad
+                    --[[
+                    if material_override_item_data then
+                        if apply_to_parent then
+                            _apply_material_override_item(parent_unit, material_override_item_data, in_editor)
+                        else
+                            _apply_material_override_item(unit, material_override_item_data, in_editor)
+                        end
+                    end
+                    ]]
+                    if resource ~= nil and resource ~= "" and texture_slot ~= nil and texture_slot ~= "" then
+                        if material_slot == nil or material_slot == "" then
+                            Unit_set_texture_for_materials(unit, texture_slot, resource, true)
+                        else
+                            Unit_set_texture_for_material(unit, material_slot, texture_slot, resource)
+                        end
+                    end
+                end
+            end
+
+            -- @Backup158: This whole section is new
+            if material_override_item.material_overrides ~= nil then
+                local external_overrides = external_overrides_or_nil.material_overrides or VisualLoadoutCustomization._default_external_overrides.material_overrides
+
+                for _, material_override_data in pairs(material_override_item.material_overrides) do
+                    local material_slot = material_override_data.material_slot
+                    local material_resource = external_overrides[material_slot] or material_override_data.material
+
+                    if material_resource ~= nil and material_resource ~= "" and material_slot ~= nil and material_slot ~= "" then
+                        Unit_set_material(unit, material_slot, material_resource)
                     end
                 end
             end
@@ -827,7 +877,7 @@ mod:hook_require("scripts/extension_systems/visual_loadout/utilities/visual_load
                                 for jj = 1, unit_array_size do
                                     local attachment_unit = Unit.get_data(unit, "attached_units_lookup", ii, jj)
 
-                                    if material_slot == nil then
+                                    if material_slot == nil or material_slot == "" then
                                         Unit_set_texture_for_materials(attachment_unit, texture_slot, texture_resource, true)
                                     else
                                         Unit_set_texture_for_material(attachment_unit, material_slot, texture_slot, texture_resource)
@@ -839,7 +889,7 @@ mod:hook_require("scripts/extension_systems/visual_loadout/utilities/visual_load
                         local attachment_item_name = Unit.get_data(unit, "attachment_item_name")
 
                         if attachment_item_name == item_key then
-                            if material_slot == nil then
+                            if material_slot == nil or material_slot == "" then
                                 Unit_set_texture_for_materials(unit, texture_slot, texture_resource, true)
                             else
                                 Unit_set_texture_for_material(unit, material_slot, texture_slot, texture_resource)
