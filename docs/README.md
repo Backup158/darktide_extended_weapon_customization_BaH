@@ -19,7 +19,7 @@ Based on the pinned scrollbar version (2026-07-12).
     - This checks for basic errors and logs hints for plugin authors
 - [DotD] Fix crash on turning on flashlight (**extensions/flashlight_extension.lua**)
     - `rewind_ms` had name changed (`LagCompensation.rewind_miliseconds`)... yes that is what they wrote
-    - Using this as a string as an argument for `PhysicsWorld.raycast` is fine; this is a Stingray function (?) and there's code using that same string
+    - Using this as a string as an argument for `PhysicsWorld.raycast` is fine; the source code has code passing that same string as an argument
     - No action needed for **patches/action_shoot.lua** because `ActionShoot._rewind_ms` was not renamed
 - [DotD] Add support for new weapons and marks -- Thanks to Geoff from Accounting!
     - `shotgun_p3_m1`
@@ -46,7 +46,7 @@ Based on the Nexus version (1.04 - 2026-07-10)
 
 - [DotD] Fix crash on turning on laser (**attachments/laser_pointer.lua**)
     - `rewind_ms` had name changed (`LagCompensation.rewind_miliseconds`)... yes that is what they wrote
-    - Using this as a string as an argument for `PhysicsWorld.raycast` is fine; this is a Stingray function (?) and there's code using that same string
+    - Using this as a string as an argument for `PhysicsWorld.raycast` is fine; the source code has code passing that same string as an argument
 
 ## Visible Equipment
 Based on Nexus version.
@@ -59,6 +59,7 @@ Based on Nexus version.
 Based on Nexus Version
 
 - [DotD] Integrated into EWC -- Thanks Stimm Shady (Arrowstorm606)!
+    - No issues from users having the old versions installed
 
 # To-do
 ## Extended Weapon Customization
