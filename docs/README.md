@@ -73,10 +73,15 @@ Based on the Nexus version (1.04 - 2026-07-10)
     - `shotgun_p3_m1` (**weapons/shotgun_p3_m1.lua**)
     - `ogryn_thumper_p1_m3`
     - `shotgun_p2_m3`
-- [DotD] Add `shotgun_p1_m1` parts to `shotgun_p3_m1`
+- [DotD] Add `shotgun_p1_m1` parts to `shotgun_p3_m1` -- Thanks Geoff from Accounting!
     - **attachments/barrel_shotgun_combat.lua**
     - **attachments/stock_shotgun_combat.lua**
     - **attachments/underbarrel_shotguns.lua**
+- [DotD] Add `shotgun_p3_m1` parts to `shotgun_p1_m1` -- Thanks Geoff from Accounting!
+    - **weapons/shotgun_p1_m1.lua**
+    - **attachments/stock_shotgun_huntsman.lua**
+    - **attachments/underbarrel_huntsman.lua**
+    - With localization for group names (**ewc_ba_localization.lua**)
 
 ## Visible Equipment
 Based on Nexus version (10 July 2026).
