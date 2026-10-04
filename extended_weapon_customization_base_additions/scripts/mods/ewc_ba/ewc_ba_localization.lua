@@ -124,6 +124,9 @@ mod:add_global_localize_strings({
 	loc_ewc_shotgun_combat = {
 		en = "EWC:BA - Combat Shotgun",
 	},
+	loc_ewc_shotgun_huntsman = {
+		en = "EWC:BA - Huntsman Shotgun",
+	},
 	loc_ewc_sight_show = {
 		en = "EWC:BA - Sight just for show",
 		["zh-cn"] = "扩展武器自定义：基础增补 - 装饰用瞄具",
