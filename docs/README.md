@@ -70,7 +70,13 @@ Based on the Nexus version (1.04 - 2026-07-10)
     - `rewind_ms` had name changed (`LagCompensation.rewind_miliseconds`)... yes that is what they wrote
     - Using this as a string as an argument for `PhysicsWorld.raycast` is fine; the source code has code passing that same string as an argument
 - [DotD] Add support for new weapons and marks -- Thanks Geoff from Accounting!
-    - `shotgun_p3_m1`
+    - `shotgun_p3_m1` (**weapons/shotgun_p3_m1.lua**)
+    - `ogryn_thumper_p1_m3`
+    - `shotgun_p2_m3`
+- [DotD] Add `shotgun_p1_m1` parts to `shotgun_p3_m1`
+    - **attachments/barrel_shotgun_combat.lua**
+    - **attachments/stock_shotgun_combat.lua**
+    - **attachments/underbarrel_shotguns.lua**
 
 ## Visible Equipment
 Based on Nexus version (10 July 2026).
