@@ -1409,6 +1409,7 @@ local load_weapons = {
     "autogun_p3_m1",
     "shotgun_p1_m1",
     "shotgun_p2_m1",
+    "shotgun_p3_m1",
     "shotgun_p4_m1",
     "bolter_p1_m1",
     "flamer_p1_m1",
