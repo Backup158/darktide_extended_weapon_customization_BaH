@@ -4,7 +4,7 @@ Grasmann, these are the changes we'd like merged. `showdiff` however you'd like 
 
 Download mirrors for convenience:
 - [Extended Weapon Customization](https://www.mediafire.com/file/7rvs6c3ovsbzudd/dotd_extended_weapon_customization.zip/file)
-- [Extended Weapon Customization - Base Additions](https://www.mediafire.com/file/pd03uwdpb31wd6e/dotd_extended_weapon_customization_base_additions.zip/file)
+- [Extended Weapon Customization - Base Additions](https://www.mediafire.com/file/snpcugcbst7tfx7/dotd_extended_weapon_customization_base_additions.zip/file)
 - [Visible Equipment](https://www.mediafire.com/file/k4ojc65oktsltcc/dotd_visible_equipment.zip/file)
 
 # Changes
