@@ -86,10 +86,6 @@ Based on Nexus version (10 July 2026).
     - The nameplates from Modding Tools still work though
     - Dirty fix of using mod:echo() to display it, which in this menu will put a notification on the right side
 
-## Extended Weapon Customization - Base Additions
-- [DotD] Add support for new weapons and marks
-    - `ogryn_hammer_2h_p1_m1`
-
 ## Visual Loadout Customization Community Patch
 - Old bug from Skitarii update that prevented materials from being applied to body parts (?)
     - Namely, oxidation on Skitarii limbs
