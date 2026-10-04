@@ -1,0 +1,25 @@
+{
+    "name": "Extended Weapon Customization",
+    "author": "grasmann",
+    "version": "3.08_dotd_1",
+    "homepage": "https://www.nexusmods.com/warhammer40kdarktide/mods/277",
+    "source": "https://github.com/grasmann/darktide-mods",
+    "description": "Provides extended weapon configuration and options.",
+    "order": {
+        "require": [
+            ["master_item_community_patch"]
+        ],
+        "load_after": ["master_item_community_patch"],
+        "load_before": []
+    },
+    "localization": {
+        "de": {
+            "name": "Extended Weapon Customization",
+            "description": "Bietet erweiterte Waffen-Konfiguration und mehr Optionen."
+        },
+        "zh-cn": {
+            "name": "扩展武器自定义",
+            "description": "扩展武器自定义功能，添加更多武器配件和定制选项"
+        }
+    }
+}
