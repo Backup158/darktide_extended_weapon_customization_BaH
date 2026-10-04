@@ -30,6 +30,12 @@ Based on the pinned scrollbar version (2026-07-12).
     - `rewind_ms` had name changed (`LagCompensation.rewind_miliseconds`)... yes that is what they wrote
     - Using this as a string as an argument for `PhysicsWorld.raycast` is fine; the source code has code passing that same string as an argument
     - No action needed for **patches/action_shoot.lua** because `ActionShoot._rewind_ms` was not renamed
+- Muzzle flash only on the left dual-wield weapons from Hive Scum release (**patches/player_unit_fx_extension**) -- Thanks Geoff from Accounting!
+    - In the hook for `PlayerUnitFxExtension._spawn_unit_particles`
+    - Whenever this function applied to the right-hand gun, it would always fallback to searching for all sources from the spawner name
+        - This would always choose "left" as the attachment name, since both are given 
+        - `VisualLoadoutExtractData.ROOT_ATTACH_NAME` would've had the given "right" for the right-hand gun, but the fallback always happened, so this was never called
+        - Thus, both particles would get stuck on the left-hand gun only
 - Bandaid fix for doubled range damage in Psykhanium (**patches/action_shoot.lua**)
     - In the shooting hook, it gets hit results by calling `hit_scan_process_hits`, which calls a chain of attack functions that wind up with one that actually processing damage. In normal matches, this is fine due to server validation. In solo instances, this causes ranged shooting to apply twice.
     - Just changing `is_server` to false the parameters is not enough
@@ -67,8 +73,10 @@ Based on Nexus version (10 July 2026).
 
 # To-do
 ## Extended Weapon Customization
-- Muzzle flash only on the left dual-wield weapons from Hive Scum release
-- Missing display name after the notification changes from the hotfix before 1.13.0
+- Missing display name after the notification changes from the hotfix before 1.13.0 (**patches/inventory_weapon_cosmetics_view/preview.lua**)
+    - Names do not display when selecting attachments
+    - The nameplates from Modding Tools still work though
+    - Dirty fix of using mod:echo() to display it, which in this menu will put a notification on the right side
 
 ## Extended Weapon Customization - Base Additions
 - [DotD] Add support for new weapons and marks
