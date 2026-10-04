@@ -34,8 +34,9 @@ Based on the pinned scrollbar version (2026-07-12).
     - In the hook for `PlayerUnitFxExtension._spawn_unit_particles`
     - Whenever this function applied to the right-hand gun, it would always fallback to searching for all sources from the spawner name
         - This would always choose "left" as the attachment name, since both are given 
-        - `VisualLoadoutExtractData.ROOT_ATTACH_NAME` would've had the given "right" for the right-hand gun, but the fallback always happened, so this was never called
+        - `VisualLoadoutExtractData.ROOT_ATTACH_NAME` correctly gives "right" for the right-hand gun, but the fallback always happened, so this was never called
         - Thus, both particles would get stuck on the left-hand gun only
+        - Removing the fallback allows the particles to attach correctly
 - Bandaid fix for doubled range damage in Psykhanium (**patches/action_shoot.lua**)
     - In the shooting hook, it gets hit results by calling `hit_scan_process_hits`, which calls a chain of attack functions that wind up with one that actually processing damage. In normal matches, this is fine due to server validation. In solo instances, this causes ranged shooting to apply twice.
     - Just changing `is_server` to false the parameters is not enough
