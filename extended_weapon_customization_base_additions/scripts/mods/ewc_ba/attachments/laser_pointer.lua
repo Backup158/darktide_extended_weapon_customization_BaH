@@ -418,7 +418,7 @@ local function update_laser_pointer(flashlight_extension, dt, t)
 
                 -- Raycast
                 local _, laser_aim_position, _, _, hit_actor = physics_world_raycast(flashlight_extension.physics_world, aim_position, aim_direction, 1000, "closest", "types", "both",
-                    "collision_filter", "filter_player_character_shooting_projectile", "rewind_ms", LagCompensation.rewind_milliseconds(false, true, flashlight_extension.player))
+                    "collision_filter", "filter_player_character_shooting_projectile", "rewind_ms", LagCompensation.rewind_miliseconds(false, true, flashlight_extension.player))
                 
                 -- Resulting aim position
                 laser_aim_position = laser_aim_position or laser_raw_direction
