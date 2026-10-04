@@ -1,0 +1,24 @@
+{
+    "name": "Extended Weapon Customization Base Additions",
+    "author": "grasmann",
+    "version": "1.04_dotd_3",
+    "homepage": "https://www.nexusmods.com/warhammer40kdarktide/mods/277",
+    "source": "https://github.com/grasmann/darktide-mods",
+    "description": "Basic custom additions for extended weapon customization.",
+    "order": {
+        "require": [
+            ["extended_weapon_customization"]
+        ],
+        "load_after": [],
+        "load_before": []
+    },
+    "localization": {
+        "de": {
+            "description": "Grundlegende benutzerdefinierte Ergänzungen für Extended Weapon Customization."
+        },
+        "zh-cn": {
+            "name": "扩展武器自定义：基础增补",
+            "description": "为扩展武器自定义功能提供的基础自定义增补内容。"
+        }
+    }
+}

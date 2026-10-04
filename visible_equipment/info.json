@@ -1,0 +1,18 @@
+{
+    "name": "Visible Equipment",
+    "author": "grasmann",
+    "version": "1.32_dotd_1",
+    "homepage": "https://www.nexusmods.com/warhammer40kdarktide/mods/852",
+    "source": "https://github.com/grasmann/darktide-mods",
+    "description": "Shows unwielded equipment on the character.",
+    "localization": {
+        "de": {
+            "name": "Sichtbare Ausrüstung",
+            "description": "Zeigt nicht genutzte Ausrüstung am Charakter."
+        },
+        "zh-cn": {
+            "name": "可见装备",
+            "description": "在游戏角色身上显示未装备的近战、远程武器"
+        }
+    }
+}

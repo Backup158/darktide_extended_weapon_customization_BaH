@@ -62,6 +62,9 @@ Based on the pinned scrollbar version (2026-07-12).
 - Defaulted randomization mod options to off due to the issues related to it (**ewc_data.lua**)
     - Namely, crashing upon hovering seemingly random parts
     - This change can be reverted if the root causes are solved
+- Add **info.json** metadata file
+    - This was introduced by DMF 26.08.19
+    - I set the version to `<current>_dotd_<n>`. Feel free to change
 
 ## Extended Weapon Customization - Base Additions
 Based on the Nexus version (1.04 - 2026-07-10)
@@ -82,6 +85,9 @@ Based on the Nexus version (1.04 - 2026-07-10)
     - **attachments/stock_shotgun_huntsman.lua**
     - **attachments/underbarrel_huntsman.lua**
     - With localization for group names (**ewc_ba_localization.lua**)
+- Add **info.json** metadata file
+    - This was introduced by DMF 26.08.19
+    - I set the version to `<current>_dotd_<n>`. Feel free to change
 
 ## Visible Equipment
 Based on Nexus version (10 July 2026).
@@ -89,6 +95,9 @@ Based on Nexus version (10 July 2026).
 - [DotD] Fix crash on opening cosmetics (**patches/ui_manager.lua**)
     - The create mannequin function from `Items` was moved to `ProfileUtils`
     - The parameters now take the unit and profile instead of unit and all the individual parts of the profile
+- Add **info.json** metadata file
+    - This was introduced by DMF 26.08.19
+    - I set the version to `<current>_dotd_<n>`. Feel free to change
 
 # To-do
 ## Extended Weapon Customization
