@@ -88,12 +88,7 @@ Based on Nexus version (10 July 2026).
 
 ## Extended Weapon Customization - Base Additions
 - [DotD] Add support for new weapons and marks
-    - `shotgun_p3_m1`
     - `ogryn_hammer_2h_p1_m1`
-    - `ogryn_thumper_p1_m3`
-    - `ogryn_powermaul_slabshield_p1_m2`
-    - `powermaul_2h_p1_m2`
-    - `shotgun_p2_m3`
 
 ## Visual Loadout Customization Community Patch
 - Old bug from Skitarii update that prevented materials from being applied to body parts (?)
@@ -101,6 +96,7 @@ Based on Nexus version (10 July 2026).
 
 ## Visible Equipment
 - [DotD] Add support for new weapons and marks
+    - `shotgun_p3_m1`
     - `ogryn_hammer_2h_p1_m1`
     - `ogryn_thumper_p1_m3`
     - `ogryn_powermaul_slabshield_p1_m2`
