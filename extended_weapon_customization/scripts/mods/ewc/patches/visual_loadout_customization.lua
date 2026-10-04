@@ -396,10 +396,13 @@ mod:hook_require("scripts/extension_systems/visual_loadout/utilities/visual_load
 
             if tonumber(attach_node) ~= nil then
                 attach_node_index = tonumber(attach_node)
+                mod:print("find_unit_node_recursive: attach_node is a number, using index directly: "..tostring(attach_node_index))
             elseif attach_node and unit and attach_node then
                 attach_node_index = unit_has_node(unit, attach_node) and unit_node(unit, attach_node) or 1
+                mod:print("find_unit_node_recursive: attach_node is a string, found index: "..tostring(attach_node_index).." for node: "..tostring(attach_node))
             else
                 attach_node_index = 1
+                mod:print("flashlight has internal attachment slot: "..tostring(flashlight_attachment_data.flashlight_attachment_slot))
             end
 
             return unit, attach_node_index
@@ -468,10 +471,21 @@ mod:hook_require("scripts/extension_systems/visual_loadout/utilities/visual_load
 
             if attach_settings.from_script_component then
                 spawned_unit = World.spawn_unit_ex(attach_settings.world, base_unit, nil, pose)
+            elseif string_find(base_unit, "^content/weapons/") and master_items_get_item(base_unit) then
+                local spawn_pose = attach_settings.is_minion and attach_settings.attach_pose or pose
+                spawned_unit = world_spawn_unit_ex(attach_settings.world, base_unit, nil, spawn_pose)
+
+                if spawned_unit then
+                    unit_set_data(spawned_unit, "unit_name", base_unit)
+                end
             elseif attach_settings.is_minion then
                 spawned_unit = attach_settings.unit_spawner:spawn_unit(base_unit, attach_settings.attach_pose)
             else
                 spawned_unit = attach_settings.unit_spawner:spawn_unit(base_unit, pose)
+            end
+
+            if not spawned_unit then
+                return nil
             end
 
             local item_type = item_data.item_type
@@ -492,10 +506,6 @@ mod:hook_require("scripts/extension_systems/visual_loadout/utilities/visual_load
 
                     LODObject.set_static_select(item_lod_object, 0)
                 end
-            end
-
-            if not spawned_unit then
-                return nil
             end
 
             local backpack_offset = item_data.backpack_offset
