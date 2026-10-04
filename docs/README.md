@@ -2,6 +2,11 @@ Fork of [Extended Weapon Customization](https://github.com/grasmann/darktide-mod
 
 Grasmann, these are the changes we'd like merged. `showdiff` however you'd like to; each general change is described below point-by-point. Changes are accredited to the contributor. If I didn't put one, it was probably me.
 
+Download mirrors for convenience:
+- [Extended Weapon Customization](https://www.mediafire.com/file/7rvs6c3ovsbzudd/dotd_extended_weapon_customization.zip/file)
+- [Extended Weapon Customization - Base Additions](https://www.mediafire.com/file/pd03uwdpb31wd6e/dotd_extended_weapon_customization_base_additions.zip/file)
+- [Visible Equipment](https://www.mediafire.com/file/k4ojc65oktsltcc/dotd_visible_equipment.zip/file)
+
 # Changes
 Changes are listed for each mod. Changes are listed with the top being "most important for review" and going down. 
 
