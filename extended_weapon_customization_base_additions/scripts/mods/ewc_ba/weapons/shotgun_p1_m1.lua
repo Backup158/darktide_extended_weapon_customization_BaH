@@ -4,6 +4,12 @@ local mod = get_mod("extended_weapon_customization_base_additions")
 -- ##### ├┬┘├┤ │─┼┐│ ││├┬┘├┤  #########################################################################################
 -- ##### ┴└─└─┘└─┘└└─┘┴┴└─└─┘ #########################################################################################
 
+local shotgun_huntsman_group = {custom_selection_group = "shotgun_huntsman"}
+
+local huntsman_shotgun_barrels = mod:io_dofile("extended_weapon_customization_base_additions/scripts/mods/ewc_ba/attachments/barrel_shotgun_huntsman")
+local huntsman_shotgun_stocks = mod:io_dofile("extended_weapon_customization_base_additions/scripts/mods/ewc_ba/attachments/stock_shotgun_huntsman")
+mod:merge_attachment_data(shotgun_huntsman_group, huntsman_shotgun_barrels, huntsman_shotgun_stocks)
+
 local flashlight_human = mod:io_dofile("extended_weapon_customization_base_additions/scripts/mods/ewc_ba/attachments/flashlight_human")
 local sight_reflex = mod:io_dofile("extended_weapon_customization_base_additions/scripts/mods/ewc_ba/attachments/sight_reflex")
 local sight_scope = mod:io_dofile("extended_weapon_customization_base_additions/scripts/mods/ewc_ba/attachments/sight_scope")
@@ -41,6 +47,8 @@ local attachments = {
     shotgun_p1_m1 = {
         flashlight = flashlight_human,
         sight_2 = table_merge_recursive_n(nil, sight_reflex, sight_scope),
+        stock = huntsman_shotgun_stocks,
+        barrel = huntsman_shotgun_barrels,
         rail = rails,
         sight = {
             shotgun_rifle_sight_invisible_01 = {
