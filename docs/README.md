@@ -16,10 +16,10 @@ Based on the pinned scrollbar version (2026-07-12).
     - Notably affected by the presence of a player using a Chainsword equipped with `content/weapons/player/melee/2h_chain_sword/attachments/chain_01/chain_57_01`
 - [DotD] Integrated VLCCP into **patches/visual_loadout_customization.lua** -- Thanks Stimm Shady (Arrowstorm606)!
     - Based on Nexus Version (24 June 2026 - For update 1.12.0).
-    - Streamlines workflow
-    - Removed need for extra download
-    - Does not cause issues if the original VLCCP is in the load order too
     - The code is sectioned into regions so this can be easily reverted
+        - Streamlines workflow
+        - Removed need for extra download
+        - Does not cause issues if the original VLCCP is in the load order too
     - Comments out the VLCCP check in **ewc.lua**
 - [DotD] Additional safety checks in the hook to `_find_unit_node_recursive` (**patches/visual_loadout_customization.lua**)
     - This is a sign that the VLCCP needs to be updated, and it just kicks the problem up the chain
