@@ -89,7 +89,8 @@ Based on Nexus version (10 July 2026).
     - `shotgun_p2_m3`
 
 ## Visual Loadout Customization Community Patch
-- Old bug from Skitarii update that prevented materials from being applied to body parts (namely, oxidation on Skitarii limbs)
+- Old bug from Skitarii update that prevented materials from being applied to body parts (?)
+    - Namely, oxidation on Skitarii limbs
 
 ## Visible Equipment
 - [DotD] Add support for new weapons and marks
