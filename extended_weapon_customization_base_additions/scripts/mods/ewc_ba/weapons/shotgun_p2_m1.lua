@@ -23,6 +23,7 @@ local sight_scope = mod:io_dofile("extended_weapon_customization_base_additions/
     local vector3 = Vector3
     local vector3_box = Vector3Box
     local vector3_zero = vector3.zero
+    local table_clone_safe = table.clone_safe
     local table_merge_recursive = table.merge_recursive
     local table_merge_recursive_n = table.merge_recursive_n
 --#endregion
@@ -45,10 +46,14 @@ local attachments = {
     },
 }
 
+attachments.shotgun_p2_m3 = table_clone_safe(attachments.shotgun_p2_m1)
+
 local attachment_slots = {
     shotgun_p2_m1 = {
     },
 }
+
+attachment_slots.shotgun_p2_m3 = table_clone_safe(attachment_slots.shotgun_p2_m1)
 
 local fixes = {
     shotgun_p2_m1 = {
@@ -91,6 +96,8 @@ local fixes = {
         },
     },
 }
+
+fixes.shotgun_p2_m3 = table_clone_safe(fixes.shotgun_p2_m1)
 
 return {
     attachment_slots = attachment_slots,
