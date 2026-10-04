@@ -1,6 +1,6 @@
 Fork of [Extended Weapon Customization](https://github.com/grasmann/darktide-mods). Repo is just to keep track of my/our changes, and is not meant as a replacement for EWC and the work put into it. (Fork has been expanded to include other related mods in the EWC sphere).
 
-Grasmann, these are the changes we'd like merged. `showdiff` however you'd like to; each general change is described below point-by-point. Changes are accredited to the contributor. If didn't put one, it was probably me.
+Grasmann, these are the changes we'd like merged. `showdiff` however you'd like to; each general change is described below point-by-point. Changes are accredited to the contributor. If I didn't put one, it was probably me.
 
 # Changes
 Changes are listed for each mod. Changes are listed with the top being "most important for review" and going down. 
