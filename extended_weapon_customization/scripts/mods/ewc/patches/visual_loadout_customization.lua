@@ -5,7 +5,10 @@ local mod = get_mod("extended_weapon_customization")
 -- ##### ┴└─└─┘└─┘└└─┘┴┴└─└─┘ #########################################################################################
 
 -- #region vlccp
+-- @Backup158: If copying to reseparate VLCCP, uncomment the lines. I just didn't like having duplicates.
 local Items = mod:original_require("scripts/utilities/items")
+--local VisualLoadoutExtractData = mod:original_require("scripts/extension_systems/visual_loadout/utilities/visual_loadout_extract_data")
+--local ItemSlotUtils = mod:original_require("scripts/utilities/item_slot_utils")
 -- #endregion vlccp
 local VisualLoadoutExtractData = mod:original_require("scripts/extension_systems/visual_loadout/utilities/visual_loadout_extract_data")
 local ItemSlotUtils = mod:original_require("scripts/utilities/item_slot_utils")
@@ -43,7 +46,7 @@ local master_items = mod:original_require("scripts/backend/master_items")
     local master_items_get_item = master_items.get_item
 --#endregion
 -- #region Performance VLCCP
--- @Backup158: UNCOMMENT ALL THE ONES I COMMENTED OUT I JUST DIDNT LIKE SEEING DUPLICATES
+-- @Backup158: If copying to reseparate VLCCP, uncomment the lines. I just didn't like having duplicates.
     local log = Log
     local type = type
     -- local unit = Unit
