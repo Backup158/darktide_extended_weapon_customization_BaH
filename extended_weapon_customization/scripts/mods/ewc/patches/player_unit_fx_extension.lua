@@ -387,6 +387,7 @@ end)
 mod:hook(CLASS.PlayerUnitFxExtension, "_spawn_unit_fx_line", function(func, self, line_effect, is_critical_strike, spawner_name, end_position, link, orphaned_policy, scale, append_husk_to_event_name, optional_attachment_name, ...)
 
 	--[[
+	-- @Backup158: Dirty workaround for crash from removing vfx_spawner else
 	if (optional_attachment_name == "Magazine2") or (spawner_name == "Magazine2") then
 		return func(self, line_effect, is_critical_strike, spawner_name, end_position, link, orphaned_policy, scale, append_husk_to_event_name, optional_attachment_name, ...)
 	end
@@ -398,11 +399,14 @@ mod:hook(CLASS.PlayerUnitFxExtension, "_spawn_unit_fx_line", function(func, self
 		self._vfx_spawners[spawner_name] = {}
 	else
 		-- Find first attachment from spawner group
+		--[[
+		-- @Backup158: Geoff found this was what caused the Dual Stubpistol muzzle flashes to get stuck
 		for k, v in pairs(self._vfx_spawners[spawner_name]) do
-			mod:info("It would've been replaced with: "..k.."\n>> But it's still optional_attachment_name: "..tostring(optional_attachment_name))
+			-- mod:info("It would've been replaced with: "..k.."\n>> But it's still optional_attachment_name: "..tostring(optional_attachment_name))
 			-- optional_attachment_name = k
 			break
 		end
+		]]
 	end
 
 	local reference_attachment_name = optional_attachment_name or VisualLoadoutExtractData.ROOT_ATTACH_NAME
