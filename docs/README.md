@@ -69,6 +69,8 @@ Based on the Nexus version (1.04 - 2026-07-10)
 - [DotD] Fix crash on turning on laser (**attachments/laser_pointer.lua**)
     - `rewind_ms` had name changed (`LagCompensation.rewind_miliseconds`)... yes that is what they wrote
     - Using this as a string as an argument for `PhysicsWorld.raycast` is fine; the source code has code passing that same string as an argument
+- [DotD] Add support for new weapons and marks -- Thanks Geoff from Accounting!
+    - `shotgun_p3_m1`
 
 ## Visible Equipment
 Based on Nexus version (10 July 2026).
@@ -99,7 +101,6 @@ Based on Nexus version (10 July 2026).
 
 ## Visible Equipment
 - [DotD] Add support for new weapons and marks
-    - `shotgun_p3_m1`
     - `ogryn_hammer_2h_p1_m1`
     - `ogryn_thumper_p1_m3`
     - `ogryn_powermaul_slabshield_p1_m2`
