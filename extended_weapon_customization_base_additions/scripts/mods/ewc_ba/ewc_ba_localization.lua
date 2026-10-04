@@ -121,6 +121,9 @@ mod:add_global_localize_strings({
 		en = "EWC:BA - Double Barrel Shotgun",
 		["zh-cn"] = "扩展武器自定义：基础增补 - 双管霰弹枪",
 	},
+	loc_ewc_shotgun_combat = {
+		en = "EWC:BA - Combat Shotgun",
+	},
 	loc_ewc_sight_show = {
 		en = "EWC:BA - Sight just for show",
 		["zh-cn"] = "扩展武器自定义：基础增补 - 装饰用瞄具",
