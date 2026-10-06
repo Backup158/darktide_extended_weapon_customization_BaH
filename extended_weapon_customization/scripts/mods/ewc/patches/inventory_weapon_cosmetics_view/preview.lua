@@ -6,6 +6,9 @@ local mod = get_mod("extended_weapon_customization"); if not mod then return end
 -- ##### ┴└─└─┘└─┘└└─┘┴┴└─└─┘ #########################################################################################
 
 local items = mod:original_require("scripts/utilities/items")
+local UIWidget = mod:original_require("scripts/managers/ui/ui_widget")
+local UISoundEvents = mod:original_require("scripts/settings/ui/ui_sound_events")
+local DefaultPassTemplates = mod:original_require("scripts/ui/pass_templates/default_pass_templates")
 
 -- ##### ┌─┐┌─┐┬─┐┌─┐┌─┐┬─┐┌┬┐┌─┐┌┐┌┌─┐┌─┐ ############################################################################
 -- ##### ├─┘├┤ ├┬┘├┤ │ │├┬┘│││├─┤││││  ├┤  ############################################################################
@@ -19,6 +22,9 @@ local string_sub = string.sub
 local table_clear = table.clear
 local string_upper = string.upper
 local string_format = string.format
+local table_clone = table.clone
+local utf8 = Utf8
+local utf8_upper = utf8.upper
 --#endregion
 
 -- ##### ┌┬┐┌─┐┌┬┐┌─┐ #################################################################################################
@@ -293,14 +299,9 @@ mod.inventory_weapon_cosmetics_view_preview_element = function(self, element)
 		if real_item.display_name and real_item.display_name ~= "" and real_item.display_name ~= "n/a" then
 			local test_localize = localize(real_item.display_name)
 
-			-- @Backup158: Debug for displaying item name
-			-- mod:echo("Display name: "..real_item.display_name.."; Localized as: "..tostring(test_localize))
-
-			-- the fuck does this even mean?? -- aaaa
+			-- If given a string that is not a returned unlocalized value, use it as the display name
 			if string_sub(test_localize, 1, 1) ~= "<" and string_sub(test_localize, -1) ~= ">" then
 				attachment_display_name = test_localize
-				-- @Backup158: Stopgap for displaying item name
-				mod:echo("Attachment Display name: "..attachment_display_name) -- aaaa
 			end
 		end
 	else
@@ -328,12 +329,48 @@ mod.inventory_weapon_cosmetics_view_preview_element = function(self, element)
 		attachment_display_name = mod:cached_gsub(attachment_display_name, "%f[%a].", string_upper)
 	end
 
+	-- @Backup158: Stopgap for displaying item name
+	mod:notify("Attachment Display name: "..attachment_display_name)
+
 	if widgets_by_name and widgets_by_name.sub_display_name and widgets_by_name.display_name then
 		widgets_by_name.sub_display_name.content.text = string_format("%s • %s",
 			items.weapon_card_display_name(self._selected_item),
 			items.weapon_card_sub_display_name(self._selected_item))
 		widgets_by_name.display_name.content.text = attachment_display_name
 	end
+	--[[ 
+	-- @Backup158: The issue is that sub_display_name and display_name do not exist when the preview tries to apply
+	if widgets_by_name then
+		mod:notify("Filling text for widgets")
+		-- Create widgets if not existing
+		if not widgets_by_name.sub_display_name then
+			mod:notify("> making sub")
+			widgets_by_name.sub_display_name = UIWidget.create_definition(table_clone(DefaultPassTemplates.body_text), "sub_display_name")
+			mod:notify(">> sub display name content: "..tostring(widgets_by_name.sub_display_name.content))
+			widgets_by_name.sub_display_name.content = widgets_by_name.sub_display_name.content or {}
+		end
+		if not widgets_by_name.display_name then
+			mod:notify("> making dis")
+			widgets_by_name.display_name = UIWidget.create_definition(table_clone(DefaultPassTemplates.body_text), "display_name")
+			mod:notify(">> display name content: "..tostring(widgets_by_name.display_name.content))
+			widgets_by_name.display_name.content = widgets_by_name.display_name.content or {}
+		end
+		widgets_by_name.sub_display_name.content.text = string_format("%s • %s",
+			items.weapon_card_display_name(self._selected_item),
+			items.weapon_card_sub_display_name(self._selected_item))
+		widgets_by_name.display_name.content.text = attachment_display_name
+	else
+		mod:notify("Failing to display widgets")
+		if type(widgets_by_name) == "table" then
+			
+			table.dump(widgets_by_name, "uwu fat dumpy of w w widgets", 3)
+		end
+
+		if type(self._selected_item) == "table" then
+			table.dump(self._selected_item, "uwu fat dumpy of sewected ityem", 5)
+		end
+	end
+	]]
 
 	return true
 end

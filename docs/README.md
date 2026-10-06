@@ -101,10 +101,11 @@ Based on Nexus version (10 July 2026).
 
 # To-do
 ## Extended Weapon Customization
-- Missing display name after the notification changes from the hotfix before 1.13.0 (**patches/inventory_weapon_cosmetics_view/preview.lua**)
+- Missing display name after the notification changes from the hotfix 1.12.4, 2026-08-11 (**patches/inventory_weapon_cosmetics_view/preview.lua**)
     - Names do not display when selecting attachments
+        - in `widgets_by_name`, there's no `sub_display_name` nor `display_name`
     - The nameplates from Modding Tools still work though
-    - Dirty fix of using mod:echo() to display it, which in this menu will put a notification on the right side
+    - Dirty fix of using mod:notify() to display it, which in this menu will put a notification on the right side
 
 ## Visual Loadout Customization Community Patch
 - Old bug from Skitarii update that prevented materials from being applied to body parts (?)
