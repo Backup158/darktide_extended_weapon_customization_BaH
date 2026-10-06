@@ -77,6 +77,15 @@ mod.check_visual_loadout_customization_community_patch = function(self)
     end
 end
 ]]
+mod.check_visual_loadout_customization_community_patch = function(self)
+    local vlcp = get_mod("visual_loadout_customization_community_patch")
+    self.vlcp_missing = not vlcp
+    if not self.vlcp_missing then
+        self:echo(TextUtilities.apply_color_to_text(
+            "Extended Weapon Customization:\nOld dependency Visual Loadout Customization Community Patch is installed! This version has integrated it, so it should currently not be loaded separately!",
+            Color.ui_red_light(255, true)))
+    end
+end
 
 mod.master_item_community_patch = function(self)
     local micp = get_mod("master_item_community_patch")
@@ -108,6 +117,9 @@ mod._on_all_mods_loaded = function(self)
     self:init()
     -- Trigger reload
     managers.event:trigger("ewc_reloaded")
+
+    -- @Backup158: VLCCP inverse check. Remove if restoring.
+    mod:check_visual_loadout_customization_community_patch()
 end
 
 mod._on_setting_changed = function(self, setting_id)
