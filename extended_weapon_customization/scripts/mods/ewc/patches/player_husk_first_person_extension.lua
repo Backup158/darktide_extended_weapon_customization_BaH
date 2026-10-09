@@ -47,3 +47,15 @@ mod:hook(CLASS.PlayerHuskFirstPersonExtension, "update_unit_position_and_rotatio
     end
     
 end)
+
+if not mod:get("mod_option_randomize_players") then
+    mod:hook_disable(CLASS.PlayerHuskFirstPersonExtension, "update_unit_position_and_rotation")
+end
+
+mod.on_setting_changed = function(setting_id)
+    if setting_id == "mod_option_randomize_players" and mod:get("mod_option_randomize_players") then
+        mod:hook_enable(CLASS.PlayerHuskFirstPersonExtension, "update_unit_position_and_rotation")
+    elseif setting_id == "mod_option_randomize_players" then
+        mod:hook_disable(CLASS.PlayerHuskFirstPersonExtension, "update_unit_position_and_rotation")
+    end
+end
