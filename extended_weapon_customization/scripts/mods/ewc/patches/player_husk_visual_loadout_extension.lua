@@ -44,6 +44,26 @@ local PROCESS_SLOTS = {SLOT_PRIMARY, SLOT_SECONDARY}
 -- ##### ├┤ │ │││││   │ ││ ││││  ├─┤│ ││ │├┴┐└─┐ ######################################################################
 -- ##### └  └─┘┘└┘└─┘ ┴ ┴└─┘┘└┘  ┴ ┴└─┘└─┘┴ ┴└─┘ ######################################################################
 
+local function enable_hooks()
+    mod:hook_enable(CLASS.PlayerHuskVisualLoadoutExtension, "init")
+    mod:hook_enable(CLASS.PlayerHuskVisualLoadoutExtension, "_equip_item_to_slot")
+    mod:hook_enable(CLASS.PlayerHuskVisualLoadoutExtension, "wield_slot")
+    mod:hook_enable(CLASS.PlayerHuskVisualLoadoutExtension, "update")
+    mod:hook_enable(CLASS.PlayerHuskVisualLoadoutExtension, "destroy")
+    mod:hook_enable(CLASS.PlayerHuskVisualLoadoutExtension, "rpc_player_equip_item_from_profile_to_slot")
+    mod:hook_enable(CLASS.PlayerHuskVisualLoadoutExtension, "resolve_gear_sound")
+end
+
+local function disable_hooks()
+    mod:hook_disable(CLASS.PlayerHuskVisualLoadoutExtension, "init")
+    mod:hook_disable(CLASS.PlayerHuskVisualLoadoutExtension, "_equip_item_to_slot")
+    mod:hook_disable(CLASS.PlayerHuskVisualLoadoutExtension, "wield_slot")
+    mod:hook_disable(CLASS.PlayerHuskVisualLoadoutExtension, "update")
+    mod:hook_disable(CLASS.PlayerHuskVisualLoadoutExtension, "destroy")
+    mod:hook_disable(CLASS.PlayerHuskVisualLoadoutExtension, "rpc_player_equip_item_from_profile_to_slot")
+    mod:hook_disable(CLASS.PlayerHuskVisualLoadoutExtension, "resolve_gear_sound")
+end
+
 mod.player_husk_visual_loadout_extension_randomize = function(self, item)
     return mod:handle_husk_item(item)
 end
@@ -281,9 +301,10 @@ mod:hook(CLASS.PlayerHuskVisualLoadoutExtension, "rpc_player_equip_item_from_pro
         mod:reevaluate_packages(player)
     end
 
-	self:_equip_item_to_slot(slot_name, item, optional_existing_unit_3p)
+    self:_equip_item_to_slot(slot_name, item, optional_existing_unit_3p)
 
 end)
+
 
 -- mod:hook(CLASS.PlayerCustomization, "spawn_items", function(func, self, items, optional_mission_template, ...)
 --     for i = 1, #items do
@@ -309,3 +330,15 @@ mod:hook(CLASS.PlayerHuskVisualLoadoutExtension, "resolve_gear_sound", function(
 
 	return allow_default, event, has_husk_events
 end)
+
+if not mod:get("mod_option_randomize_players") then
+    disable_hooks()
+end
+
+mod.on_setting_changed = function(setting_id)
+    if setting_id == "mod_option_randomize_players" and mod:get("mod_option_randomize_players") then
+        enable_hooks()
+    elseif setting_id == "mod_option_randomize_players" then
+        disable_hooks()
+    end
+end
