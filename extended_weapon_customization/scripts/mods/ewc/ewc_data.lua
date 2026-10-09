@@ -6,6 +6,11 @@ return {
 	is_togglable = true,
 	options = {
 		widgets = {
+			-- @Backup158: Remove this option when completed
+			{	["setting_id"] = "mod_option_enable_attachment_name_bandaid_nya",
+				["type"] = "checkbox",
+				["default_value"] = true,
+			},
 			{["setting_id"] = "group_randomize",
   				["type"] = "group",
 				["sub_widgets"] = {

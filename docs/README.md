@@ -106,6 +106,8 @@ Based on Nexus version (10 July 2026).
         - in `widgets_by_name`, there's no `sub_display_name` nor `display_name`
     - The nameplates from Modding Tools still work though
     - Dirty fix of using mod:notify() to display it, which in this menu will put a notification on the right side
+        - Includes a widget to disable this (**ewc_data.lua**, **ewc_localization.lua**)
+        - Search for `-- @Backup158:` in the code
 
 ## Visual Loadout Customization Community Patch
 - Old bug from Skitarii update that prevented materials from being applied to body parts (?)

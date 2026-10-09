@@ -330,7 +330,9 @@ mod.inventory_weapon_cosmetics_view_preview_element = function(self, element)
 	end
 
 	-- @Backup158: Stopgap for displaying item name
-	mod:notify("Attachment Display name: "..attachment_display_name)
+	if mod:get("mod_option_enable_attachment_name_bandaid_nya") then
+		mod:notify("Attachment Display name: "..attachment_display_name)
+	end
 
 	if widgets_by_name and widgets_by_name.sub_display_name and widgets_by_name.display_name then
 		widgets_by_name.sub_display_name.content.text = string_format("%s • %s",

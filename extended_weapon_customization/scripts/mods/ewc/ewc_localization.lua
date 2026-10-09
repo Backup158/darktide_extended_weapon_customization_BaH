@@ -360,6 +360,13 @@ return {
 		de = "Zufallgenerierung",
 		["zh-cn"] = "随机化",
 	},
+	-- @Backup158: Remove this option when completed
+	mod_option_enable_attachment_name_bandaid_nya = {
+		en = "Show Attachment Display Name as Notification",
+	},
+	mod_option_enable_attachment_name_bandaid_nya_description = {
+		en = "Workaround for missing name bug. Shows a notification on the right side of the screen when selecting an attachment.",
+	},
 	mod_option_randomize_players = {
 		en = "Randomize Players",
 		de = "Zufallgenerierung für Spielerwaffen",
