@@ -44,11 +44,3 @@ end)
 if not mod:get("mod_option_randomize_players") then
     mod:hook_disable(CLASS.MissionIntroView, "_assign_player_to_slot")
 end
-
-mod.on_setting_changed = function(setting_id)
-    if setting_id == "mod_option_randomize_players" and mod:get("mod_option_randomize_players") then
-        mod:hook_enable(CLASS.MissionIntroView, "_assign_player_to_slot")
-    elseif setting_id == "mod_option_randomize_players" then
-        mod:hook_disable(CLASS.MissionIntroView, "_assign_player_to_slot")
-    end
-end

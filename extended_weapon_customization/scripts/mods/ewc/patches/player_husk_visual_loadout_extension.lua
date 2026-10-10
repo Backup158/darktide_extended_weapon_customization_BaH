@@ -44,7 +44,7 @@ local PROCESS_SLOTS = {SLOT_PRIMARY, SLOT_SECONDARY}
 -- ##### ├┤ │ │││││   │ ││ ││││  ├─┤│ ││ │├┴┐└─┐ ######################################################################
 -- ##### └  └─┘┘└┘└─┘ ┴ ┴└─┘┘└┘  ┴ ┴└─┘└─┘┴ ┴└─┘ ######################################################################
 
-local function enable_hooks()
+function mod.enable_hooks_randomization_player_husk_vle()
     mod:hook_enable(CLASS.PlayerHuskVisualLoadoutExtension, "init")
     mod:hook_enable(CLASS.PlayerHuskVisualLoadoutExtension, "_equip_item_to_slot")
     mod:hook_enable(CLASS.PlayerHuskVisualLoadoutExtension, "wield_slot")
@@ -54,7 +54,7 @@ local function enable_hooks()
     mod:hook_enable(CLASS.PlayerHuskVisualLoadoutExtension, "resolve_gear_sound")
 end
 
-local function disable_hooks()
+function mod.disable_hooks_randomization_player_husk_vle()
     mod:hook_disable(CLASS.PlayerHuskVisualLoadoutExtension, "init")
     mod:hook_disable(CLASS.PlayerHuskVisualLoadoutExtension, "_equip_item_to_slot")
     mod:hook_disable(CLASS.PlayerHuskVisualLoadoutExtension, "wield_slot")
@@ -332,13 +332,5 @@ mod:hook(CLASS.PlayerHuskVisualLoadoutExtension, "resolve_gear_sound", function(
 end)
 
 if not mod:get("mod_option_randomize_players") then
-    disable_hooks()
-end
-
-mod.on_setting_changed = function(setting_id)
-    if setting_id == "mod_option_randomize_players" and mod:get("mod_option_randomize_players") then
-        enable_hooks()
-    elseif setting_id == "mod_option_randomize_players" then
-        disable_hooks()
-    end
+    mod.disable_hooks_randomization_player_husk_vle()
 end

@@ -125,6 +125,23 @@ end
 mod._on_setting_changed = function(self, setting_id)
     -- Trigger settings changed event
     managers.event:trigger("ewc_settings_changed")
+
+    -- @Backup158: hooks for randomization
+    --  patches/player_husk_visual_loadout_extension.lua
+    --  patches/player_husk_first_person_extension.lua
+    --  patches/mission_intro_view.lua
+    --  patches/lobby_view.lua
+    if setting_id == "mod_option_randomize_players" and mod:get("mod_option_randomize_players") then
+        mod.enable_hooks_randomization_player_husk_vle()
+        mod:hook_enable(CLASS.PlayerHuskFirstPersonExtension, "update_unit_position_and_rotation")
+        mod:hook_enable(CLASS.MissionIntroView, "_assign_player_to_slot")
+        mod:hook_enable(CLASS.LobbyView, "_assign_player_to_slot")
+    elseif setting_id == "mod_option_randomize_players" then
+        mod.disable_hooks_randomization_player_husk_vle()
+        mod:hook_disable(CLASS.PlayerHuskFirstPersonExtension, "update_unit_position_and_rotation")
+        mod:hook_disable(CLASS.MissionIntroView, "_assign_player_to_slot")
+        mod:hook_disable(CLASS.LobbyView, "_assign_player_to_slot")
+    end
 end
 
 mod._clear_chat = function(self)
