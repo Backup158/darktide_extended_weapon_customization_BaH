@@ -18,6 +18,8 @@ local table_clear = table.clear
 local table_clone = table.clone
 local table_clone_instance = table.clone_instance
 local table_create_copy_instance = table.create_copy_instance
+-- @Backup158: Just for the randomization hooks thing. Remove if that's removed.
+local CLASS = CLASS
 --#endregion
 
 -- ##### ┌┬┐┌─┐┌┬┐┌─┐ #################################################################################################

@@ -41,6 +41,7 @@ mod:hook(CLASS.LobbyView, "_assign_player_to_slot", function(func, self, player,
     func(self, player, slot, ...)
 end)
 
-if not mod:get("mod_option_randomize_players") then
-    mod:hook_disable(CLASS.LobbyView, "_assign_player_to_slot")
-end
+-- @Backup158: idk why but this hook doesn't exist on start and throws an error?
+-- if not mod:get("mod_option_randomize_players") then
+--     mod:hook_disable(CLASS.LobbyView, "_assign_player_to_slot")
+-- end
