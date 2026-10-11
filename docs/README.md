@@ -48,12 +48,12 @@ Based on the pinned scrollbar version (2026-07-12).
     - Hit results is used to find out which enemies should be gibbed with weapon types elsewhere, so I kept this whole system intact
     - The change is to take the damage done, then halve its value if `is_server` is true. That way, it gets doubled and becomes the original damage.
 - Refactored randomization mod options to avoid hooking functions that do nothing without -- Thanks Geoff from Accounting!
-    - Disables hooks in the following files if randomization is disabled
-        - **patches/player_husk_visual_loadout_extension.lua**
-        - **patches/player_husk_first_person_extension.lua**
-        - **patches/mission_intro_view.lua**
-        - **patches/lobby_view.lua**
-    Reenables those hooks if randomization is enabled mid-game, piggybacking off `mod._on_setting_changed` in **ewc.lua**
+    - Disables some hooks in the following patches if player randomization is disabled: 
+        - `PlayerHuskVisualLoadoutExtension`
+        - `PlayerHuskFirstPersonExtension`
+        - `MissionIntroView`
+        - `LobbyView`
+    - Reenables those hooks if randomization is enabled mid-game, piggybacking off `mod._on_setting_changed` in **ewc.lua**
 - Defaulted randomization mod options to off due to the issues related to it (**ewc_data.lua**)
     - Namely, crashing upon hovering seemingly random parts
     - This change can be reverted if the root causes are solved

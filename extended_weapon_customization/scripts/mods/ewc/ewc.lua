@@ -134,12 +134,24 @@ mod._on_setting_changed = function(self, setting_id)
     --  patches/mission_intro_view.lua
     --  patches/lobby_view.lua
     if setting_id == "mod_option_randomize_players" and mod:get("mod_option_randomize_players") then
-        mod.enable_hooks_randomization_player_husk_vle()
+        mod:hook_enable(CLASS.PlayerHuskVisualLoadoutExtension, "init")
+        mod:hook_enable(CLASS.PlayerHuskVisualLoadoutExtension, "_equip_item_to_slot")
+        mod:hook_enable(CLASS.PlayerHuskVisualLoadoutExtension, "wield_slot")
+        mod:hook_enable(CLASS.PlayerHuskVisualLoadoutExtension, "update")
+        mod:hook_enable(CLASS.PlayerHuskVisualLoadoutExtension, "destroy")
+        mod:hook_enable(CLASS.PlayerHuskVisualLoadoutExtension, "rpc_player_equip_item_from_profile_to_slot")
+        mod:hook_enable(CLASS.PlayerHuskVisualLoadoutExtension, "resolve_gear_sound")
         mod:hook_enable(CLASS.PlayerHuskFirstPersonExtension, "update_unit_position_and_rotation")
         mod:hook_enable(CLASS.MissionIntroView, "_assign_player_to_slot")
         mod:hook_enable(CLASS.LobbyView, "_assign_player_to_slot")
     elseif setting_id == "mod_option_randomize_players" then
-        mod.disable_hooks_randomization_player_husk_vle()
+        mod:hook_disable(CLASS.PlayerHuskVisualLoadoutExtension, "init")
+        mod:hook_disable(CLASS.PlayerHuskVisualLoadoutExtension, "_equip_item_to_slot")
+        mod:hook_disable(CLASS.PlayerHuskVisualLoadoutExtension, "wield_slot")
+        mod:hook_disable(CLASS.PlayerHuskVisualLoadoutExtension, "update")
+        mod:hook_disable(CLASS.PlayerHuskVisualLoadoutExtension, "destroy")
+        mod:hook_disable(CLASS.PlayerHuskVisualLoadoutExtension, "rpc_player_equip_item_from_profile_to_slot")
+        mod:hook_disable(CLASS.PlayerHuskVisualLoadoutExtension, "resolve_gear_sound")
         mod:hook_disable(CLASS.PlayerHuskFirstPersonExtension, "update_unit_position_and_rotation")
         mod:hook_disable(CLASS.MissionIntroView, "_assign_player_to_slot")
         mod:hook_disable(CLASS.LobbyView, "_assign_player_to_slot")
@@ -211,6 +223,24 @@ mod:update_flashlight_templates(mod.settings.flashlight_templates)
 -- ##### ┌─┐┌─┐┌┬┐┌─┐┬ ┬┌─┐┌─┐ ########################################################################################
 -- ##### ├─┘├─┤ │ │  ├─┤├┤ └─┐ ########################################################################################
 -- ##### ┴  ┴ ┴ ┴ └─┘┴ ┴└─┘└─┘ ########################################################################################
+-- @Backup158: Disabling hooks for randomization.
+--  This must happen BEFORE the hooks are actually registered
+--  Since these hooks will always be delayed, they both enter the "hook stack" (I don't know if that's the proper term)
+--    Doing it this way means: (head) hook_disable --> (head) hook, hook_disable --(can hook now, pop head, which is hook)--> (head) hook_disable --> empty stack
+--  Putting the disable after the hook creates the opposite situation, where the hook_disable gets popped first
+--  That makes it try to toggle a hook that does not yet exist, showing a warning and not disabling the hook at all
+if not mod:get("mod_option_randomize_players") then
+    mod:hook_disable(CLASS.PlayerHuskVisualLoadoutExtension, "init")
+    mod:hook_disable(CLASS.PlayerHuskVisualLoadoutExtension, "_equip_item_to_slot")
+    mod:hook_disable(CLASS.PlayerHuskVisualLoadoutExtension, "wield_slot")
+    mod:hook_disable(CLASS.PlayerHuskVisualLoadoutExtension, "update")
+    mod:hook_disable(CLASS.PlayerHuskVisualLoadoutExtension, "destroy")
+    mod:hook_disable(CLASS.PlayerHuskVisualLoadoutExtension, "rpc_player_equip_item_from_profile_to_slot")
+    mod:hook_disable(CLASS.PlayerHuskVisualLoadoutExtension, "resolve_gear_sound")
+    mod:hook_disable(CLASS.PlayerHuskFirstPersonExtension, "update_unit_position_and_rotation")
+    mod:hook_disable(CLASS.MissionIntroView, "_assign_player_to_slot")
+    mod:hook_disable(CLASS.LobbyView, "_assign_player_to_slot")
+end
 
 -- Load patches
 mod:io_dofile(patches_path .. "inventory_weapon_cosmetics_view_definitions")
