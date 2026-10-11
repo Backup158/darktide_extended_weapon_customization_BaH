@@ -122,9 +122,13 @@ Based on Nexus version (10 July 2026).
 
 ## Visible Equipment
 - [DotD] Add support for new weapons and marks
-    - `shotgun_p3_m1`
-    - `ogryn_hammer_2h_p1_m1`
-    - `ogryn_thumper_p1_m3`
-    - `ogryn_powermaul_slabshield_p1_m2`
-    - `powermaul_2h_p1_m2`
-    - `shotgun_p2_m3`
+    - `shotgun_p3_m1`: Huntsman's Shotgun
+    - `ogryn_hammer_2h_p1_m1`: Cruncher
+    - `ogryn_thumper_p1_m3`: Thugshot
+    - `ogryn_powermaul_slabshield_p1_m2`: Gromm Mk I & Mk V Battle Maul & Slab Shield
+    - `powermaul_2h_p1_m2`: Krourk Mk VII Crusher
+    - `shotgun_p2_m3`: Krourk Mk IV Double-Barrelled Shotgun
+- [Skitarii] Add support for new melee weapons
+    - `powermaul_p3_m1`: Arc Maul
+    - `powersword_p3_m1`: Mechanicus Power Sword
+    - `transonic_sword_transonic_knife_p1_m1`: Paired Transonic Blades
