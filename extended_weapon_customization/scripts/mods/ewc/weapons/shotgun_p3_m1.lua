@@ -47,11 +47,12 @@ return {
                 icon_render_unit_rotation_offset = {90, 0, 30},
                 icon_render_camera_position_offset = {-.1, -2.25, .15},
             },
-            shotgun_pump_action_underbarrel_02 = {
-                replacement_path = _item_ranged.."/underbarrels/shotgun_pump_action_underbarrel_02",
-                icon_render_unit_rotation_offset = {90, 0, 30},
-                icon_render_camera_position_offset = {-.1, -2.25, .15},
-            },
+            -- Not in MasterItems, but base unit exists (as of patch 1.13.2)
+            --shotgun_pump_action_underbarrel_02 = {
+            --    replacement_path = _item_ranged.."/underbarrels/shotgun_pump_action_underbarrel_02",
+            --    icon_render_unit_rotation_offset = {90, 0, 30},
+            --    icon_render_camera_position_offset = {-.1, -2.25, .15},
+            --},
             shotgun_pump_action_underbarrel_03 = {
                 replacement_path = _item_ranged.."/underbarrels/shotgun_pump_action_underbarrel_03",
                 icon_render_unit_rotation_offset = {90, 0, 30},
