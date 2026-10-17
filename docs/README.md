@@ -69,6 +69,8 @@ Based on the pinned scrollbar version (2026-07-12).
 - More robust input validation for fix requirements (**utilities/plugins.lua**)
     - As-is, having malformed `requirements` for fixes would cause a backend error on launch, without indication of what went wrong
     - This checks for basic errors and logs hints for plugin authors
+- Add load order rules to metadata and **extended_weapon_customization.mod**
+    - We found that loading `transonic_weapon_colors` before EWC or the MasterItems patch would cause crashes or break functionality
 - Add **info.json** metadata file
     - This was introduced by DMF 26.08.19
     - I set the version to `<current>_dotd_<n>`. Feel free to change

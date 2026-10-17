@@ -10,6 +10,8 @@ return {
 	load_before = {
         "GoToMastery",
 		"visible_equipment",
+		"transonic_stance_colors",
+		"enhanced_character_selection",
     },
 	require = {
 		"master_item_community_patch",

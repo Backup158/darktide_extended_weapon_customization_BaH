@@ -1,7 +1,7 @@
 {
     "name": "Extended Weapon Customization",
     "author": "grasmann",
-    "version": "3.08_dotd_6",
+    "version": "3.08_dotd_7",
     "homepage": "https://www.nexusmods.com/warhammer40kdarktide/mods/277",
     "source": "https://github.com/grasmann/darktide-mods",
     "description": "Provides extended weapon configuration and options.",
@@ -10,7 +10,7 @@
             ["master_item_community_patch"]
         ],
         "load_after": ["master_item_community_patch"],
-        "load_before": []
+        "load_before": ["GoToMastery", "visible_equipment", "enhanced_character_selection", "transonic_stance_colors"]
     },
     "localization": {
         "de": {
