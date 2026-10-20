@@ -201,13 +201,13 @@ local animations = {
 
 --#region Copies
     --#region Ogryn melee
-        animations.ogryn_powermaul_slabshield_p1_m2 = table_clone_safe(animations.ogryn_powermaul_slabshield_p1_m1)
         animations.ogryn_combatblade_p1_m2 = table_clone_safe(animations.ogryn_combatblade_p1_m1)
         animations.ogryn_combatblade_p1_m3 = table_clone_safe(animations.ogryn_combatblade_p1_m1)
         animations.ogryn_pickaxe_2h_p1_m2 = table_clone_safe(animations.ogryn_pickaxe_2h_p1_m1)
         animations.ogryn_pickaxe_2h_p1_m3 = table_clone_safe(animations.ogryn_pickaxe_2h_p1_m1)
         animations.ogryn_powermaul_p1_m2 = table_clone_safe(animations.ogryn_powermaul_p1_m1)
         animations.ogryn_powermaul_p1_m3 = table_clone_safe(animations.ogryn_powermaul_p1_m1)
+        animations.ogryn_powermaul_slabshield_p1_m2 = table_clone_safe(animations.ogryn_powermaul_slabshield_p1_m1)
         animations.ogryn_club_p1_m2 = table_clone_safe(animations.ogryn_club_p1_m1)
         animations.ogryn_club_p1_m3 = table_clone_safe(animations.ogryn_club_p1_m1)
         animations.ogryn_club_p2_m2 = table_clone_safe(animations.ogryn_club_p2_m1)
