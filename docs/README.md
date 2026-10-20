@@ -131,6 +131,12 @@ Based on Nexus version (10 July 2026).
         - `powermaul_p3_m1`: Arc Maul
         - `powersword_p3_m1`: Mechanicus Power Sword
         - `transonic_sword_transonic_knife_p1_m1`: Paired Transonic Blades (I did these so send critiques to me)
+    - Added to the following files:
+        - **utilities/animations.lua**
+        - **utilities/hide_attachments.lua**
+        - **utilities/momentums.lua**
+        - **utilities/offsets.lua**
+        - **utilities/scripts.lua**
 - Add **info.json** metadata file
     - This was introduced by DMF 26.08.19
     - I set the version to `<current>_dotd_<n>`. Feel free to change
