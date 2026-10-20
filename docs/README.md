@@ -137,6 +137,7 @@ Based on Nexus version (10 July 2026).
         - **utilities/momentums.lua**
         - **utilities/offsets.lua**
         - **utilities/scripts.lua**
+        - **utilities/sounds.lua**
 - Add **info.json** metadata file
     - This was introduced by DMF 26.08.19
     - I set the version to `<current>_dotd_<n>`. Feel free to change
