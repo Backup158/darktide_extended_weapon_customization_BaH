@@ -104,6 +104,18 @@ Based on Nexus version (10 July 2026).
 - [DotD] Fix crash on opening cosmetics (**patches/ui_manager.lua**)
     - The create mannequin function from `Items` was moved to `ProfileUtils`
     - The parameters now take the unit and profile instead of unit and all the individual parts of the profile
+- Add missing weapons -- Thanks Broccodile!
+    - [DotD] Add support for new weapons and marks
+        - `shotgun_p3_m1`: Huntsman's Shotgun
+        - `ogryn_hammer_2h_p1_m1`: Cruncher
+        - `ogryn_thumper_p1_m3`: Thugshot
+        - `ogryn_powermaul_slabshield_p1_m2`: Gromm Mk I & Mk V Battle Maul & Slab Shield
+        - `powermaul_2h_p1_m2`: Krourk Mk VII Crusher
+        - `shotgun_p2_m3`: Krourk Mk IV Double-Barrelled Shotgun
+    - [Skitarii] Add support for new melee weapons
+        - `powermaul_p3_m1`: Arc Maul
+        - `powersword_p3_m1`: Mechanicus Power Sword
+        - `transonic_sword_transonic_knife_p1_m1`: Paired Transonic Blades (I did these so send critiques to me)
 - Add **info.json** metadata file
     - This was introduced by DMF 26.08.19
     - I set the version to `<current>_dotd_<n>`. Feel free to change
@@ -121,16 +133,3 @@ Based on Nexus version (10 July 2026).
 ## Visual Loadout Customization Community Patch
 - Old bug from Skitarii update that prevented materials from being applied to body parts (?)
     - Namely, oxidation on Skitarii limbs
-
-## Visible Equipment
-- [DotD] Add support for new weapons and marks
-    - `shotgun_p3_m1`: Huntsman's Shotgun
-    - `ogryn_hammer_2h_p1_m1`: Cruncher
-    - `ogryn_thumper_p1_m3`: Thugshot
-    - `ogryn_powermaul_slabshield_p1_m2`: Gromm Mk I & Mk V Battle Maul & Slab Shield
-    - `powermaul_2h_p1_m2`: Krourk Mk VII Crusher
-    - `shotgun_p2_m3`: Krourk Mk IV Double-Barrelled Shotgun
-- [Skitarii] Add support for new melee weapons
-    - `powermaul_p3_m1`: Arc Maul
-    - `powersword_p3_m1`: Mechanicus Power Sword
-    - `transonic_sword_transonic_knife_p1_m1`: Paired Transonic Blades
