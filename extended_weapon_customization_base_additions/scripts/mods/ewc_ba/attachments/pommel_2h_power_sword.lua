@@ -39,6 +39,11 @@ return {
         icon_render_unit_rotation_offset = {90, 45, 0},
         icon_render_camera_position_offset = {0, -.5, .1},
     },
+    ["2h_power_sword_pommel_05"] = {
+        replacement_path = _item_melee.."/pommels/2h_power_sword_pommel_05",
+        icon_render_unit_rotation_offset = {90, 45, 0},
+        icon_render_camera_position_offset = {0, -.5, .1},
+    },
     ["2h_power_sword_pommel_ml01"] = {
         replacement_path = _item_melee.."/pommels/2h_power_sword_pommel_ml01",
         icon_render_unit_rotation_offset = {90, 45, 0},

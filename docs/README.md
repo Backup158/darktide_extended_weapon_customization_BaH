@@ -69,6 +69,12 @@ Based on the pinned scrollbar version (2026-07-12).
 - More robust input validation for fix requirements (**utilities/plugins.lua**)
     - As-is, having malformed `requirements` for fixes would cause a backend error on launch, without indication of what went wrong
     - This checks for basic errors and logs hints for plugin authors
+- Add new attachments
+    - `powersword_2h_p1_m1` (Relic Blade) **weapons/powersword_2h_p1_m1.lua**
+        - Grip: `_item_melee.."/grips/2h_power_sword_grip_05"`
+        - Blade: `_item_melee.."/blades/2h_power_sword_blade_05"`
+        - Pommel: `_item_melee.."/pommels/2h_power_sword_pommel_05"`
+        - Hilt: `_item_melee.."/hilts/2h_power_sword_hilt_05"`
 - Add load order rules to metadata and **extended_weapon_customization.mod**
     - We found that loading `transonic_weapon_colors` before EWC or the MasterItems patch would cause crashes or break functionality
 - Add **info.json** metadata file
@@ -94,6 +100,10 @@ Based on the Nexus version (1.04 - 2026-07-10)
     - **attachments/stock_shotgun_huntsman.lua**
     - **attachments/underbarrel_huntsman.lua**
     - With localization for group names (**ewc_ba_localization.lua**)
+- Add new attachments
+    - `powersword_2h_p1_m1` (Relic Blade) Blade: `_item_melee.."/blades/2h_power_sword_blade_05"` **attachments/blade_2h_power_sword.lua**
+    - `powersword_2h_p1_m1` (Relic Blade) Hilt: `_item_melee.."/hilts/2h_power_sword_hilt_05"` **attachments/hilt_2h_power_sword.lua**
+    - `powersword_2h_p1_m1` (Relic Blade) Pommel: `_item_melee.."/pommels/2h_power_sword_pommel_05"` **attachments/pommel_2h_power_sword.lua**
 - Add **info.json** metadata file
     - This was introduced by DMF 26.08.19
     - I set the version to `<current>_dotd_<n>`. Feel free to change

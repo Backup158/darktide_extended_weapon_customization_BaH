@@ -52,6 +52,11 @@ return {
                 icon_render_unit_rotation_offset = {90, -30, 0},
                 icon_render_camera_position_offset = {-.05, -.5, .05},
             },
+            ["2h_power_sword_grip_05"] = {
+                replacement_path = _item_melee.."/grips/2h_power_sword_grip_05",
+                icon_render_unit_rotation_offset = {90, -30, 0},
+                icon_render_camera_position_offset = {-.05, -.5, .05},
+            },
         },
         blade = {
             ["2h_power_sword_blade_01"] = {
@@ -71,6 +76,11 @@ return {
             },
             ["2h_power_sword_blade_04"] = {
                 replacement_path = _item_melee.."/blades/2h_power_sword_blade_04",
+                icon_render_unit_rotation_offset = {90, -30, 0},
+                icon_render_camera_position_offset = {0, -5, 1.25},
+            },
+            ["2h_power_sword_blade_05"] = {
+                replacement_path = _item_melee.."/blades/2h_power_sword_blade_05",
                 icon_render_unit_rotation_offset = {90, -30, 0},
                 icon_render_camera_position_offset = {0, -5, 1.25},
             },
@@ -101,6 +111,11 @@ return {
                 icon_render_unit_rotation_offset = {90, 45, 0},
                 icon_render_camera_position_offset = {0, -.5, .1},
             },
+            ["2h_power_sword_pommel_05"] = {
+                replacement_path = _item_melee.."/pommels/2h_power_sword_pommel_05",
+                icon_render_unit_rotation_offset = {90, 45, 0},
+                icon_render_camera_position_offset = {0, -.5, .1},
+            },
             ["2h_power_sword_pommel_ml01"] = {
                 replacement_path = _item_melee.."/pommels/2h_power_sword_pommel_ml01",
                 icon_render_unit_rotation_offset = {90, 45, 0},
@@ -125,6 +140,11 @@ return {
             },
             ["2h_power_sword_hilt_04"] = {
                 replacement_path = _item_melee.."/hilts/2h_power_sword_hilt_04",
+                icon_render_unit_rotation_offset = {90, -20, 30},
+                icon_render_camera_position_offset = {-.05, -1.5, .3},
+            },
+            ["2h_power_sword_hilt_05"] = {
+                replacement_path = _item_melee.."/hilts/2h_power_sword_hilt_05",
                 icon_render_unit_rotation_offset = {90, -20, 30},
                 icon_render_camera_position_offset = {-.05, -1.5, .3},
             },
