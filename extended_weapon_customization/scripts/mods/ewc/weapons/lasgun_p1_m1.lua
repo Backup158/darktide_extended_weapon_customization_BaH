@@ -81,6 +81,21 @@ return {
                 icon_render_unit_rotation_offset = {90, -10, 30},
                 icon_render_camera_position_offset = {.1, -1.5, .2},
             },
+            lasgun_rifle_stock_06 = {
+                replacement_path = _item_ranged.."/stocks/lasgun_rifle_stock_06",
+                icon_render_unit_rotation_offset = {90, -10, 30},
+                icon_render_camera_position_offset = {.1, -1.5, .2},
+            },
+            lasgun_rifle_stock_07 = {
+                replacement_path = _item_ranged.."/stocks/lasgun_rifle_stock_07",
+                icon_render_unit_rotation_offset = {90, -10, 30},
+                icon_render_camera_position_offset = {.1, -1.5, .2},
+            },
+            lasgun_rifle_stock_08 = {
+                replacement_path = _item_ranged.."/stocks/lasgun_rifle_stock_08",
+                icon_render_unit_rotation_offset = {90, -10, 30},
+                icon_render_camera_position_offset = {.1, -1.5, .2},
+            },
         }, stock_common),
         muzzle = muzzle_lasgun_infantry,
         receiver = {
@@ -96,6 +111,21 @@ return {
             },
             lasgun_rifle_receiver_03 = {
                 replacement_path = _item_ranged.."/recievers/lasgun_rifle_receiver_03",
+                icon_render_unit_rotation_offset = {90, 0, 45},
+                icon_render_camera_position_offset = {-.15, -2.75, .25},
+            },
+            lasgun_rifle_receiver_04 = {
+                replacement_path = _item_ranged.."/recievers/lasgun_rifle_receiver_04",
+                icon_render_unit_rotation_offset = {90, 0, 45},
+                icon_render_camera_position_offset = {-.15, -2.75, .25},
+            },
+            lasgun_rifle_receiver_05 = {
+                replacement_path = _item_ranged.."/recievers/lasgun_rifle_receiver_05",
+                icon_render_unit_rotation_offset = {90, 0, 45},
+                icon_render_camera_position_offset = {-.15, -2.75, .25},
+            },
+            lasgun_rifle_receiver_06 = {
+                replacement_path = _item_ranged.."/recievers/lasgun_rifle_receiver_06",
                 icon_render_unit_rotation_offset = {90, 0, 45},
                 icon_render_camera_position_offset = {-.15, -2.75, .25},
             },

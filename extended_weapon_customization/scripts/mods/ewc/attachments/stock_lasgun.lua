@@ -43,6 +43,21 @@ return {
             icon_render_unit_rotation_offset = {90, -10, 30},
             icon_render_camera_position_offset = {.1, -1.5, .2},
         },
+        lasgun_rifle_stock_06 = {
+            replacement_path = _item_ranged.."/stocks/lasgun_rifle_stock_06",
+            icon_render_unit_rotation_offset = {90, -10, 30},
+            icon_render_camera_position_offset = {.1, -1.5, .2},
+        },
+        lasgun_rifle_stock_07 = {
+            replacement_path = _item_ranged.."/stocks/lasgun_rifle_stock_07",
+            icon_render_unit_rotation_offset = {90, -10, 30},
+            icon_render_camera_position_offset = {.1, -1.5, .2},
+        },
+        lasgun_rifle_stock_08 = {
+            replacement_path = _item_ranged.."/stocks/lasgun_rifle_stock_08",
+            icon_render_unit_rotation_offset = {90, -10, 30},
+            icon_render_camera_position_offset = {.1, -1.5, .2},
+        },
     --#endregion
     --#region Recon
         lasgun_rifle_elysian_stock_01 = {
@@ -62,6 +77,11 @@ return {
         },
         lasgun_rifle_elysian_stock_04 = {
             replacement_path = _item_ranged.."/stocks/lasgun_rifle_elysian_stock_04",
+            icon_render_unit_rotation_offset = {90, -10, 30},
+            icon_render_camera_position_offset = {.1, -2, .2},
+        },
+        lasgun_rifle_elysian_stock_05 = {
+            replacement_path = _item_ranged.."/stocks/lasgun_rifle_elysian_stock_05",
             icon_render_unit_rotation_offset = {90, -10, 30},
             icon_render_camera_position_offset = {.1, -2, .2},
         },

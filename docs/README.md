@@ -79,6 +79,30 @@ Based on the pinned scrollbar version (2026-07-12).
         - Receiver: `_item_ranged.."/recievers/shotgun_double_barrel_receiver_04"`
         - Stock: `_item_ranged.."/stocks/shotgun_double_barrel_stock_05"`
         - Barrel: `_item_ranged.."/barrels/shotgun_double_barrel_05"`
+    - Infantry Lasgun **weapons/lasgun_p1_m1.lua**
+        - Stock: and **attachments/stock_lasgun.lua**
+            - `_item_ranged.."/stocks/lasgun_rifle_stock_06"`
+            - `_item_ranged.."/stocks/lasgun_rifle_stock_07"`
+            - `_item_ranged.."/stocks/lasgun_rifle_stock_08"`
+        - Receiver:
+            - `_item_ranged.."/recievers/lasgun_rifle_receiver_04"`
+            - `_item_ranged.."/recievers/lasgun_rifle_receiver_05"`
+            - `_item_ranged.."/recievers/lasgun_rifle_receiver_06"`
+        - Barrel: **attachments/barrel_lasgun_infantry.lua**
+            - `_item_ranged.."/barrels/lasgun_rifle_barrel_10"`
+            - `_item_ranged.."/barrels/lasgun_rifle_barrel_11"`
+            - `_item_ranged.."/barrels/lasgun_rifle_barrel_12"`
+        - Magazine: **attachments/magazine_lasgun_infantry.lua**
+            - `_item_ranged.."/magazines/lasgun_rifle_magazine_02"`
+            - `_item_ranged.."/magazines/lasgun_rifle_magazine_03"`
+        - Muzzle: **attachments/muzzle_lasgun_infantry.lua**
+            - `_item_ranged.."/muzzles/lasgun_rifle_muzzle_05"`
+            - `_item_ranged.."/muzzles/lasgun_rifle_muzzle_06"`
+            - `_item_ranged.."/muzzles/lasgun_rifle_muzzle_07"`
+    - Recon Lasgun **weapons/lasgun_p3_m1.lua**
+        - Stock: `_item_ranged.."/stocks/lasgun_rifle_elysian_stock_05"` also in **attachments/stock_lasgun.lua**
+        - Receiver: `_item_ranged.."/recievers/lasgun_rifle_elysian_receiver_09"`
+        - Muzzle: `_item_ranged.."/muzzles/lasgun_rifle_elysian_muzzle_05"` in **attachments/muzzle_lasgun_recon.lua**
 - Add load order rules to metadata and **extended_weapon_customization.mod**
     - We found that loading `transonic_weapon_colors` before EWC or the MasterItems patch would cause crashes or break functionality
 - Add **info.json** metadata file
@@ -104,11 +128,18 @@ Based on the Nexus version (1.04 - 2026-07-10)
     - **attachments/stock_shotgun_huntsman.lua**
     - **attachments/underbarrel_huntsman.lua**
     - With localization for group names (**ewc_ba_localization.lua**)
-- Add new attachments
-    - Relic Blade Blade: `_item_melee.."/blades/2h_power_sword_blade_05"` **attachments/blade_2h_power_sword.lua**
-    - Relic Blade Hilt: `_item_melee.."/hilts/2h_power_sword_hilt_05"` **attachments/hilt_2h_power_sword.lua**
-    - Relic Blade Pommel: `_item_melee.."/pommels/2h_power_sword_pommel_05"` **attachments/pommel_2h_power_sword.lua**
-    - Double-barreled Shotgun Stock: `_item_ranged.."/stocks/shotgun_double_barrel_stock_05"` **attachments/stock_shotgun_double_barrel**
+- Add new attachments (for brevity, these are just the numbers, since the address is written in the EWC section)
+    - **attachments/blade_2h_power_sword.lua** - Relic Blade Blade: [5]
+    - **attachments/hilt_2h_power_sword.lua** - Relic Blade Hilt: [5]
+    - **attachments/pommel_2h_power_sword.lua** - Relic Blade Pommel: [5]
+    - **attachments/stock_shotgun_double_barrel.lua** - Double-barreled Shotgun Stock: [5]
+    - **attachments/barrel_lasgun_infantry.lua** - Infantry Lasgun Barrels: [10, 11, 12]
+    - **attachments/magazine_lasgun_infantry.lua** - Infantry Lasgun Magazines: [2, 3] 
+    - **attachments/muzzle_lasgun_infantry.lua** - Infantry Lasgun Muzzles: [5, 6, 7] 
+    - **attachments/muzzle_lasgun_recon.lua** - Recon Lasgun Muzzles: [5]
+    - **attachments/stock_lasgun.lua**
+        - Infantry Lasgun Stocks: [6, 7, 8]
+        - Recon Lasgun Stocks; [5]
 - Add **info.json** metadata file
     - This was introduced by DMF 26.08.19
     - I set the version to `<current>_dotd_<n>`. Feel free to change

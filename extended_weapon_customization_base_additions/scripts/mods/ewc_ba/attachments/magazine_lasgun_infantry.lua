@@ -22,6 +22,16 @@ return {
         icon_render_unit_rotation_offset = {90, 0, 30},
         icon_render_camera_position_offset = {-.1, -1.5, -.05},
     },
+    lasgun_rifle_magazine_02 = {
+        replacement_path = _item_ranged.."/magazines/lasgun_rifle_magazine_02",
+        icon_render_unit_rotation_offset = {90, 0, 30},
+        icon_render_camera_position_offset = {-.1, -1.5, -.05},
+    },
+    lasgun_rifle_magazine_03 = {
+        replacement_path = _item_ranged.."/magazines/lasgun_rifle_magazine_03",
+        icon_render_unit_rotation_offset = {90, 0, 30},
+        icon_render_camera_position_offset = {-.1, -1.5, -.05},
+    },
     lasgun_rifle_magazine_ml01 = {
         replacement_path = _item_ranged.."/magazines/lasgun_rifle_magazine_ml01",
         icon_render_unit_rotation_offset = {90, 0, 30},

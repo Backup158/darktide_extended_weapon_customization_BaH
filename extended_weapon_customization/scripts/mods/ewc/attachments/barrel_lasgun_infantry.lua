@@ -62,6 +62,21 @@ return {
         icon_render_unit_rotation_offset = {90, -20, 90 - 30},
         icon_render_camera_position_offset = {-.175, -2, 0},
     },
+    lasgun_rifle_barrel_10 = {
+        replacement_path = _item_ranged.."/barrels/lasgun_rifle_barrel_10",
+        icon_render_unit_rotation_offset = {90, -20, 90 - 30},
+        icon_render_camera_position_offset = {-.175, -2, 0},
+    },
+    lasgun_rifle_barrel_11 = {
+        replacement_path = _item_ranged.."/barrels/lasgun_rifle_barrel_11",
+        icon_render_unit_rotation_offset = {90, -20, 90 - 30},
+        icon_render_camera_position_offset = {-.175, -2, 0},
+    },
+    lasgun_rifle_barrel_12 = {
+        replacement_path = _item_ranged.."/barrels/lasgun_rifle_barrel_12",
+        icon_render_unit_rotation_offset = {90, -20, 90 - 30},
+        icon_render_camera_position_offset = {-.175, -2, 0},
+    },
     lasgun_rifle_barrel_ml01 = {
         replacement_path = _item_ranged.."/barrels/lasgun_rifle_barrel_ml01",
         icon_render_unit_rotation_offset = {90, -20, 90 - 30},
