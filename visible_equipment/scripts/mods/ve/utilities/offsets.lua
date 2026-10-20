@@ -163,11 +163,11 @@ local offsets = {
 
 --#region Copies
     --#region Ogryn melee
-        offsets.ogryn_powermaul_slabshield_p1_m2 = table_clone_safe(offsets.ogryn_powermaul_slabshield_p1_m1)
         offsets.ogryn_combatblade_p1_m2 = table_clone_safe(offsets.ogryn_combatblade_p1_m1)
         offsets.ogryn_combatblade_p1_m3 = table_clone_safe(offsets.ogryn_combatblade_p1_m1)
         offsets.ogryn_pickaxe_2h_p1_m2 = table_clone_safe(offsets.ogryn_pickaxe_2h_p1_m1)
         offsets.ogryn_pickaxe_2h_p1_m3 = table_clone_safe(offsets.ogryn_pickaxe_2h_p1_m1)
+        offsets.ogryn_powermaul_slabshield_p1_m2 = table_clone_safe(offsets.ogryn_powermaul_slabshield_p1_m1)
         offsets.ogryn_powermaul_p1_m2 = table_clone_safe(offsets.ogryn_powermaul_p1_m1)
 		offsets.ogryn_powermaul_p1_m3 = table_clone_safe(offsets.ogryn_powermaul_p1_m1)
         offsets.ogryn_club_p2_m2 = table_clone_safe(offsets.ogryn_club_p2_m1)
