@@ -92,6 +92,9 @@ Based on the pinned scrollbar version (2026-07-12).
             - `_item_ranged.."/barrels/lasgun_rifle_barrel_10"`
             - `_item_ranged.."/barrels/lasgun_rifle_barrel_11"`
             - `_item_ranged.."/barrels/lasgun_rifle_barrel_12"`
+        - Grip: **attachments/grip_lasgun.lua**
+            - `_item_ranged.."/grips/lasgun_rifle_grip_06"`
+            - `_item_ranged.."/grips/lasgun_rifle_grip_07"`
         - Magazine: **attachments/magazine_lasgun_infantry.lua**
             - `_item_ranged.."/magazines/lasgun_rifle_magazine_02"`
             - `_item_ranged.."/magazines/lasgun_rifle_magazine_03"`
@@ -134,6 +137,7 @@ Based on the Nexus version (1.04 - 2026-07-10)
     - **attachments/pommel_2h_power_sword.lua** - Relic Blade Pommel: [5]
     - **attachments/stock_shotgun_double_barrel.lua** - Double-barreled Shotgun Stock: [5]
     - **attachments/barrel_lasgun_infantry.lua** - Infantry Lasgun Barrels: [10, 11, 12]
+    - **attachments/grip_lasgun.lua** - Infantry Lasgun Magazines: [6, 7] 
     - **attachments/magazine_lasgun_infantry.lua** - Infantry Lasgun Magazines: [2, 3] 
     - **attachments/muzzle_lasgun_infantry.lua** - Infantry Lasgun Muzzles: [5, 6, 7] 
     - **attachments/muzzle_lasgun_recon.lua** - Recon Lasgun Muzzles: [5]

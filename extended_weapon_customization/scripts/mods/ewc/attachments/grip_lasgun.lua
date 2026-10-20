@@ -43,6 +43,16 @@ return {
             icon_render_unit_rotation_offset = {90, 0, 30},
             icon_render_camera_position_offset = {.075, -1, .05},
         },
+        lasgun_rifle_grip_06 = {
+            replacement_path = _item_ranged.."/grips/lasgun_rifle_grip_06",
+            icon_render_unit_rotation_offset = {90, 0, 30},
+            icon_render_camera_position_offset = {.075, -1, .05},
+        },
+        lasgun_rifle_grip_07 = {
+            replacement_path = _item_ranged.."/grips/lasgun_rifle_grip_07",
+            icon_render_unit_rotation_offset = {90, 0, 30},
+            icon_render_camera_position_offset = {.075, -1, .05},
+        },
     --#endregion
     --#region Recon
         lasgun_rifle_elysian_grip_02 = {
