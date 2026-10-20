@@ -206,11 +206,11 @@ local sounds = {
 
 --#region Copies
     --#region Ogryn melee
-        sounds.ogryn_powermaul_slabshield_p1_m2 = table_clone_safe(sounds.ogryn_powermaul_slabshield_p1_m1)
         sounds.ogryn_combatblade_p1_m2 = table_clone_safe(sounds.ogryn_combatblade_p1_m1)
         sounds.ogryn_combatblade_p1_m3 = table_clone_safe(sounds.ogryn_combatblade_p1_m1)
         sounds.ogryn_pickaxe_2h_p1_m2 = table_clone_safe(sounds.ogryn_pickaxe_2h_p1_m1)
         sounds.ogryn_pickaxe_2h_p1_m3 = table_clone_safe(sounds.ogryn_pickaxe_2h_p1_m1)
+        sounds.ogryn_powermaul_slabshield_p1_m2 = table_clone_safe(sounds.ogryn_powermaul_slabshield_p1_m1)
         sounds.ogryn_powermaul_p1_m2 = table_clone_safe(sounds.ogryn_powermaul_p1_m1)
         sounds.ogryn_powermaul_p1_m3 = table_clone_safe(sounds.ogryn_powermaul_p1_m1)
         sounds.ogryn_club_p1_m2 = table_clone_safe(sounds.ogryn_club_p1_m1)
