@@ -61,6 +61,11 @@ return {
                 icon_render_unit_rotation_offset = {90, -20, 90 - 30},
                 icon_render_camera_position_offset = {-.245, -2.5, 0},
             },
+            autogun_rifle_barrel_ak_09 = {
+                replacement_path = _item_ranged.."/barrels/autogun_rifle_barrel_ak_09",
+                icon_render_unit_rotation_offset = {90, -20, 90 - 30},
+                icon_render_camera_position_offset = {-.245, -2.5, 0},
+            },
             autogun_rifle_barrel_ak_ml01 = {
                 replacement_path = _item_ranged.."/barrels/autogun_rifle_barrel_ak_ml01",
                 icon_render_unit_rotation_offset = {90, -20, 90 - 30},
@@ -90,6 +95,11 @@ return {
             },
             autogun_rifle_ak_muzzle_05 = {
                 replacement_path = _item_ranged.."/muzzles/autogun_rifle_ak_muzzle_05",
+                icon_render_unit_rotation_offset = {90, 0, 30},
+                icon_render_camera_position_offset = {-.15, -1, .15},
+            },
+            autogun_rifle_ak_muzzle_06 = {
+                replacement_path = _item_ranged.."/muzzles/autogun_rifle_ak_muzzle_06",
                 icon_render_unit_rotation_offset = {90, 0, 30},
                 icon_render_camera_position_offset = {-.15, -1, .15},
             },
@@ -171,6 +181,11 @@ return {
                 icon_render_unit_rotation_offset = {90, -10, 30},
                 icon_render_camera_position_offset = {.1, -1.5, .2},
             },
+            autogun_rifle_ak_stock_08 = {
+                replacement_path = _item_ranged.."/stocks/autogun_rifle_ak_stock_08",
+                icon_render_unit_rotation_offset = {90, -10, 30},
+                icon_render_camera_position_offset = {.1, -1.5, .2},
+            },
             autogun_rifle_ak_stock_ml01 = {
                 replacement_path = _item_ranged.."/stocks/autogun_rifle_ak_stock_ml01",
                 icon_render_unit_rotation_offset = {90, -10, 30},
@@ -200,6 +215,11 @@ return {
             },
             autogun_rifle_grip_ak_05 = {
                 replacement_path = _item_ranged.."/grips/autogun_rifle_grip_ak_05",
+                icon_render_unit_rotation_offset = {90, 0, 30},
+                icon_render_camera_position_offset = {.075, -1, .05},
+            },
+            autogun_rifle_grip_ak_06 = {
+                replacement_path = _item_ranged.."/grips/autogun_rifle_grip_ak_06",
                 icon_render_unit_rotation_offset = {90, 0, 30},
                 icon_render_camera_position_offset = {.075, -1, .05},
             },
