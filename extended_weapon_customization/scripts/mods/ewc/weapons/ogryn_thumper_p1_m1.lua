@@ -106,11 +106,11 @@ return {
                 icon_render_camera_position_offset = {-.55, -7, 1},
             },
             shotgun_grenade_full_08 = {
-                replacement_path = _item_melee.."/full/shotgun_grenade_full_09",
+                replacement_path = _item_melee.."/full/shotgun_grenade_full_08",
                 icon_render_unit_rotation_offset = {90, 20, 90 - 30},
                 icon_render_camera_position_offset = {-.55, -7, 1},
             },
-            shotgun_grenade_full_08 = {
+            shotgun_grenade_full_09 = {
                 replacement_path = _item_melee.."/full/shotgun_grenade_full_09",
                 icon_render_unit_rotation_offset = {90, 20, 90 - 30},
                 icon_render_camera_position_offset = {-.55, -7, 1},

@@ -130,7 +130,7 @@ return {
                 icon_render_unit_rotation_offset = {90, -30, 0},
                 icon_render_camera_position_offset = {0, -1.5, .4},
             },
-            force_staff_full_07 = {
+            force_staff_full_08 = {
                 replacement_path = _item_melee.."/full/force_staff_full_08",
                 icon_render_unit_rotation_offset = {90, -30, 0},
                 icon_render_camera_position_offset = {0, -1.5, .4},
