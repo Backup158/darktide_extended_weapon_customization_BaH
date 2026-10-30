@@ -62,6 +62,11 @@ return {
                 icon_render_unit_rotation_offset = {90, -30, 0},
                 icon_render_camera_position_offset = {-.025, -.5, .1},
             },
+            power_sword_grip_07 = {
+                replacement_path = _item_melee.."/grips/power_sword_grip_07",
+                icon_render_unit_rotation_offset = {90, -30, 0},
+                icon_render_camera_position_offset = {-.025, -.5, .1},
+            },
             power_sword_grip_ml01 = {
                 replacement_path = _item_melee.."/grips/power_sword_grip_ml01",
                 icon_render_unit_rotation_offset = {90, -30, 0},
@@ -99,6 +104,11 @@ return {
                 icon_render_unit_rotation_offset = {90, 30, 0},
                 icon_render_camera_position_offset = {-.025, -2.5, .7},
             },
+            power_sword_blade_08 = {
+                replacement_path = _item_melee.."/blades/power_sword_blade_08",
+                icon_render_unit_rotation_offset = {90, 30, 0},
+                icon_render_camera_position_offset = {-.025, -2.5, .7},
+            },
             power_sword_blade_ml01 = {
                 replacement_path = _item_melee.."/blades/power_sword_blade_ml01",
                 icon_render_unit_rotation_offset = {90, 30, 0},
@@ -128,6 +138,11 @@ return {
             },
             power_sword_pommel_06 = {
                 replacement_path = _item_melee.."/pommels/power_sword_pommel_06",
+                icon_render_unit_rotation_offset = {90, 45, 0},
+                icon_render_camera_position_offset = {0, -.5, .075},
+            },
+            power_sword_pommel_07 = {
+                replacement_path = _item_melee.."/pommels/power_sword_pommel_07",
                 icon_render_unit_rotation_offset = {90, 45, 0},
                 icon_render_camera_position_offset = {0, -.5, .075},
             },

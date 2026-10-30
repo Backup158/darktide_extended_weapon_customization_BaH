@@ -96,6 +96,11 @@ return {
                 icon_render_unit_rotation_offset = {90, -10, -60},
                 icon_render_camera_position_offset = {.035, .1, .15},
             },
+            lasgun_pistol_stock_05 = {
+                replacement_path = _item_ranged.."/stocks/lasgun_pistol_stock_05",
+                icon_render_unit_rotation_offset = {90, -10, -60},
+                icon_render_camera_position_offset = {.035, .1, .15},
+            },
             lasgun_pistol_stock_ml01 = {
                 replacement_path = _item_ranged.."/stocks/lasgun_pistol_stock_ml01",
                 icon_render_unit_rotation_offset = {90, -10, -60},
@@ -144,6 +149,11 @@ return {
                 icon_render_unit_rotation_offset = {90, 0, 45},
                 icon_render_camera_position_offset = {-.15, -1.75, .25},
             },
+            lasgun_pistol_receiver_09 = {
+                replacement_path = _item_ranged.."/recievers/lasgun_pistol_receiver_09",
+                icon_render_unit_rotation_offset = {90, 0, 45},
+                icon_render_camera_position_offset = {-.15, -1.75, .25},
+            },
             lasgun_pistol_receiver_ml01 = {
                 replacement_path = _item_ranged.."/recievers/lasgun_pistol_receiver_ml01",
                 icon_render_unit_rotation_offset = {90, 0, 45},
@@ -175,6 +185,11 @@ return {
             },
             lasgun_pistol_magazine_05 = {
                 replacement_path = _item_ranged.."/magazines/lasgun_pistol_magazine_05",
+                icon_render_unit_rotation_offset = {90, 0, 30},
+                icon_render_camera_position_offset = {-.1, -1.5, -.05},
+            },
+            lasgun_pistol_magazine_06 = {
+                replacement_path = _item_ranged.."/magazines/lasgun_pistol_magazine_06",
                 icon_render_unit_rotation_offset = {90, 0, 30},
                 icon_render_camera_position_offset = {-.1, -1.5, -.05},
             },
@@ -217,6 +232,11 @@ return {
             },
             lasgun_pistol_barrel_07 = {
                 replacement_path = _item_ranged.."/barrels/lasgun_pistol_barrel_07",
+                icon_render_unit_rotation_offset = {90, -20, 90 - 30},
+                icon_render_camera_position_offset = {-.075, -1.25, .1},
+            },
+            lasgun_pistol_barrel_08 = {
+                replacement_path = _item_ranged.."/barrels/lasgun_pistol_barrel_08",
                 icon_render_unit_rotation_offset = {90, -20, 90 - 30},
                 icon_render_camera_position_offset = {-.075, -1.25, .1},
             },

@@ -83,6 +83,11 @@ return {
                 icon_render_unit_rotation_offset = {90, -30, 0},
                 icon_render_camera_position_offset = {-.05, -1.5, .2},
             },
+            chain_sword_grip_11 = {
+                replacement_path = _item_melee.."/grips/chain_sword_grip_11",
+                icon_render_unit_rotation_offset = {90, -30, 0},
+                icon_render_camera_position_offset = {-.05, -1.5, .2},
+            },
             chain_sword_grip_ml01 = {
                 replacement_path = _item_melee.."/grips/chain_sword_grip_ml01",
                 icon_render_unit_rotation_offset = {90, -30, 0},
@@ -142,6 +147,11 @@ return {
             },
             chain_sword_full_11 = {
                 replacement_path = _item_melee.."/full/chain_sword_full_11",
+                icon_render_unit_rotation_offset = {90, -30, 0},
+                icon_render_camera_position_offset = {0, -2.25, .7},
+            },
+            chain_sword_full_12 = {
+                replacement_path = _item_melee.."/full/chain_sword_full_12",
                 icon_render_unit_rotation_offset = {90, -30, 0},
                 icon_render_camera_position_offset = {0, -2.25, .7},
             },

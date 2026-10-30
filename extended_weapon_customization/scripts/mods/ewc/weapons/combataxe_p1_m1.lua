@@ -63,6 +63,16 @@ return {
                 icon_render_unit_rotation_offset = {90, -30, 0},
                 icon_render_camera_position_offset = {-.05, -1.5, .2},
             },
+            axe_grip_07 = {
+                replacement_path = _item_melee.."/grips/axe_grip_07",
+                icon_render_unit_rotation_offset = {90, -30, 0},
+                icon_render_camera_position_offset = {-.05, -1.5, .2},
+            },
+            axe_grip_08 = {
+                replacement_path = _item_melee.."/grips/axe_grip_08",
+                icon_render_unit_rotation_offset = {90, -30, 0},
+                icon_render_camera_position_offset = {-.05, -1.5, .2},
+            },
         },
         head = {
             axe_head_01 = {
@@ -87,6 +97,16 @@ return {
             },
             axe_head_05 = {
                 replacement_path = _item_melee.."/heads/axe_head_05",
+                icon_render_unit_rotation_offset = {90, 30, 0},
+                icon_render_camera_position_offset = {-.17, -2.75, .3},
+            },
+            axe_head_06 = {
+                replacement_path = _item_melee.."/heads/axe_head_06",
+                icon_render_unit_rotation_offset = {90, 30, 0},
+                icon_render_camera_position_offset = {-.17, -2.75, .3},
+            },
+            axe_head_07 = {
+                replacement_path = _item_melee.."/heads/axe_head_07",
                 icon_render_unit_rotation_offset = {90, 30, 0},
                 icon_render_camera_position_offset = {-.17, -2.75, .3},
             },
@@ -119,6 +139,16 @@ return {
             },
             axe_pommel_05 = {
                 replacement_path = _item_melee.."/pommels/axe_pommel_05",
+                icon_render_unit_rotation_offset = {90, 45, 0},
+                icon_render_camera_position_offset = {0, -.5, .05},
+            },
+            axe_pommel_06 = {
+                replacement_path = _item_melee.."/pommels/axe_pommel_06",
+                icon_render_unit_rotation_offset = {90, 45, 0},
+                icon_render_camera_position_offset = {0, -.5, .05},
+            },
+            axe_pommel_07 = {
+                replacement_path = _item_melee.."/pommels/axe_pommel_07",
                 icon_render_unit_rotation_offset = {90, 45, 0},
                 icon_render_camera_position_offset = {0, -.5, .05},
             },

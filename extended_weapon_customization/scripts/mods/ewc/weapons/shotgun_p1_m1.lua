@@ -79,6 +79,16 @@ return {
                 icon_render_unit_rotation_offset = {90, 0, 30},
                 icon_render_camera_position_offset = {-.05, -1.5, .15},
             },
+            shotgun_rifle_underbarrel_09 = {
+                replacement_path = _item_ranged.."/underbarrels/shotgun_rifle_underbarrel_09",
+                icon_render_unit_rotation_offset = {90, 0, 30},
+                icon_render_camera_position_offset = {-.05, -1.5, .15},
+            },
+            shotgun_rifle_underbarrel_10 = {
+                replacement_path = _item_ranged.."/underbarrels/shotgun_rifle_underbarrel_10",
+                icon_render_unit_rotation_offset = {90, 0, 30},
+                icon_render_camera_position_offset = {-.05, -1.5, .15},
+            },
             shotgun_pump_action_underbarrel_01 = {
                 replacement_path = _item_ranged.."/underbarrels/shotgun_pump_action_underbarrel_01",
                 icon_render_unit_rotation_offset = {90, 0, 30},
@@ -104,6 +114,16 @@ return {
             },
             shotgun_rifle_receiver_02 = {
                 replacement_path = _item_ranged.."/recievers/shotgun_rifle_receiver_02",
+                icon_render_unit_rotation_offset = {90, 0, 45},
+                icon_render_camera_position_offset = {-.15, -1.75, .25},
+            },
+            shotgun_rifle_receiver_03 = {
+                replacement_path = _item_ranged.."/recievers/shotgun_rifle_receiver_03",
+                icon_render_unit_rotation_offset = {90, 0, 45},
+                icon_render_camera_position_offset = {-.15, -1.75, .25},
+            },
+            shotgun_rifle_receiver_04 = {
+                replacement_path = _item_ranged.."/recievers/shotgun_rifle_receiver_04",
                 icon_render_unit_rotation_offset = {90, 0, 45},
                 icon_render_camera_position_offset = {-.15, -1.75, .25},
             },
@@ -154,6 +174,16 @@ return {
                 icon_render_unit_rotation_offset = {90, -10, 30},
                 icon_render_camera_position_offset = {.15, -2, .2},
             },
+            shotgun_rifle_stock_11 = {
+                replacement_path = _item_ranged.."/stocks/shotgun_rifle_stock_11",
+                icon_render_unit_rotation_offset = {90, -10, 30},
+                icon_render_camera_position_offset = {.15, -2, .2},
+            },
+            shotgun_rifle_stock_12 = {
+                replacement_path = _item_ranged.."/stocks/shotgun_rifle_stock_12",
+                icon_render_unit_rotation_offset = {90, -10, 30},
+                icon_render_camera_position_offset = {.15, -2, .2},
+            },
             shotgun_rifle_stock_ml01 = {
                 replacement_path = _item_ranged.."/stocks/shotgun_rifle_stock_ml01",
                 icon_render_unit_rotation_offset = {90, -10, 30},
@@ -198,6 +228,16 @@ return {
             },
             shotgun_rifle_barrel_10 = {
                 replacement_path = _item_ranged.."/barrels/shotgun_rifle_barrel_10",
+                icon_render_unit_rotation_offset = {90, -20, 90 - 30},
+                icon_render_camera_position_offset = {-.25, -2.5, 0},
+            },
+            shotgun_rifle_barrel_11 = {
+                replacement_path = _item_ranged.."/barrels/shotgun_rifle_barrel_11",
+                icon_render_unit_rotation_offset = {90, -20, 90 - 30},
+                icon_render_camera_position_offset = {-.25, -2.5, 0},
+            },
+            shotgun_rifle_barrel_12 = {
+                replacement_path = _item_ranged.."/barrels/shotgun_rifle_barrel_12",
                 icon_render_unit_rotation_offset = {90, -20, 90 - 30},
                 icon_render_camera_position_offset = {-.25, -2.5, 0},
             },
