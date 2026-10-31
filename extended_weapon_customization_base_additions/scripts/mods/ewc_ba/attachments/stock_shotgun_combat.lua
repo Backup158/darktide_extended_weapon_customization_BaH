@@ -65,6 +65,18 @@ return {
         icon_render_camera_position_offset = {.15, -2, .2},
         selection_index = 8,
     },
+    shotgun_rifle_stock_11 = {
+        replacement_path = _item_ranged.."/stocks/shotgun_rifle_stock_11",
+        icon_render_unit_rotation_offset = {90, -10, 30},
+        icon_render_camera_position_offset = {.15, -2, .2},
+        selection_index = 7,
+    },
+    shotgun_rifle_stock_12 = {
+        replacement_path = _item_ranged.."/stocks/shotgun_rifle_stock_12",
+        icon_render_unit_rotation_offset = {90, -10, 30},
+        icon_render_camera_position_offset = {.15, -2, .2},
+        selection_index = 8,
+    },
     shotgun_rifle_stock_ml01 = {
         replacement_path = _item_ranged.."/stocks/shotgun_rifle_stock_ml01",
         icon_render_unit_rotation_offset = {90, -10, 30},

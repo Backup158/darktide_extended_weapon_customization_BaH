@@ -69,7 +69,9 @@ Based on the pinned scrollbar version (2026-07-12).
 - More robust input validation for fix requirements (**utilities/plugins.lua**)
     - As-is, having malformed `requirements` for fixes would cause a backend error on launch, without indication of what went wrong
     - This checks for basic errors and logs hints for plugin authors
-- Add new attachments
+- Add new attachments. For brevity, some of these will just be the key name.
+    - Thanks to Broccodile, these were all added to EWC: [PR #4](https://github.com/Backup158/darktide_extended_weapon_customization_BaH/pull/4)
+        - I've copied these to the generic options when appropriate
     - Relic Blade **weapons/powersword_2h_p1_m1.lua**
         - Grip: `_item_melee.."/grips/2h_power_sword_grip_05"`
         - Blade: `_item_melee.."/blades/2h_power_sword_blade_05"`
@@ -144,6 +146,7 @@ Based on the Nexus version (1.04 - 2026-07-10)
     - **attachments/stock_lasgun.lua**
         - Infantry Lasgun Stocks: [6, 7, 8]
         - Recon Lasgun Stocks; [5]
+    - - The attachments from [PR #4](https://github.com/Backup158/darktide_extended_weapon_customization_BaH/pull/4) were also added.
 - Add **info.json** metadata file
     - This was introduced by DMF 26.08.19
     - I set the version to `<current>_dotd_<n>`. Feel free to change

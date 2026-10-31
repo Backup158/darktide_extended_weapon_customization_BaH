@@ -60,6 +60,12 @@ return {
         icon_render_camera_position_offset = {.05, -3, .8},
         damage_type = "metal_slashing_medium",
     },
+    sabre_blade_08 = {
+        replacement_path = _item_melee.."/blades/sabre_blade_08",
+        icon_render_unit_rotation_offset = {90, -30, 0},
+        icon_render_camera_position_offset = {.05, -3, .8},
+        damage_type = "metal_slashing_medium",
+    },
     sabre_blade_ml01 = {
         replacement_path = _item_melee.."/blades/sabre_blade_ml01",
         icon_render_unit_rotation_offset = {90, -30, 0},

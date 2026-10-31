@@ -53,4 +53,16 @@ return {
         icon_render_camera_position_offset = {-.05, -1.5, .15},
         selection_index = 6,
     },
+    shotgun_rifle_underbarrel_09 = {
+        replacement_path = _item_ranged.."/underbarrels/shotgun_rifle_underbarrel_09",
+        icon_render_unit_rotation_offset = {90, 0, 30},
+        icon_render_camera_position_offset = {-.05, -1.5, .15},
+        selection_index = 7,
+    },
+    shotgun_rifle_underbarrel_10 = {
+        replacement_path = _item_ranged.."/underbarrels/shotgun_rifle_underbarrel_10",
+        icon_render_unit_rotation_offset = {90, 0, 30},
+        icon_render_camera_position_offset = {-.05, -1.5, .15},
+        selection_index = 8,
+    },
 }

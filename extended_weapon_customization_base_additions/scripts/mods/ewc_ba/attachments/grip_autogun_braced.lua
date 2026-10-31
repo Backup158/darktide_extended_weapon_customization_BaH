@@ -42,6 +42,11 @@ return {
         icon_render_unit_rotation_offset = {90, 0, 30},
         icon_render_camera_position_offset = {.075, -1, .05},
     },
+    autogun_rifle_grip_ak_06 = {
+        replacement_path = _item_ranged.."/grips/autogun_rifle_grip_ak_06",
+        icon_render_unit_rotation_offset = {90, 0, 30},
+        icon_render_camera_position_offset = {.075, -1, .05},
+    },
     autogun_rifle_grip_ak_ml01 = {
         replacement_path = _item_ranged.."/grips/autogun_rifle_grip_ak_ml01",
         icon_render_unit_rotation_offset = {90, 0, 30},

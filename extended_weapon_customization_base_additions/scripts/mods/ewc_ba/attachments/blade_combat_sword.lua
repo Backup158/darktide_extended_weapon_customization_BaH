@@ -59,6 +59,13 @@ return {
         icon_render_camera_position_offset = {0, -2.5, .8},
         damage_type = "metal_slashing_medium",
     },
+    -- No 08
+    combat_sword_blade_09 = {
+        replacement_path = _item_melee.."/blades/combat_sword_blade_09",
+        icon_render_unit_rotation_offset = {90, -30, 0},
+        icon_render_camera_position_offset = {0, -2.5, .8},
+        damage_type = "metal_slashing_medium",
+    },
     combat_sword_blade_ml01 = {
         replacement_path = _item_melee.."/blades/combat_sword_blade_ml01",
         icon_render_unit_rotation_offset = {90, -30, 0},

@@ -63,6 +63,12 @@ return {
         icon_render_camera_position_offset = {-.025, -2.5, .7},
         damage_type = "metal_slashing_medium",
     },
+    power_sword_blade_08 = {
+        replacement_path = _item_melee.."/blades/power_sword_blade_08",
+        icon_render_unit_rotation_offset = {90, 30, 0},
+        icon_render_camera_position_offset = {-.025, -2.5, .7},
+        damage_type = "metal_slashing_medium",
+    },
     power_sword_blade_ml01 = {
         replacement_path = _item_melee.."/blades/power_sword_blade_ml01",
         icon_render_unit_rotation_offset = {90, 30, 0},

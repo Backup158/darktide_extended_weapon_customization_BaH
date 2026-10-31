@@ -58,6 +58,11 @@ return {
         icon_render_unit_rotation_offset = {90, -30, 0},
         icon_render_camera_position_offset = {-.025, -2.5, .2},
     },
+    sabre_grip_09 = {
+        replacement_path = _item_melee.."/grips/sabre_grip_09",
+        icon_render_unit_rotation_offset = {90, -30, 0},
+        icon_render_camera_position_offset = {-.025, -2.5, .2},
+    },
     sabre_grip_ml01 = {
         replacement_path = _item_melee.."/grips/sabre_grip_ml01",
         icon_render_unit_rotation_offset = {90, -30, 0},

@@ -47,4 +47,14 @@ return {
         icon_render_unit_rotation_offset = {90, -30, 0},
         icon_render_camera_position_offset = {-.05, -1.5, .2},
     },
+    axe_grip_07 = {
+        replacement_path = _item_melee.."/grips/axe_grip_07",
+        icon_render_unit_rotation_offset = {90, -30, 0},
+        icon_render_camera_position_offset = {-.05, -1.5, .2},
+    },
+    axe_grip_08 = {
+        replacement_path = _item_melee.."/grips/axe_grip_08",
+        icon_render_unit_rotation_offset = {90, -30, 0},
+        icon_render_camera_position_offset = {-.05, -1.5, .2},
+    },
 }

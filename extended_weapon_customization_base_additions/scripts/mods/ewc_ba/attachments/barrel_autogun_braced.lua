@@ -57,6 +57,11 @@ return {
         icon_render_unit_rotation_offset = {90, -20, 90 - 30},
         icon_render_camera_position_offset = {-.245, -2.5, 0},
     },
+    autogun_rifle_barrel_ak_09 = {
+        replacement_path = _item_ranged.."/barrels/autogun_rifle_barrel_ak_09",
+        icon_render_unit_rotation_offset = {90, -20, 90 - 30},
+        icon_render_camera_position_offset = {-.245, -2.5, 0},
+    },
     autogun_rifle_barrel_ak_ml01 = {
         replacement_path = _item_ranged.."/barrels/autogun_rifle_barrel_ak_ml01",
         icon_render_unit_rotation_offset = {90, -20, 90 - 30},

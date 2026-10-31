@@ -43,6 +43,16 @@ return {
             icon_render_unit_rotation_offset = {90, 0, 30},
             icon_render_camera_position_offset = {-.15, -1, .15},
         },
+        autogun_rifle_muzzle_06 = {
+            replacement_path = _item_ranged.."/muzzles/autogun_rifle_muzzle_06",
+            icon_render_unit_rotation_offset = {90, 0, 30},
+            icon_render_camera_position_offset = {-.15, -1, .15},
+        },
+        autogun_rifle_muzzle_07 = {
+            replacement_path = _item_ranged.."/muzzles/autogun_rifle_muzzle_07",
+            icon_render_unit_rotation_offset = {90, 0, 30},
+            icon_render_camera_position_offset = {-.15, -1, .15},
+        },
         autogun_rifle_muzzle_ml01 = {
             replacement_path = _item_ranged.."/muzzles/autogun_rifle_muzzle_ml01",
             icon_render_unit_rotation_offset = {90, 0, 30},
@@ -75,6 +85,11 @@ return {
             icon_render_unit_rotation_offset = {90, 0, 30},
             icon_render_camera_position_offset = {-.15, -1, .15},
         },
+        autogun_rifle_ak_muzzle_06 = {
+            replacement_path = _item_ranged.."/muzzles/autogun_rifle_ak_muzzle_06",
+            icon_render_unit_rotation_offset = {90, 0, 30},
+            icon_render_camera_position_offset = {-.15, -1, .15},
+        },
         autogun_rifle_ak_muzzle_ml01 = {
             replacement_path = _item_ranged.."/muzzles/autogun_rifle_ak_muzzle_ml01",
             icon_render_unit_rotation_offset = {90, 0, 30},
@@ -99,6 +114,11 @@ return {
         },
         autogun_rifle_killshot_muzzle_05 = {
             replacement_path = _item_ranged.."/muzzles/autogun_rifle_killshot_muzzle_05",
+            icon_render_unit_rotation_offset = {90, 0, 30},
+            icon_render_camera_position_offset = {-.15, -1, .15},
+        },
+        autogun_rifle_killshot_muzzle_06 = {
+            replacement_path = _item_ranged.."/muzzles/autogun_rifle_killshot_muzzle_06",
             icon_render_unit_rotation_offset = {90, 0, 30},
             icon_render_camera_position_offset = {-.15, -1, .15},
         },

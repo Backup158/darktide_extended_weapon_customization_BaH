@@ -65,10 +65,22 @@ return {
         icon_render_camera_position_offset = {-.25, -2.5, 0},
         selection_index = 8,
     },
+    shotgun_rifle_barrel_11 = {
+        replacement_path = _item_ranged.."/barrels/shotgun_rifle_barrel_11",
+        icon_render_unit_rotation_offset = {90, -20, 90 - 30},
+        icon_render_camera_position_offset = {-.25, -2.5, 0},
+        selection_index = 9,
+    },
+    shotgun_rifle_barrel_12 = {
+        replacement_path = _item_ranged.."/barrels/shotgun_rifle_barrel_12",
+        icon_render_unit_rotation_offset = {90, -20, 90 - 30},
+        icon_render_camera_position_offset = {-.25, -2.5, 0},
+        selection_index = 10,
+    },
     shotgun_rifle_barrel_ml01 = {
         replacement_path = _item_ranged.."/barrels/shotgun_rifle_barrel_ml01",
         icon_render_unit_rotation_offset = {90, -20, 90 - 30},
         icon_render_camera_position_offset = {-.25, -2.5, 0},
-        selection_index = 9,
+        selection_index = 11,
     },
 }

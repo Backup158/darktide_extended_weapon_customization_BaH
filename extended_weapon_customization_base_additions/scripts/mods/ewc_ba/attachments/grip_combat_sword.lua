@@ -48,6 +48,12 @@ return {
         icon_render_unit_rotation_offset = {90, -30, 0},
         icon_render_camera_position_offset = {0, -1, .2},
     },
+    -- No 7
+    combat_sword_grip_08 = {
+        replacement_path = _item_melee.."/grips/combat_sword_grip_08",
+        icon_render_unit_rotation_offset = {90, -30, 0},
+        icon_render_camera_position_offset = {0, -1, .2},
+    },
     combat_sword_grip_ml01 = {
         replacement_path = _item_melee.."/grips/combat_sword_grip_ml01",
         icon_render_unit_rotation_offset = {90, -30, 0},
