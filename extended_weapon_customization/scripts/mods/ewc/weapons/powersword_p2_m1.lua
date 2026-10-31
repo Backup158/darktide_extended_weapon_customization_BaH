@@ -47,6 +47,11 @@ return {
                 icon_render_unit_rotation_offset = {90, -30, 0},
                 icon_render_camera_position_offset = {-.05, -1.25, .1},
             },
+            power_falchion_grip_04 = {
+                replacement_path = _item_melee.."/grips/power_falchion_grip_04",
+                icon_render_unit_rotation_offset = {90, -30, 0},
+                icon_render_camera_position_offset = {-.05, -1.25, .1},
+            },
         },
         blade = {
             power_falchion_blade_01 = {
@@ -64,6 +69,11 @@ return {
                 icon_render_unit_rotation_offset = {90, 30, 0},
                 icon_render_camera_position_offset = {-.025, -2.5, .7},
             },
+            power_falchion_blade_04 = {
+                replacement_path = _item_melee.."/blades/power_falchion_blade_04",
+                icon_render_unit_rotation_offset = {90, 30, 0},
+                icon_render_camera_position_offset = {-.025, -2.5, .7},
+            },
         },
         pommel = {
             power_falchion_pommel_01 = {
@@ -73,6 +83,11 @@ return {
             },
             power_falchion_pommel_02 = {
                 replacement_path = _item_melee.."/pommels/power_falchion_pommel_02",
+                icon_render_unit_rotation_offset = {90, 45, 0},
+                icon_render_camera_position_offset = {0, -.5, .075},
+            },
+            power_falchion_pommel_04 = {
+                replacement_path = _item_melee.."/pommels/power_falchion_pommel_04",
                 icon_render_unit_rotation_offset = {90, 45, 0},
                 icon_render_camera_position_offset = {0, -.5, .075},
             },

@@ -243,6 +243,15 @@ return {
                 icon_render_unit_rotation_offset = {90, 0, 0},
                 icon_render_camera_position_offset = {0, -3, .5},
             },
+            krieg_shovel_ogryn_full_02 = {
+                replacement_path = _item_melee.."/full/krieg_shovel_ogryn_full_02",
+                detach_attachments = {
+                    "pommel",
+                    "grip",
+                },
+                icon_render_unit_rotation_offset = {90, 0, 0},
+                icon_render_camera_position_offset = {0, -3, .5},
+            },
             prologue_shovel_ogryn_full_01 = {
                 replacement_path = _item_melee.."/full/prologue_shovel_ogryn_full_01",
                 detach_attachments = {

@@ -142,6 +142,11 @@ return {
                 icon_render_unit_rotation_offset = {90, 30, 0},
                 icon_render_camera_position_offset = {-.17, -2.75, .3},
             },
+            chain_axe_blade_08 = {
+                replacement_path = _item_melee.."/blades/chain_axe_blade_08",
+                icon_render_unit_rotation_offset = {90, 30, 0},
+                icon_render_camera_position_offset = {-.17, -2.75, .3},
+            },
             chain_axe_blade_ml01 = {
                 replacement_path = _item_melee.."/blades/chain_axe_blade_ml01",
                 icon_render_unit_rotation_offset = {90, 30, 0},

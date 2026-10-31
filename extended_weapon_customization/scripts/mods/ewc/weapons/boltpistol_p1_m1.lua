@@ -94,6 +94,11 @@ return {
                 icon_render_unit_rotation_offset = {90, 0, 45},
                 icon_render_camera_position_offset = {-.11, -1.75, .25},
             },
+            boltgun_pistol_receiver_09 = {
+                replacement_path = _item_ranged.."/recievers/boltgun_pistol_receiver_09",
+                icon_render_unit_rotation_offset = {90, 0, 45},
+                icon_render_camera_position_offset = {-.11, -1.75, .25},
+            },
             boltgun_pistol_receiver_ml01 = {
                 replacement_path = _item_ranged.."/recievers/boltgun_pistol_receiver_ml01",
                 icon_render_unit_rotation_offset = {90, 0, 45},

@@ -57,6 +57,11 @@ return {
                 icon_render_unit_rotation_offset = {90, 0, 45},
                 icon_render_camera_position_offset = {-.115, -1.5, .25},
             },
+            autogun_pistol_receiver_06 = {
+                replacement_path = _item_ranged.."/recievers/autogun_pistol_receiver_06",
+                icon_render_unit_rotation_offset = {90, 0, 45},
+                icon_render_camera_position_offset = {-.115, -1.5, .25},
+            },
             autogun_pistol_receiver_ml01 = {
                 replacement_path = _item_ranged.."/recievers/autogun_pistol_receiver_ml01",
                 icon_render_unit_rotation_offset = {90, 0, 45},
@@ -86,6 +91,11 @@ return {
             },
             autogun_pistol_barrel_05 = {
                 replacement_path = _item_ranged.."/barrels/autogun_pistol_barrel_05",
+                icon_render_unit_rotation_offset = {90, -20, 90 - 30},
+                icon_render_camera_position_offset = {-.09, -1, .1},
+            },
+            autogun_pistol_barrel_06 = {
+                replacement_path = _item_ranged.."/barrels/autogun_pistol_barrel_06",
                 icon_render_unit_rotation_offset = {90, -20, 90 - 30},
                 icon_render_camera_position_offset = {-.09, -1, .1},
             },
@@ -127,6 +137,11 @@ return {
             },
             autogun_pistol_muzzle_05 = {
                 replacement_path = _item_ranged.."/muzzles/autogun_pistol_muzzle_05",
+                icon_render_unit_rotation_offset = {90, 0, 30},
+                icon_render_camera_position_offset = {-.11, -.6, .15},
+            },
+            autogun_pistol_muzzle_06 = {
+                replacement_path = _item_ranged.."/muzzles/autogun_pistol_muzzle_06",
                 icon_render_unit_rotation_offset = {90, 0, 30},
                 icon_render_camera_position_offset = {-.11, -.6, .15},
             },

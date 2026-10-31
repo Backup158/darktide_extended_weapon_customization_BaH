@@ -63,6 +63,16 @@ return {
                 icon_render_unit_rotation_offset = {90, -30, 0},
                 icon_render_camera_position_offset = {.025, -3, .65},
             },
+            thunder_hammer_shaft_07 = {
+                replacement_path = _item_ranged.."/shafts/thunder_hammer_shaft_07",
+                icon_render_unit_rotation_offset = {90, -30, 0},
+                icon_render_camera_position_offset = {.025, -3, .65},
+            },
+            thunder_hammer_shaft_08 = {
+                replacement_path = _item_ranged.."/shafts/thunder_hammer_shaft_08",
+                icon_render_unit_rotation_offset = {90, -30, 0},
+                icon_render_camera_position_offset = {.025, -3, .65},
+            },
             thunder_hammer_shaft_ml01 = {
                 replacement_path = _item_ranged.."/shafts/thunder_hammer_shaft_ml01",
                 icon_render_unit_rotation_offset = {90, -30, 0},
@@ -97,6 +107,21 @@ return {
             },
             thunder_hammer_head_06 = {
                 replacement_path = _item_melee.."/heads/thunder_hammer_head_06",
+                icon_render_unit_rotation_offset = {90, 30, 0},
+                icon_render_camera_position_offset = {-.025, -2.75, .3},
+            },
+            thunder_hammer_head_07 = {
+                replacement_path = _item_melee.."/heads/thunder_hammer_head_07",
+                icon_render_unit_rotation_offset = {90, 30, 0},
+                icon_render_camera_position_offset = {-.025, -2.75, .3},
+            },
+            thunder_hammer_head_08 = {
+                replacement_path = _item_melee.."/heads/thunder_hammer_head_08",
+                icon_render_unit_rotation_offset = {90, 30, 0},
+                icon_render_camera_position_offset = {-.025, -2.75, .3},
+            },
+            thunder_hammer_head_09 = {
+                replacement_path = _item_melee.."/heads/thunder_hammer_head_09",
                 icon_render_unit_rotation_offset = {90, 30, 0},
                 icon_render_camera_position_offset = {-.025, -2.75, .3},
             },
@@ -137,6 +162,21 @@ return {
                 icon_render_unit_rotation_offset = {90, 45, 0},
                 icon_render_camera_position_offset = {-.025, -1.25, .275},
             },
+            thunder_hammer_connector_07 = {
+                replacement_path = _item_melee.."/connectors/thunder_hammer_connector_07",
+                icon_render_unit_rotation_offset = {90, 45, 0},
+                icon_render_camera_position_offset = {-.025, -1.25, .275},
+            },
+            thunder_hammer_connector_08 = {
+                replacement_path = _item_melee.."/connectors/thunder_hammer_connector_08",
+                icon_render_unit_rotation_offset = {90, 45, 0},
+                icon_render_camera_position_offset = {-.025, -1.25, .275},
+            },
+            thunder_hammer_connector_09 = {
+                replacement_path = _item_melee.."/connectors/thunder_hammer_connector_09",
+                icon_render_unit_rotation_offset = {90, 45, 0},
+                icon_render_camera_position_offset = {-.025, -1.25, .275},
+            },
             thunder_hammer_connector_ml01 = {
                 replacement_path = _item_melee.."/connectors/thunder_hammer_connector_ml01",
                 icon_render_unit_rotation_offset = {90, 45, 0},
@@ -171,6 +211,16 @@ return {
             },
             thunder_hammer_pommel_06 = {
                 replacement_path = _item_melee.."/pommels/thunder_hammer_pommel_06",
+                icon_render_unit_rotation_offset = {90, 45, 0},
+                icon_render_camera_position_offset = {0, -.5, .1},
+            },
+            thunder_hammer_pommel_07 = {
+                replacement_path = _item_melee.."/pommels/thunder_hammer_pommel_07",
+                icon_render_unit_rotation_offset = {90, 45, 0},
+                icon_render_camera_position_offset = {0, -.5, .1},
+            },
+            thunder_hammer_pommel_08 = {
+                replacement_path = _item_melee.."/pommels/thunder_hammer_pommel_08",
                 icon_render_unit_rotation_offset = {90, 45, 0},
                 icon_render_camera_position_offset = {0, -.5, .1},
             },

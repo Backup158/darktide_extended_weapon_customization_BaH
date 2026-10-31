@@ -78,6 +78,11 @@ return {
                 icon_render_unit_rotation_offset = {90, -30, 0},
                 icon_render_camera_position_offset = {-.1, -4, 0},
             },
+            combat_blade_grip_10 = {
+                replacement_path = _item_melee.."/grips/combat_blade_grip_10",
+                icon_render_unit_rotation_offset = {90, -30, 0},
+                icon_render_camera_position_offset = {-.1, -4, 0},
+            },
             combat_blade_grip_ml01 = {
                 replacement_path = _item_melee.."/grips/combat_blade_grip_ml01",
                 icon_render_unit_rotation_offset = {90, -30, 0},
@@ -130,6 +135,11 @@ return {
                 icon_render_unit_rotation_offset = {90, -30, 0},
                 icon_render_camera_position_offset = {0, -4, .75},
             },
+            combat_blade_blade_11 = {
+                replacement_path = _item_melee.."/blades/combat_blade_blade_11",
+                icon_render_unit_rotation_offset = {90, -30, 0},
+                icon_render_camera_position_offset = {0, -4, .75},
+            },
             combat_blade_blade_ml01 = {
                 replacement_path = _item_melee.."/blades/combat_blade_blade_ml01",
                 icon_render_unit_rotation_offset = {90, -30, 0},
@@ -179,6 +189,11 @@ return {
             },
             combat_blade_handle_09 = {
                 replacement_path = _item_ranged.."/handles/combat_blade_handle_09",
+                icon_render_unit_rotation_offset = {90, 30, 0},
+                icon_render_camera_position_offset = {0, -1.5, .1},
+            },
+            combat_blade_handle_10 = {
+                replacement_path = _item_ranged.."/handles/combat_blade_handle_10",
                 icon_render_unit_rotation_offset = {90, 30, 0},
                 icon_render_camera_position_offset = {0, -1.5, .1},
             },

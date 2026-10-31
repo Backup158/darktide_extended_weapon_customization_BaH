@@ -68,6 +68,16 @@ return {
                 icon_render_unit_rotation_offset = {90, -30, 0},
                 icon_render_camera_position_offset = {0, -1, .2},
             },
+            combat_knife_grip_08 = {
+                replacement_path = _item_melee.."/grips/combat_knife_grip_08",
+                icon_render_unit_rotation_offset = {90, -30, 0},
+                icon_render_camera_position_offset = {0, -1, .2},
+            },
+            combat_knife_grip_09 = {
+                replacement_path = _item_melee.."/grips/combat_knife_grip_09",
+                icon_render_unit_rotation_offset = {90, -30, 0},
+                icon_render_camera_position_offset = {0, -1, .2},
+            },
             combat_knife_grip_ml01 = {
                 replacement_path = _item_melee.."/grips/combat_knife_grip_ml01",
                 icon_render_unit_rotation_offset = {90, -30, 0},
@@ -117,6 +127,16 @@ return {
             },
             combat_knife_blade_09 = {
                 replacement_path = _item_melee.."/blades/combat_knife_blade_09",
+                icon_render_unit_rotation_offset = {90, -30, 0},
+                icon_render_camera_position_offset = {0, -1, .4},
+            },
+            combat_knife_blade_10 = {
+                replacement_path = _item_melee.."/blades/combat_knife_blade_10",
+                icon_render_unit_rotation_offset = {90, -30, 0},
+                icon_render_camera_position_offset = {0, -1, .4},
+            },
+            combat_knife_blade_11 = {
+                replacement_path = _item_melee.."/blades/combat_knife_blade_11",
                 icon_render_unit_rotation_offset = {90, -30, 0},
                 icon_render_camera_position_offset = {0, -1, .4},
             },

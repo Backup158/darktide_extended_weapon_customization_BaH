@@ -66,6 +66,16 @@ return {
                 icon_render_unit_rotation_offset = {90, 30, 0},
                 icon_render_camera_position_offset = {0, -3, .1},
             },
+            power_maul_pommel_07 = {
+                replacement_path = _item_melee.."/pommels/power_maul_pommel_07",
+                icon_render_unit_rotation_offset = {90, 30, 0},
+                icon_render_camera_position_offset = {0, -3, .1},
+            },
+            power_maul_pommel_08 = {
+                replacement_path = _item_melee.."/pommels/power_maul_pommel_08",
+                icon_render_unit_rotation_offset = {90, 30, 0},
+                icon_render_camera_position_offset = {0, -3, .1},
+            },
             power_maul_pommel_ml01 = {
                 replacement_path = _item_melee.."/pommels/power_maul_pommel_ml01",
                 icon_render_unit_rotation_offset = {90, 30, 0},
@@ -108,6 +118,16 @@ return {
                 icon_render_unit_rotation_offset = {90, -30, 0},
                 icon_render_camera_position_offset = {0, -8, 1.25},
             },
+            power_maul_shaft_08 = {
+                replacement_path = _item_ranged.."/shafts/power_maul_shaft_08",
+                icon_render_unit_rotation_offset = {90, -30, 0},
+                icon_render_camera_position_offset = {0, -8, 1.25},
+            },
+            power_maul_shaft_09 = {
+                replacement_path = _item_ranged.."/shafts/power_maul_shaft_09",
+                icon_render_unit_rotation_offset = {90, -30, 0},
+                icon_render_camera_position_offset = {0, -8, 1.25},
+            },
             power_maul_shaft_ml01 = {
                 replacement_path = _item_ranged.."/shafts/power_maul_shaft_ml01",
                 icon_render_unit_rotation_offset = {90, -30, 0},
@@ -145,6 +165,16 @@ return {
                 icon_render_unit_rotation_offset = {90, -30, 0},
                 icon_render_camera_position_offset = {0, -8, 1.25},
             },
+            power_maul_head_07 = {
+                replacement_path = _item_melee.."/heads/power_maul_head_07",
+                icon_render_unit_rotation_offset = {90, -30, 0},
+                icon_render_camera_position_offset = {0, -8, 1.25},
+            },
+            power_maul_head_08 = {
+                replacement_path = _item_melee.."/heads/power_maul_head_08",
+                icon_render_unit_rotation_offset = {90, -30, 0},
+                icon_render_camera_position_offset = {0, -8, 1.25},
+            },
             power_maul_head_ml01 = {
                 replacement_path = _item_melee.."/heads/power_maul_head_ml01",
                 icon_render_unit_rotation_offset = {90, -30, 0},
@@ -179,6 +209,16 @@ return {
             },
             ogryn_slabshield_p1_06 = {
                 replacement_path = _item_melee.."/ogryn_slabshield_p1_06",
+                icon_render_unit_rotation_offset = {90, 15, 90 + 60},
+                icon_render_camera_position_offset = {.3, -14, .05},
+            },
+            ogryn_slabshield_p1_07 = {
+                replacement_path = _item_melee.."/ogryn_slabshield_p1_07",
+                icon_render_unit_rotation_offset = {90, 15, 90 + 60},
+                icon_render_camera_position_offset = {.3, -14, .05},
+            },
+            ogryn_slabshield_p1_08 = {
+                replacement_path = _item_melee.."/ogryn_slabshield_p1_08",
                 icon_render_unit_rotation_offset = {90, 15, 90 + 60},
                 icon_render_camera_position_offset = {.3, -14, .05},
             },
